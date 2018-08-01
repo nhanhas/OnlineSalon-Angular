@@ -1,0 +1,38 @@
+<!-- default -->
+<div class="custom-dropdown-container">
+
+    <!-- Dropdown switcher -->
+    <div class="custom-dropdown-switcher" ng-click="expanded = !expanded">
+
+        <div class="custom-dropdown-icon">
+            <!-- location -->
+            <span><i class="fa fa-heart fa-2x" ng-class="{  'color-heart-green'   : category.location === 'in',
+                                                            'color-heart-orange' : category.location === 'out',
+                                                            'color-heart-red': category.location === 'in/out',
+                                                            'color-heart-gray'  : category.location === 'busy' }"></i></span>
+            <span class="text-bold color-gray text-extra-small">&nbsp; {{ category.location.toUpperCase() }} </span>
+        </div>
+
+        <!-- Category Name -->
+        <span class="text-large text-bold">{{ category.categoryName }}</span>
+
+        <!-- Colaspible mark -->
+        <span class="color-gray"><i class="fa fa-2x" ng-class="(expanded === true) ? 'fa-chevron-up' : 'fa-chevron-down' "></i></span>
+
+    </div>
+
+    <!-- All Options -->
+    <div class="custom-dropdown-options-container" ng-if="expanded">
+
+        <div ng-repeat="subCategory in category.subCategories">
+            <!-- sub category name  -->
+            <span class="text-bold color-gray">{{ subCategory.subCategoryName }}</span>
+
+            <custom-radio options="subCategory.options" model="subCategory.selectedOption"></custom-radio>
+
+        </div>
+        
+    </div>
+
+
+</div>

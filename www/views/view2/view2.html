@@ -1,0 +1,69 @@
+
+<div class="view2">
+
+    <!-- Navbar -->
+    <h3>Navbar</h3>
+    <navbar open-menu="testFunction()" expand-filter="testFunction()"></navbar>
+    "Is on top of screen" 
+
+    <!-- Custom Dropdown -->
+    <h3>Custom Dropdown</h3>
+    <custom-dropdown category="dropdownOptions" model="dropdownSelected"></custom-dropdown>
+    <br>
+    <custom-dropdown category="dropdownOptions" model="dropdownSelected"></custom-dropdown>
+    <br>
+    
+    <!-- Custom Radio -->
+    <h3>Custom Radio</h3>
+    <custom-radio options="radioOptions" model="radioSelected"></custom-radio>
+    <br>
+
+    <!-- favorite Tile -->
+    <h3>Favorite Tile</h3>
+    <favorite-tile favorite="view.favorite" on-book-now="testFunction(favorite)" on-schedule="testFunction(favorite)" on-dismiss="testFunction()"></favorite-tile>
+    <br>
+    <favorite-tile favorite="view.favorite" layout="inline" on-book-now="testFunction(favorite)" on-schedule="testFunction(favorite)" on-dismiss="testFunction()"></favorite-tile>
+
+
+    <!-- Message Tile -->
+    <h3>Message Tile</h3>
+    <message-tile message="view.message" on-dismiss="testFunction()"></message-tile>
+
+    <!-- service Tile -->
+    <h3>Service Tile</h3>
+    <service-tile service="view.service" on-dismiss="testFunction()"></service-tile>
+
+    <!-- Button -->
+    <h3>Buttons</h3>
+    <custom-button label="default" on-press="testFunction()"></custom-button>  
+    <br>  
+    <custom-button label="default disabled" on-press="testFunction()" is-disabled="1===1"></custom-button>  
+    <br>
+    <custom-button label="default icon" icon="fa-chevron-right" on-press="testFunction()"></custom-button>
+    <br>  
+    <custom-button label="larger-white" layout="larger-white" on-press="testFunction()"></custom-button>  
+    <br>  
+    <custom-button label="larger-white disabled" layout="larger-white" on-press="testFunction()" is-disabled="1===1"></custom-button>  
+    
+    <hr>
+    <!-- Inputs -->
+    <h3>Inputs</h3>
+    <custom-input label="text input" model="inputModel"></custom-input>
+    <br>
+    <custom-input label="password input" model="inputModel" input-type="password"></custom-input>
+    <br>
+    <custom-input label="text input" model="inputModel" under-label="* UNDER LABEL"></custom-input>
+    <br>
+    <custom-input label="text input" model="inputModel" under-label="* UNDER LABEL CLASS COLOR" under-label-class="color-red"></custom-input>
+  
+  
+  
+   <!-- Navbar Footer -->
+   <h3>Navbar Footer</h3>
+   <nav-footer messages="23" services="5" open-messages="testFunction()" open-services="testFunction()" open-favorites="testFunction()"></nav-footer>
+  
+  
+    
+  
+  </div>
+  

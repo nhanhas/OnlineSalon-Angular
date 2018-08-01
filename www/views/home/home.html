@@ -1,0 +1,19 @@
+<navbar open-menu="showPanel('menu')" expand-filter="testFunction()"></navbar>
+
+<div class="home">
+
+
+    <!-- Messages Panel -->
+    <div ng-include="'/views/home/partials/_messages-panel.html'" ng-if="view.messagesOpened"></div>
+    <!-- Services Panel -->
+    <div ng-include="'/views/home/partials/_services-panel.html'" ng-if="view.servicesOpened"></div>
+    <!-- Favorites Panel -->
+    <div ng-include="'/views/home/partials/_favorites-panel.html'" ng-if="view.favoritesOpened"></div>
+
+</div>
+
+<nav-footer messages="view.messages.length" services="view.services.length" open-messages="showPanel('messages')" open-services="showPanel('services')" open-favorites="showPanel('favorites')"></nav-footer>
+
+
+ <!-- Menu Panel -->
+ <div ng-include="'/views/home/partials/_menu-panel.html'" ng-if="view.menuOpened"></div>

@@ -1,0 +1,77 @@
+<div class="service-tile background-message-gray">
+
+    <div class="service-tile-img-container">
+        <img ng-src="{{ service.picture }}"> 
+    </div>
+    <div class="service-tile-id-container" ng-click="skillsExpanded = true">
+        <span class="text-large">{{ service.name }}</span>
+        <span class="text-small">{{ service.date }}</span>
+        <span class="text-small">{{ service.hour }}</span>
+
+        <div class="service-tile-contacts-container" ng-if="skillsExpanded">
+            <div class="service-tile-contact">
+                <span><i class="fa fa-phone"></i></span>
+                <span>{{ 'APP_COMPONENT_SERVICE_TILE_CONTACT_CALL' | translate }}</span>
+            </div>
+            
+            <div class="service-tile-contact">
+                <span><i class="fa fa-comment"></i></span>
+                <span>{{ 'APP_COMPONENT_SERVICE_TILE_CONTACT_CHAT' | translate }}</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- status square -->
+    <div class="service-tile-status-container">
+
+        <!-- Dot color -->
+        <span ng-class="{   'service-tile-status-green' : service.status === 'confirmed', 
+                            'service-tile-status-pink' : service.status === 'waiting',
+                            'service-tile-status-red' : service.status === 'rejected' }">
+            <i class="fa fa-circle fa-2x"></i>
+        </span>
+
+        <!-- Status -->
+        <div class="text-center" ng-switch="service.status" style="font-weight: bold">
+            <span ng-switch-when="confirmed" class="text-small">{{ 'APP_COMPONENT_SERVICE_TILE_STATUS_CONFIRMED' | translate}}</span>
+            <span ng-switch-when="waiting" class="text-small">{{ 'APP_COMPONENT_SERVICE_TILE_STATUS_WAITING' | translate}}</span>
+            <span ng-switch-when="rejected" class="text-small">{{ 'APP_COMPONENT_SERVICE_TILE_STATUS_REJECTED' | translate}}</span>
+        </div>
+        
+        <!-- Dismiss button -->
+        <span class="service-tile-cancel-button text-small" ng-click="onDismissMessageHandler()">{{ 'APP_COMPONENT_SERVICE_TILE_STATUS_CANCEL' | translate }}</span>
+
+    </div>
+
+</div>
+
+<!-- Partner Skills -->
+<div class="service-tile-skills-container background-message-gray text-small" ng-if="skillsExpanded">
+
+    <div class="service-tile-skill-set" ng-class="{ 'color-normal-pink' : service.skills.nails }">
+        <img src="assets/partner-pics/skills/nails.png" ng-if="!service.skills.nails">
+        <img src="assets/partner-pics/skills/nails-ok.png" ng-if="service.skills.nails">
+        <label>{{ 'APP_COMPONENT_TILE_SKILL_NAILS' | translate }}</label>
+    </div>
+
+    <div class="service-tile-skill-set" ng-class="{ 'color-normal-pink' : service.skills.body }">
+        <img src="assets/partner-pics/skills/body.png" ng-if="!service.skills.body">
+        <img src="assets/partner-pics/skills/body-ok.png" ng-if="service.skills.body">
+        <label>{{ 'APP_COMPONENT_TILE_SKILL_BODY' | translate }}</label>
+    </div>
+
+    <div class="service-tile-skill-set" ng-class="{ 'color-normal-pink' : service.skills.hair }">
+        <img src="assets/partner-pics/skills/hair.png" ng-if="!service.skills.hair">
+        <img src="assets/partner-pics/skills/hair-ok.png" ng-if="service.skills.hair">
+        <label>{{ 'APP_COMPONENT_TILE_SKILL_HAIR' | translate }}</label>
+    </div>
+
+    <div class="service-tile-skill-set" ng-class="{ 'color-normal-pink' : service.skills.treatment }">
+        <img src="assets/partner-pics/skills/treatment.png" ng-if="!service.skills.treatment">
+        <img src="assets/partner-pics/skills/treatment-ok.png" ng-if="service.skills.treatment">
+        <label>{{ 'APP_COMPONENT_TILE_SKILL_TREATMENT' | translate }}</label>
+    </div>
+
+</div>

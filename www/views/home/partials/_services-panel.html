@@ -1,0 +1,18 @@
+<div class="home-panel background-white">
+    
+    <!-- Close popup button -->
+    <div class="home-panel-close-btn-container color-gray" ng-click="showPanel()">
+        <span><i class="fa fa-times fa-3x"></i></span>
+    </div>
+
+    <div class="text-large text-thin color-gray">{{ 'APP_HOME_SERVICES_PANEL_TITLE' | translate }}</div>
+
+    <div class="home-panel-data-container">
+
+        <div class="home-panel-data-tile" ng-repeat="service in view.services">
+            <service-tile service="service" on-dismiss="testFunction(service)"></service-tile>
+        </div>
+
+    </div>
+
+</div>

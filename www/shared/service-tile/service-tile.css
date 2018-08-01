@@ -1,0 +1,97 @@
+.service-tile{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding: 10px;
+}
+.service-tile-img-container{
+    width: 70px;
+    height: 70px;
+    border-radius: 40px;
+    border: 2px solid white;
+    overflow: hidden;
+}
+
+.service-tile-img-container img{
+    width: 100%;
+    border-radius: 40px;
+}
+
+.service-tile-id-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+    padding-right: 90px;
+}
+.service-tile-id-container span:nth-of-type(1){
+    color : #cccccc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 170px;
+}
+.service-tile-id-container span:nth-of-type(2){
+    font-weight: bold;
+}
+
+.service-tile-contacts-container{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.service-tile-contact{ margin-right: 10px;}
+.service-tile-contact span{
+    font-size: 11px;
+}
+
+.service-tile-status-container{
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0px;
+    background-color: #eae9e1;
+    width: 110px;
+    line-height: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-tile-cancel-button{
+    margin-top: 20px;
+}
+
+.service-tile-status-green{
+    color : #3bb441;
+}
+.service-tile-status-red{
+    color : #ef2a25;
+}
+.service-tile-status-pink{
+    color : #ffc4aa;
+}
+
+/* Skills container */
+.service-tile-skills-container{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 0;
+    color : #cccccc;
+}
+
+.service-tile-skill-set{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-tile-skill-set img{
+    width: 40px;
+    height: 35px;
+}

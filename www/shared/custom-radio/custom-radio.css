@@ -1,0 +1,12 @@
+.custom-radio-option{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;    
+    margin: 10px 0;
+}
+
+.custom-radio-label-descritpion{
+    display: flex;
+    flex-direction: column;
+}

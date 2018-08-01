@@ -1,0 +1,81 @@
+body{
+background-color: #fce8f2;
+}
+.container{
+  padding: 0;
+}
+
+.container{
+  width:100%;
+}
+
+
+
+/* Color */
+.color-primary-blue    { color: #4F6D7A}
+.color-primary-orange  { color: #D57A66}
+.color-primary-green   { color: #00BD9D}
+.color-primary-purple  { color: #9E768F}
+.color-disabled-pink   { color: #f38dc67a}
+.color-light-pink      { color: #fce8f2}
+.color-normal-pink     { color: #f38dc6}
+.color-dark-pink       { color: #c482bf}
+.color-xDark-pink      { color: #67178c}
+.color-white           { color: #FFFFFF}
+.color-lightGray       { color: #F0F0F0}
+.color-darkText        { color: #343434}
+.color-red             { color: #ff0000}
+.color-gray            { color: #b3b3b3}
+
+.color-heart-red       { color: #e12961}
+.color-heart-green     { color: #3bb441}
+.color-heart-orange    { color: #f35d20}
+.color-heart-gray      { color: #808080}
+
+.color-disband-cross   { color: #cccccc}
+
+.background-primary-blue    { background-color: #4F6D7A}
+.background-primary-orange  { background-color: #D57A66}
+.background-primary-green   { background-color: #00BD9D}
+.background-primary-purple  { background-color: #9E768F}
+.background-disabled-pink   { background-color: #f38dc67a}
+.background-light-pink      { background-color: #fce8f2}
+.background-normal-pink     { background-color: #f38dc6}
+.background-dark-pink       { background-color: #c482bf}
+.background-xDark-pink      { background-color: #67178c}
+.background-menu-pink       { background-color: #f06aa5}
+.background-white           { background-color: #FFFFFF}
+.background-lightGray       { background-color: #F0F0F0}
+.background-darkText        { background-color: #343434}
+.background-red             { background-color: #ff0000}
+.background-gray            { background-color: #b3b3b3}
+.background-message-gray    { background-color: #f8f7f5}
+.background-grass-green     { background-color: #c6dd91}
+
+
+
+/* Text Sizes */
+.text-extra-small{
+  font-size: 8px;
+}
+.text-small{
+  font-size: 10px;
+}
+.text-medium{
+  font-size: 13px;
+}
+.text-large{
+  font-size: 17px;
+}
+
+
+/* Text Styles */
+.text-underline{
+  text-decoration: underline;
+}
+.text-bold{
+  font-weight: bold;
+}
+.text-thin{
+  font-weight: 200;
+}
