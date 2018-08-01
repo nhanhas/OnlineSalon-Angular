@@ -1,0 +1,63 @@
+.home{
+    position: absolute;
+    top: 70px;
+    bottom : 50px;
+    left: 0;
+    right: 0;
+}
+
+
+
+
+/* Generic Panel CSS */
+.home-panel{
+    position: absolute;
+    min-height: 100%;
+    left: 0;
+    right: 0;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+}
+.home-panel-close-btn-container{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+.home-panel-data-tile{
+    margin-bottom: 15px;
+}
+.home-panel-data-container{
+    width: 100%;
+    margin-top: 25px;
+
+}
+
+/* Menu Panel CSS */
+.home-panel-menu{
+    position: fixed;
+    z-index: 1;
+    width: 75%;
+}
+.home-menu-logo img{
+    max-width: 150px;
+}
+.home-menu-options-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    position: absolute;
+    height: 50%;
+    margin-top: 50%;
+}
+.home-menu-version{
+    position: absolute;
+    bottom: 40px;
+}

@@ -1,0 +1,19 @@
+.custom-dropdown-switcher{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f8f7f5;
+}
+
+.custom-dropdown-icon{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Dropdown options */
+.custom-dropdown-options-container{
+    padding: 15px;
+}

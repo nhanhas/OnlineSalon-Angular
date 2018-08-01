@@ -1,0 +1,90 @@
+.favorite-tile{
+    position: relative;
+    padding: 10px;
+}
+.favorite-tile-header{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding: 10px;
+    width: 100%;
+} 
+
+.favorite-tile-img-container{
+    width: 70px;
+    height: 70px;
+    border-radius: 40px;
+    border: 2px solid white;
+    overflow: hidden;
+}
+
+.favorite-tile-img-container img{
+    width: 100%;
+    border-radius: 40px;
+}
+
+.favorite-tile-id{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.favorite-tile-rating-container{
+    position: absolute;
+    right: -5px;
+    top: -5px;
+}
+.favorite-tile-rating-container span:nth-of-type(1){
+    font-size: 20px;
+}
+.favorite-tile-rating-container span:nth-of-type(2){
+    position: absolute;
+    top: 18px;
+    left: 13px;
+}
+
+/* Skills container */
+.favorite-tile-skills-container{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    color : #cccccc;
+    margin-bottom: 15px;
+}
+
+.favorite-tile-skill-set{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite-tile-skill-set img{
+    width: 30px;
+    height: 25px;
+}
+
+/* Buttons */
+.favorite-tile-buttons-container{
+    margin: 0 20px;
+}
+.favorite-tile-buttons-container .custom-button-default {
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.favorite-tile-schedule-btn .custom-button-default {
+    background-color: #e6bab6;
+} 
+
+
+.favorite-tile-buttons-container-inline{
+    display: flex;
+    justify-content: space-around;
+}
+
+.favorite-tile-buttons-container-inline .custom-button-default {
+    min-width: 145px; 
+}

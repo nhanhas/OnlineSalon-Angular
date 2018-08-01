@@ -1,0 +1,44 @@
+<!-- Top navbar -->
+<div class="navbar background-menu-pink color-white">
+
+	<!-- Menu burger -->
+	<div class="navbar-menu-item" ng-click="onOpenMenuHandler()">
+		<span><i class="fa fa-bars fa-2x"></i></span>
+	</div>
+
+	<!-- Menu 'in' -->
+	<div class="navbar-menu-item">
+		<span><i class="fa fa-heart fa-2x color-heart-green"></i></span>
+		<span class="text-small">{{ 'APP_COMPONENT_HEADER_HEART_1' | translate }}</span>
+		<span class="text-extra-small">{{ 'APP_COMPONENT_HEADER_HEART_EXPLAIN_1' | translate }}</span>
+	</div>
+
+	<!-- Menu 'out' -->
+	<div class="navbar-menu-item">
+		<span><i class="fa fa-heart fa-2x color-heart-orange"></i></span>
+		<span class="text-small">{{ 'APP_COMPONENT_HEADER_HEART_2' | translate }}</span>
+		<span class="text-extra-small">{{ 'APP_COMPONENT_HEADER_HEART_EXPLAIN_2' | translate }}</span>
+	</div>
+
+	<!-- Menu 'in/out' -->
+	<div class="navbar-menu-item">
+		<span><i class="fa fa-heart fa-2x color-heart-red"></i></span>
+		<span class="text-small">{{ 'APP_COMPONENT_HEADER_HEART_3' | translate }}</span>
+		<span class="text-extra-small">&nbsp;</span>
+	</div>
+
+	<!-- Menu 'busy' -->
+	<div class="navbar-menu-item">
+		<span><i class="fa fa-heart fa-2x color-heart-gray"></i></span>
+		<span class="text-small">{{ 'APP_COMPONENT_HEADER_HEART_4' | translate }}</span>
+		<span class="text-extra-small">&nbsp;</span>
+	</div>
+
+	<!-- Menu 'filter' -->
+	<div class="navbar-menu-item" ng-click="onExpandFilterHandler()">
+		<span><i class="fa fa-search fa-rotate-90 fa-2x"></i></span>
+		<span class="text-small">{{ 'APP_COMPONENT_HEADER_FILTER' | translate }}</span>
+		<span class="text-extra-small">&nbsp;</span>
+	</div>
+
+</div>

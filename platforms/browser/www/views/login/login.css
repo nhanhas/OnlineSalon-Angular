@@ -1,0 +1,126 @@
+.login-logo img{
+    max-width: 200px;
+}
+
+/* Step Language */
+.login-lang-buttons{
+    position: absolute;
+    left: 70px;
+    right: 70px;
+    bottom: 120px;
+}
+.login-lang-button-container{
+    margin-bottom: 30px;
+}
+
+/* Step Credentials */
+.login-credentials-form{
+    margin: 70px;
+}
+
+.login-credentials-input-container{
+    margin-bottom: 40px;
+
+}
+
+.login-credentials-radio-container{
+    margin-top: -10px;
+    margin-bottom: 90px;
+}
+
+.login-credentials-sign-container{
+    margin-top: 40px;
+}
+
+.login-credentials-disclaimer{
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+}
+
+/* Step Authorize */
+.login-authorize-desc{
+    white-space: pre-wrap;
+}
+
+.login-authorize-buttons{
+    margin: 0 70px;
+}
+.login-authorize-button-container{
+    margin-bottom: 30px;
+}
+
+
+/* Sign in view */
+.sign-close-button-container{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.sign-step-container{
+    margin: 10px 0;
+}
+.sign-step-align{
+    display: inline-block;
+}
+
+/* step 0 */
+.sign-step-0-circle{
+    margin-top: 0px;
+    text-align: center;
+    padding-top: 35px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border: 2px solid white;
+}
+.sign-step-0-camera{
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+.sign-step-0-gallery{
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.sign-step-form{
+    margin: 10px 70px;
+}
+
+.sign-step-form-input-container{
+    margin-bottom: 20px;
+}
+
+.sign-step-form-button-container{
+    margin-bottom: 20px;
+}
+
+/* Step 1 */
+.sign-step-1-button{
+    margin-top: 50px;
+}
+
+/* Step 2 */
+.sign-step-2-label-container{
+    margin-bottom: 30px;
+}
+.sign-step-form-month-year{
+    display: flex;
+}
+
+.sign-step-2-inline:nth-of-type(1){
+    width: 120px;
+    margin-right: 10px;
+}
+
+.sign-step-2-inline:nth-of-type(2){
+    width: 120px;
+    margin-right: 50px;
+}
+
+.sign-step-2-button{
+    margin-top: 70px;
+}

@@ -1,0 +1,25 @@
+.message-tile{
+    padding: 40px 15px 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.message-tile img{
+    max-height: 140px;
+}
+
+.message-tile-title{
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.message-tile-description{
+    margin-top: 10px;
+}
+
+.message-close-button-container{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}

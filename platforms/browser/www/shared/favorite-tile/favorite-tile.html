@@ -1,0 +1,78 @@
+<div class="favorite-tile background-message-gray">
+    <div class="favorite-tile-header">
+        
+        <!-- picutre -->
+        <div class="favorite-tile-img-container">
+            <img ng-src="{{ favorite.picture }}"> 
+        </div>
+ 
+        <!-- identification -->
+        <div class="favorite-tile-id">
+            <span ng-class="{   'color-heart-green' : favorite.location === 'in',
+                                'color-heart-orange' : favorite.location === 'out',
+                                'color-heart-red' : favorite.location === 'in/out',
+                                'color-heart-gray' : favorite.location === 'busy' }">
+                <i class="fa fa-heart fa-lg"></i>
+            </span>
+
+            <div class="favorite-tile-id-name text-large"><span>{{ favorite.name }}</span></div>
+
+            <!-- Rating -->
+            <div class="favorite-tile-rating-container">
+                <span class="color-normal-pink"><i class="fa fa-star fa-3x"></i></span>
+                <span class="color-white">{{ favorite.rating }}</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Partner Skills -->
+    <div class="favorite-tile-skills-container background-message-gray text-small">
+
+        <div class="favorite-tile-skill-set" ng-class="{ 'color-normal-pink' : favorite.skills.nails }">
+            <img src="assets/partner-pics/skills/nails.png" ng-if="!favorite.skills.nails">
+            <img src="assets/partner-pics/skills/nails-ok.png" ng-if="favorite.skills.nails">
+            <label>{{ 'APP_COMPONENT_TILE_SKILL_NAILS' | translate }}</label>
+        </div>
+    
+        <div class="favorite-tile-skill-set" ng-class="{ 'color-normal-pink' : favorite.skills.body }">
+            <img src="assets/partner-pics/skills/body.png" ng-if="!favorite.skills.body">
+            <img src="assets/partner-pics/skills/body-ok.png" ng-if="favorite.skills.body">
+            <label>{{ 'APP_COMPONENT_TILE_SKILL_BODY' | translate }}</label>
+        </div>
+    
+        <div class="favorite-tile-skill-set" ng-class="{ 'color-normal-pink' : favorite.skills.hair }">
+            <img src="assets/partner-pics/skills/hair.png" ng-if="!favorite.skills.hair">
+            <img src="assets/partner-pics/skills/hair-ok.png" ng-if="favorite.skills.hair">
+            <label>{{ 'APP_COMPONENT_TILE_SKILL_HAIR' | translate }}</label>
+        </div>
+    
+        <div class="favorite-tile-skill-set" ng-class="{ 'color-normal-pink' : favorite.skills.treatment }">
+            <img src="assets/partner-pics/skills/treatment.png" ng-if="!favorite.skills.treatment">
+            <img src="assets/partner-pics/skills/treatment-ok.png" ng-if="favorite.skills.treatment">
+            <label>{{ 'APP_COMPONENT_TILE_SKILL_TREATMENT' | translate }}</label>
+        </div>
+    
+    </div>
+    
+    <!-- Buttons -->
+    <div class="favorite-tile-buttons-container" ng-if="layout === 'default'">
+        <div>
+            <custom-button label="{{ 'APP_COMPONENT_FAVORITE_TILE_BTN_RESERVE' | translate }}" on-press="onBookNowHandler()"></custom-button>  
+        </div>
+        <div class="favorite-tile-schedule-btn">
+            <custom-button label="{{ 'APP_COMPONENT_FAVORITE_TILE_BTN_SCHEDULE' | translate }}" on-press="onScheduleHandler()"></custom-button>  
+        </div>
+    </div>
+
+    <div class="favorite-tile-buttons-container-inline" ng-if="layout === 'inline'">
+        <div>
+            <custom-button label="{{ 'APP_COMPONENT_FAVORITE_TILE_BTN_RESERVE' | translate }}" on-press="onBookNowHandler()"></custom-button>  
+        </div>
+        <div class="favorite-tile-schedule-btn">
+            <custom-button label="{{ 'APP_COMPONENT_FAVORITE_TILE_BTN_SCHEDULE' | translate }}" on-press="onScheduleHandler()"></custom-button>  
+        </div>
+    </div>
+
+</div>

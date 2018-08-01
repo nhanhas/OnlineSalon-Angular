@@ -1,0 +1,287 @@
+<div class="login">
+
+    <!-- App Logo -->
+    <div class="login-logo text-center">
+        <img src="assets/logo.png">
+    </div>
+
+    <!-- Login -->
+    <div id="login" ng-if="!view.signInOpened">
+    
+        <!-- Stage 1 - Language-->
+        <div id="language" ng-if="view.stepSelected === 'language'">
+
+            <!-- Choose buttons -->
+            <div class="login-lang-buttons">
+                <div class="login-lang-button-container">
+                    <custom-button label="PORTUGUÊS" layout="larger-white" on-press="chooseLanguage('pt')"></custom-button>  
+                </div>
+                <div class="login-button-container">
+                    <custom-button label="ENGLISH" layout="larger-white" on-press="chooseLanguage('en')"></custom-button>  
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Stage 2 - Login form-->
+        <div id="credentials" ng-if="view.stepSelected === 'credentials'">
+            
+            <!-- Form -->
+            <div class="login-credentials-form">
+                
+                <!-- Username -->
+                <div class="login-credentials-input-container">
+                    <custom-input label="Email" model="view.credentials.username"></custom-input>
+                </div>
+
+                <!-- Password -->
+                <div class="login-credentials-input-container">
+                    <custom-input label="Password" model="view.credentials.password" input-type="password"></custom-input>
+                </div>
+
+                <!-- Remind Credentials -->
+                <div class="login-credentials-radio-container text-medium color-dark-pink">               
+                    
+                    <div class="pull-left" ng-click="view.credentials.remindCredentials = !view.credentials.remindCredentials">
+                        <span><i class="fa" ng-class="{'fa-circle' : view.credentials.remindCredentials}"></i></span>&nbsp;{{ 'APP_LOGIN_MEMORIZE_BTN' | translate }}
+                    </div>
+
+                    <div class="pull-right"><span>{{ 'APP_LOGIN_RESET_PW_BTN' | translate }}</div>
+                
+                </div>
+
+                <!-- Login Button -->
+                <div class="login-credentials-button-container">
+                    <custom-button label="{{ 'APP_LOGIN_ENTER_BTN' | translate }}" on-press="userLogin()"></custom-button> 
+                </div>
+
+                <!-- Sign in -->
+                <div class="login-credentials-sign-container text-medium color-dark-pink text-center">
+                    <span ng-click="signIn()">{{ 'APP_LOGIN_SIGN_BTN' | translate }}</span>
+                </div>                
+
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="login-credentials-disclaimer color-dark-pink text-center">
+                <span>{{ 'APP_LOGIN_DISCLAIMER_DESCRIPTION' | translate }}</span>
+                <br>
+                <a class="color-dark-pink text-underline" href="http://www.google.com" target="_blank">{{ 'APP_LOGIN_DISCLAIMER_THERMS' | translate }}</a>
+                {{ 'APP_LOGIN_DISCLAIMER_DESCRIPTION_AND ' | translate }}
+                <a class="color-dark-pink text-underline" href="http://www.google.com" target="_blank">{{ 'APP_LOGIN_DISCLAIMER_PRIVACY ' | translate }}</a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Stage 3 - Authorize-->
+        <div id="authorize" ng-if="view.stepSelected === 'authorize'">
+
+            <!-- Description -->
+            <div class="login-authorize-desc text-center color-dark-pink">
+                <div>{{ 'APP_AUTHORIZATION_INFO_LABEL' | translate }}</div>            
+            </div>
+
+            <!-- Choose buttons -->
+            <div class="login-authorize-buttons">
+                <div class="login-authorize-button-container">
+                    <custom-button label="{{ 'APP_AUTHORIZATION_ALLOW_BTN' | translate }}" layout="default" on-press="confirmAuthorization(true)"></custom-button>  
+                </div>
+                <div class="login-button-container">
+                    <custom-button label="{{ 'APP_AUTHORIZATION_REFUSE_BTN' | translate }}" layout="default" on-press="confirmAuthorization(false)"></custom-button>  
+                </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="login-credentials-disclaimer color-dark-pink text-center">
+                <span>{{ 'APP_LOGIN_DISCLAIMER_DESCRIPTION' | translate }}</span>
+                <br>
+                <a class="color-dark-pink text-underline" href="http://www.google.com" target="_blank">{{ 'APP_LOGIN_DISCLAIMER_THERMS' | translate }}</a>
+                {{ 'APP_LOGIN_DISCLAIMER_DESCRIPTION_AND ' | translate }}
+                <a class="color-dark-pink text-underline" href="http://www.google.com" target="_blank">{{ 'APP_LOGIN_DISCLAIMER_PRIVACY ' | translate }}</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Sign in -->
+    <div id="sign-in" ng-if="view.signInOpened">
+        
+        <!-- Close popup button -->
+        <div class="sign-close-button-container color-dark-pink" ng-click="view.signInOpened = false">
+            <span><i class="fa fa-times fa-2x"></i></span>
+        </div>
+        
+        <!-- Steps -->
+        <div class="sign-step-container text-center">
+            <div class="sign-step-align color-dark-pink">{{ 'APP_SIGNIN_STEP_0' | translate }}</div>
+            <div class="sign-step-align" ng-class="{ 'color-white' : view.signInStep === 0, 'color-dark-pink' : view.signInStep > 0 }"><i class="fa fa-chevron-right"></i></div>
+            <div class="sign-step-align" ng-class="{ 'color-white' : view.signInStep < 1 , 'color-dark-pink' : view.signInStep >= 1 }">{{ 'APP_SIGNIN_STEP_1' | translate }}</div>
+            <div class="sign-step-align" ng-class="{ 'color-white' : view.signInStep < 2 , 'color-dark-pink' : view.signInStep == 2 }"><i class="fa fa-chevron-right"></i></div>
+            <div class="sign-step-align" ng-class="{ 'color-white' : view.signInStep < 2 , 'color-dark-pink' : view.signInStep == 2 }">{{ 'APP_SIGNIN_STEP_2' | translate }}</div>
+        </div>
+
+        <!-- Step 0 - Identification -->
+        <div class="sign-step-0" ng-if="view.signInStep === 0">
+
+            <!-- photo and pictures -->
+            <div class="sign-step-0-photo-container row text-center color-xDark-pink" style="margin: 0 10px;">
+
+                <!-- cirlce -->
+                <div class="col-xs-4">                    
+                    <div class="sign-step-0-circle color-white background-normal-pink text-center">
+                        +
+                    </div>
+                </div>
+
+                <!-- camera -->
+                <div class="col-xs-4">
+                    <div class="sign-step-0-camera">
+                        <span><i class="fa fa-camera fa-2x"></i></span>
+                        <br>
+                        <span class="text-small">{{ 'APP_SIGNIN_STEP_0_PHOTO_BTN' | translate }}</span>
+                    </div>
+                </div>
+
+                <!-- camera -->
+                <div class="col-xs-4">                
+                    <div class="sign-step-0-gallery">
+                        <span><i class="fa fa-image fa-2x"></i></span>
+                        <br>
+                        <span class="text-small">{{ 'APP_SIGNIN_STEP_0_GALLERY_BTN' | translate }}</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Form : identification -->
+            <div class="sign-step-form">
+
+                <!-- Name -->
+                <div class="sign-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_0_NAME' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_0_NAME_DESC' | translate }}" model="view.signInForm.identification.name"></custom-input>
+                </div>
+
+                <!-- Email -->
+                <div class="sign-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_0_EMAIL' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_0_EMAIL_DESC' | translate }}"  under-label-class="color-red" model="view.signInForm.identification.email"></custom-input>
+                </div>
+
+                <!-- Password -->
+                <div class="sign-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_0_PASSWORD' | translate }}" input-type="password" under-label="{{ 'APP_SIGNIN_STEP_0_PASSWORD_DESC' | translate }}" model="view.signInForm.identification.password"></custom-input>
+                </div>
+
+                <!-- Repeat Password-->
+                <div class="sign-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_0_REPEAT_PW' | translate }}" input-type="password" under-label="{{ 'APP_SIGNIN_STEP_0_REPEAT_PW_DESC' | translate }}"  under-label-class="color-red" model="view.signInForm.identification.repeatPw"></custom-input>
+                </div>
+
+                <!-- Phone -->
+                <div class="sign-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_0_PHONE' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_0_PHONE_DESC' | translate }}" model="view.signInForm.identification.phone"></custom-input>
+                </div>
+                
+                <!-- Save Button -->
+                <div class="sign-step-form-button-container">
+                    <custom-button label="{{ 'APP_SIGNIN_SAVE_BTN' | translate }}" on-press="saveIdentification()"></custom-button> 
+                </div>
+
+                <!-- Continue to Address -->
+                <div class="sign-step-form-button-container">
+                    <custom-button label="{{ 'APP_SIGNIN_ADDRESS_BTN' | translate }}" icon="fa-chevron-right" is-disabled="!view.signInForm.isIdFormValid" on-press="continueSignSteps(1)"></custom-button> 
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Step 1 - Address -->
+        <div class="sign-step-1" ng-if="view.signInStep === 1">
+            
+            <!-- Form : address -->
+            <div class="sign-step-form" style="margin-top:30px">
+
+                <!-- Main Address -->
+                <div class="sign-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_1_ADDRESS1' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_1_ADDRESS1_DESC' | translate }}" model="view.signInForm.address.mainAddress"></custom-input>
+                </div>
+
+                <!-- Seconday Address -->
+                <div class="sign-step-form-input-container">
+                    <custom-input under-label="{{ 'APP_SIGNIN_STEP_1_ADDRESS2_DESC' | translate }}" model="view.signInForm.address.secondaryAddress"></custom-input>
+                </div>
+
+                <!-- ZipCode -->
+                <div class="sign-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_1_ZIPCODE' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_1_ZIPCODE_DESC' | translate }}" model="view.signInForm.address.zipcode"></custom-input>
+                </div>
+
+                <!-- City -->
+                <div class="sign-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_1_CITY' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_1_CITY_DESC' | translate }}" model="view.signInForm.address.city"></custom-input>
+                </div>
+
+                <!-- Save Button -->
+                <div class="sign-step-form-button-container sign-step-1-button">
+                    <custom-button label="{{ 'APP_SIGNIN_SAVE_BTN' | translate }}" on-press="saveAddress()"></custom-button> 
+                </div>
+
+                <!-- Continue to Address -->
+                <div class="sign-step-form-button-container">
+                    <custom-button label="{{ 'APP_SIGNIN_PAYMENT_BTN' | translate }}" icon="fa-chevron-right" is-disabled="!view.signInForm.isAddressFormValid" on-press="continueSignSteps(2)"></custom-button> 
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Step 2 - Payment -->
+        <div class="sign-step-2" ng-if="view.signInStep === 2">
+
+            <!-- Form : address -->
+            <div class="sign-step-form" style="margin-top:50px">
+                
+                <div class="sign-step-2-label-container">
+                    <label class="color-xDark-pink">{{ 'APP_SIGNIN_STEP_2_TITLE_01' | translate }}</label>
+                    <br>
+                    <label class="color-xDark-pink">{{ 'APP_SIGNIN_STEP_2_TITLE_02' | translate }}</label> 
+                </div>
+
+                <!-- Card Name -->
+                <div class="sign-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_NAME' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_NAME_DESC' | translate }}" model="view.signInForm.payment.cardName"></custom-input>
+                </div>
+
+                <!-- Month / Year -->
+                <div class="sign-step-form-month-year">
+                    <div class="sign-step-form-input-container sign-step-2-inline">
+                        <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_MONTH' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_MONTH_DESC' | translate }}" model="view.signInForm.payment.month"></custom-input>                    
+                    </div>
+
+                    <div class="sign-step-form-input-container sign-step-2-inline">
+                        <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_YEAR' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_YEAR_DESC' | translate }}" model="view.signInForm.payment.year"></custom-input>                    
+                    </div>
+
+                    <div class="sign-step-form-input-container">
+                        <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_CCV' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_CCV_DESC' | translate }}" model="view.signInForm.payment.ccv"></custom-input>                    
+                    </div>
+                </div>
+                
+                <!-- Save Button -->
+                <div class="sign-step-form-button-container sign-step-2-button">
+                    <custom-button label="{{ 'APP_SIGNIN_SAVE_BTN' | translate }}" on-press="saveAll()"></custom-button> 
+                </div>
+                
+
+            </div>
+
+        </div>
+
+    </div>
+ 
+</div>

@@ -1,0 +1,15 @@
+<!-- default -->
+<div class="custom-button-container custom-button-default color-white background-normal-pink" 
+     ng-click="onPressHandler()" 
+     ng-if="layout === 'default'"
+     ng-class="{'custom-button-disabled' : isDisabled}">
+    {{ label }} <span ng-if="icon !== ''">&nbsp;<i class="fa {{icon}}"></i></span>
+</div>
+
+<!-- larger-white -->
+<div class="custom-button-container custom-button-larger-white color-xDark-pink " 
+     ng-click="onPressHandler()" 
+     ng-if="layout === 'larger-white'"
+     ng-class="{'custom-button-disabled' : isDisabled}">
+    {{ label }} <span ng-if="icon !== ''">&nbsp;<i class="fa {{icon}}"></i></span>
+</div>
