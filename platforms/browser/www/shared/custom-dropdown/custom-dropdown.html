@@ -28,7 +28,7 @@
             <!-- sub category name  -->
             <span class="text-bold color-gray">{{ subCategory.subCategoryName }}</span>
 
-            <custom-radio options="subCategory.options" model="subCategory.selectedOption"></custom-radio>
+            <custom-option-picker options="subCategory.options" number-of-picked="subCategory.numberOfPicked" on-pick="updateNumberPicked()"></custom-option-picker>
 
         </div>
         

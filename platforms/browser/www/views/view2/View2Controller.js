@@ -4,52 +4,77 @@ app
 	//For inputs
 	$scope.inputModel = '';
 
+	//For Option Picker
+	$scope.numberOfPicked = 0;
+	$scope.optionPickerOptions = [ 
+		{
+			optionLabel : 'Normal',
+			optionDescription : 'Fazer pequeno tratamento',
+			optionSelected : false
+		}, 
+		{
+			optionLabel : 'Francesa',
+			optionSelected : false
+		}, 
+		{
+			optionLabel : 'Gelinho',
+			optionDescription : 'Fazer longo tratamento',
+			optionSelected : false
+		},
+		{
+			optionLabel : 'Art',
+			optionSelected : false
+		}, 
+	];
+
 	//For Dropdowns
+	$scope.dropdownPickedItems = 0;
 	$scope.dropdownOptions = {
         categoryName : 'Unhas',
-        location : 'out',
+		location : 'out',
+		totalPickedItems : 0,
         subCategories : [
             {
                 subCategoryName : 'Manicure',
-                selectedOption : 0,
+				numberOfPicked : 0,
                 options : [ 
                     {
                         optionLabel : 'Normal',
-                        optionValue : 0
+                        optionSelected : false
                     }, 
                     {
                         optionLabel : 'Francesa',
-                        optionValue : 1
+                        optionSelected : false
                     }, 
                     {
                         optionLabel : 'Gelinho',
-                        optionValue : 2
+                        optionSelected : false
                     },
                     {
                         optionLabel : 'Art',
-                        optionValue : 3
+                        optionSelected : false
                     }, 
                 ]
             },
             {
                 subCategoryName : 'Pedicure',
-                selectedOption : 0,
+                numberOfPicked : 0,
                 options : [ 
                     {
                         optionLabel : 'Normal',
-                        optionValue : 0
+                        optionSelected : false
                     }, 
                     {
                         optionLabel : 'Francesa',
-                        optionValue : 1
+                        optionSelected : false
                     }, 
                     {
                         optionLabel : 'Gelinho',
-                        optionValue : 2
+                        optionSelected : false
                     },
                     {
                         optionLabel : 'Art',
-                        optionValue : 3
+                        optionSelected : false
                     }, 
                 ]
             }   

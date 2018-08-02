@@ -1,0 +1,19 @@
+<!-- default -->
+<div class="custom-option-picker-container">
+
+        <div class="custom-option-picker-option" ng-repeat="option in options" ng-click="pickOption(option)">
+            <!-- icon -->
+            <span><i class="fa fa-2x" ng-class="(option.optionSelected === true) ? 'fa-circle color-normal-pink' : 'fa-circle-thin color-gray'"></i></span>
+            &nbsp;
+    
+            <div class="custom-option-picker-label-descritpion text-large">
+                <!-- Label -->
+                <span>{{ option.optionLabel | translate }}</span>
+                <!-- Description -->
+                <span  class="text-small color-gray" ng-if="option.optionDescription">{{ option.optionDescription | translate }}</span>
+            </div>
+    
+        </div>
+    
+    </div>
+    

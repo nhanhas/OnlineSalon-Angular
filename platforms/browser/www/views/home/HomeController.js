@@ -224,48 +224,49 @@ app
 			{
 				categoryName : 'Unhas',
 				location : 'in/out',
+				totalPickedItems : 0,
 				subCategories : [
 					{
 						subCategoryName : 'Manicure',
-						selectedOption : 0,
+						numberOfPicked : 0,
 						options : [ 
 							{
 								optionLabel : 'Normal',
-								optionValue : 0
+								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Francesa',
-								optionValue : 1
+								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Gelinho',
-								optionValue : 2
+								optionSelected : false
 							},
 							{
 								optionLabel : 'Art',
-								optionValue : 3
+								optionSelected : false
 							}, 
 						]
 					},
 					{
 						subCategoryName : 'Pedicure',
-						selectedOption : 0,
+						numberOfPicked : 0,
 						options : [ 
 							{
 								optionLabel : 'Normal',
-								optionValue : 0
+								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Francesa',
-								optionValue : 1
+								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Gelinho',
-								optionValue : 2
+								optionSelected : false
 							},
 							{
 								optionLabel : 'Art',
-								optionValue : 3
+								optionSelected : false
 							}, 
 						]
 					}   
@@ -274,48 +275,49 @@ app
 			{
 				categoryName : 'Face',
 				location : 'in',
+				totalPickedItems : 0,
 				subCategories : [
 					{
 						subCategoryName : 'Relaxe',
-						selectedOption : 0,
+						numberOfPicked : 0,
 						options : [ 
 							{
 								optionLabel : 'Normal',
-								optionValue : 0
+								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Francesa',
-								optionValue : 1
+								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Gelinho',
-								optionValue : 2
+								optionSelected : false
 							},
 							{
 								optionLabel : 'Art',
-								optionValue : 3
+								optionSelected : false
 							}, 
 						]
 					},
 					{
 						subCategoryName : 'Outros',
-						selectedOption : 0,
+						numberOfPicked : 0,
 						options : [ 
 							{
 								optionLabel : 'Normal',
-								optionValue : 0
+								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Francesa',
-								optionValue : 1
+								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Gelinho',
-								optionValue : 2
+								optionSelected : false
 							},
 							{
 								optionLabel : 'Art',
-								optionValue : 3
+								optionSelected : false
 							}, 
 						]
 					}   
@@ -324,48 +326,49 @@ app
 			{
 				categoryName : 'Cabelo',
 				location : 'out',
+				totalPickedItems : 0,
 				subCategories : [
 					{
 						subCategoryName : 'Manicure',
-						selectedOption : 0,
+						numberOfPicked : 0,
 						options : [ 
 							{
 								optionLabel : 'Normal',
-								optionValue : 0
+								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Francesa',
-								optionValue : 1
+								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Gelinho',
-								optionValue : 2
+								optionSelected : false
 							},
 							{
 								optionLabel : 'Art',
-								optionValue : 3
+								optionSelected : false
 							}, 
 						]
 					},
 					{
 						subCategoryName : 'Pedicure',
-						selectedOption : 0,
+						numberOfPicked : 0,
 						options : [ 
 							{
 								optionLabel : 'Normal',
-								optionValue : 0
+								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Francesa',
-								optionValue : 1
+								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Gelinho',
-								optionValue : 2
+								optionSelected : false
 							},
 							{
 								optionLabel : 'Art',
-								optionValue : 3
+								optionSelected : false
 							}, 
 						]
 					}   
@@ -374,55 +377,56 @@ app
 			{
 				categoryName : 'Corpo',
 				location : 'in/out',
+				totalPickedItems : 0,
 				subCategories : [
 					{
 						subCategoryName : 'Manicure',
-						selectedOption : 0,
+						numberOfPicked : 0,
 						options : [ 
 							{
 								optionLabel : 'Normal',
-								optionValue : 0
+								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Francesa',
-								optionValue : 1
+								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Gelinho',
-								optionValue : 2
+								optionSelected : false
 							},
 							{
 								optionLabel : 'Art',
-								optionValue : 3
+								optionSelected : false
 							}, 
 						]
 					},
 					{
 						subCategoryName : 'Pedicure',
-						selectedOption : 0,
+						numberOfPicked : 0,
 						options : [ 
 							{
 								optionLabel : 'Normal',
-								optionValue : 0
+								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Francesa',
-								optionValue : 1
+								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Gelinho',
-								optionValue : 2
+								optionSelected : false
 							},
 							{
 								optionLabel : 'Art',
-								optionValue : 3
+								optionSelected : false
 							}, 
 						]
 					}   
 				]
 			}
 		]
-
+		
 		//#1 - Mark service as view selected
 		$scope.view.serviceSelected = undefined;
 		$scope.view.serviceSelected = favorite;

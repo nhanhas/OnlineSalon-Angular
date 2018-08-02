@@ -58,7 +58,7 @@
         </div>
         <!-- Services radio -->
         <div class="booking-panel-services-container" ng-repeat="service in dummyPartnerServices">
-            <custom-dropdown category="service"></custom-dropdown>
+            <custom-dropdown category="service" total-picked-items="service.servicesPicked"></custom-dropdown>
         </div>
 
         <!-- Resume label-->
@@ -73,7 +73,7 @@
             </div>
             <div class="booking-panel-resume-items">
                 <span class="text-bold color-gray">{{ 'APP_HOME_BOOKING_PANEL_RESUME_SERVICE' | translate }}:</span>
-                <span>2</span>
+                <span>{{ 0 }}</span>
             </div>
             <div class="booking-panel-resume-items">
                 <span class="text-large text-bold color-gray">{{ 'APP_HOME_BOOKING_PANEL_RESUME_TOTAL' | translate }}:</span>
