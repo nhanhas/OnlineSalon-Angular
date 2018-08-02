@@ -2,6 +2,11 @@
 
 <div class="home">
 
+    <!-- Booking Panel -->
+    <div ng-include="'/views/home/partials/_booking-panel.html'" ng-if="view.bookingOpened"></div>
+    <!-- Schedule Panel -->
+    <div ng-include="'/views/home/partials/_schedule-panel.html'" ng-if="view.scheduleOpened"></div>
+
 
     <!-- Messages Panel -->
     <div ng-include="'/views/home/partials/_messages-panel.html'" ng-if="view.messagesOpened"></div>
@@ -9,6 +14,7 @@
     <div ng-include="'/views/home/partials/_services-panel.html'" ng-if="view.servicesOpened"></div>
     <!-- Favorites Panel -->
     <div ng-include="'/views/home/partials/_favorites-panel.html'" ng-if="view.favoritesOpened"></div>
+
 
 </div>
 

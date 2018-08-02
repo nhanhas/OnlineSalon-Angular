@@ -95,5 +95,18 @@
     "APP_HOME_MENU_PANEL_OPTION_5" : "CONTACTOS",
     "APP_HOME_MENU_PANEL_OPTION_6" : "INFORMAÇÕES LEGAIS",
 
+    "APP_HOME_BOOKING_PANEL_TITLE" :  "Reserva já",
+    "APP_HOME_SCHEDULE_PANEL_TITLE" :  "Agendar",
+
+    "APP_HOME_BOOKING_PANEL_OPINIONS" : "Opiniões",
+    "APP_HOME_BOOKING_PANEL_LOCAL_SECTION" : "LOCAL",
+    "APP_HOME_BOOKING_PANEL_PLACE_ENUM_0" : "Onde estou agora",
+    "APP_HOME_BOOKING_PANEL_PLACE_ENUM_1" : "Salão da profissional",
+    "APP_HOME_BOOKING_PANEL_PLACE_ENUM_1_DESC" : "Morada ou salão da parceira",
+    "APP_HOME_BOOKING_PANEL_PLACE_ENUM_2" : "Outra morada",
+    "APP_HOME_BOOKING_PANEL_PLACE_ENUM_2_DESC" : "Adicionar morada ao perfil",
+
+    
+
     "APP_VERSION" : "Versão 1.11"
 }

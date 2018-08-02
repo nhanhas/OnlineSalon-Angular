@@ -9,7 +9,10 @@ background-color: #fce8f2;
   width:100%;
 }
 
-
+/* Fontawesome thin */
+.fa-times-thin:before {
+	content: '\00d7';
+}
 
 /* Color */
 .color-primary-blue    { color: #4F6D7A}
@@ -66,6 +69,9 @@ background-color: #fce8f2;
 }
 .text-large{
   font-size: 17px;
+}
+.text-xlarge{
+  font-size: 20px;
 }
 
 

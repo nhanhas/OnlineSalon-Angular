@@ -9,11 +9,32 @@ app
 		messagesOpened : false,
 		servicesOpened : false,
 		menuOpened : false,
+		bookingOpened : false,
+		serviceSelected : undefined, //service selected to booking/schedule
 		messages : [],
 		services : [],
-		favorites : []
-
+		favorites : [],
+		bookingPlaceEnum : [], 		//Client Booking panel Options
+		bookingPlaceSelected : 1	//Client Booking panel Options Selected
 	}
+	
+	//Fullfill booking options (Not dynamic...ENUM)
+	$scope.view.bookingPlaceEnum = [
+		{
+			optionLabel : 'APP_HOME_BOOKING_PANEL_PLACE_ENUM_0',
+			optionValue : 0
+		},
+		{
+			optionLabel : 'APP_HOME_BOOKING_PANEL_PLACE_ENUM_1',
+			optionDescription : 'APP_HOME_BOOKING_PANEL_PLACE_ENUM_1_DESC',
+			optionValue : 1
+		},
+		{
+			optionLabel : 'APP_HOME_BOOKING_PANEL_PLACE_ENUM_2',
+			optionDescription : 'APP_HOME_BOOKING_PANEL_PLACE_ENUM_2_DESC',
+			optionValue : 2
+		}
+	];
 
 	/**
 	 * Later on this will
@@ -120,6 +141,7 @@ app
 
 	$scope.view.favorites = [
 		{
+			id : 'stamp-0001',
 			name : 'Maria Augusta',
 			location : 'in',
 			rating: '4,98',
@@ -132,6 +154,7 @@ app
 			picture : 'assets/dev-pics/service-picture-01.png'
 		},
 		{
+			id : 'stamp-0002',
 			name : 'Lusobrasileira',
 			location : 'in/out',
 			rating: '5,00',
@@ -157,8 +180,13 @@ app
 		$scope.view.servicesOpened = false;
 		$scope.view.menuOpened = false;
 
+		//#services panel reset (booking/schedule a service)
+		$scope.view.bookingOpened = false;
+		$scope.view.scheduleOpened = false;
+
 		//#2 - Set visible the requested panel
 		switch (panel) {
+			//#i - nav sections	
 			case 'messages':
 				$scope.view.messagesOpened = true;
 				break;
@@ -170,6 +198,13 @@ app
 				break;
 			case 'menu':
 				$scope.view.menuOpened = true;
+				break;
+			//#ii - services sections	
+			case 'booking':
+				$scope.view.bookingOpened = true;
+				break;
+			case 'schedule':
+				$scope.view.scheduleOpened = true;
 				break;
 		}
 
@@ -184,12 +219,27 @@ app
 	/************************************** Favorites ***********************************/
 	//#A - Book a Favorite service
 	$scope.onBookHandler = function(favorite){
-		alert(JSON.stringify(favorite));
+		//TODO - iterate list of ALL services, and get the service with favorite.id
+
+		//#1 - Mark service as view selected
+		$scope.view.serviceSelected = undefined;
+		$scope.view.serviceSelected = favorite;
+
+		//#2 - Show the booking panel
+		$scope.showPanel('booking');
+
 	}
 
 	//#B - Schedule a Favorite service
 	$scope.onScheduleHandler = function(favorite){
-		alert(JSON.stringify(favorite));
+		//TODO - iterate list of ALL services, and get the service with favorite.id
+		
+		//#1 - Mark service as view selected
+		$scope.view.serviceSelected = undefined;
+		$scope.view.serviceSelected = favorite;
+
+		//#2 - Show the booking panel
+		$scope.showPanel('schedule');
 	}
 
 	/************************************** Menu ***********************************/

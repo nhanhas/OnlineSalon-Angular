@@ -1,0 +1,59 @@
+<div class="home-panel background-white">
+
+    <!-- Close popup button -->
+    <div class="home-panel-close-btn-container color-gray" ng-click="showPanel()">
+        <span><i class="fa fa-times-thin fa-3x"></i></span>
+    </div>
+
+    <div class="text-large text-thin color-gray">{{ 'APP_HOME_BOOKING_PANEL_TITLE' | translate }}</div>
+
+    <div class="home-panel-data-container">
+
+        <!-- Location/Picture/Rating -->
+        <div class="booking-panel-pictures">
+            
+            <!-- location -->
+            <span ng-class="{   'color-heart-green' : view.serviceSelected.location === 'in',
+                                'color-heart-orange' : view.serviceSelected.location === 'out',
+                                'color-heart-red' : view.serviceSelected.location === 'in/out',
+                                'color-heart-gray' : view.serviceSelected.location === 'busy' }">
+                <i class="fa fa-heart fa-2x"></i>
+            </span> 
+
+            <!-- Picture -->
+            <div class="booking-panel-img-container">
+                <img ng-src="{{ view.serviceSelected.picture }}"> 
+            </div>
+
+            <!-- Rating -->
+            <div class="booking-panel-rating-container">
+                <span class="color-normal-pink"><i class="fa fa-star fa-3x"></i></span>
+                <span class="color-white">{{ view.serviceSelected.rating }}</span>
+            </div>
+
+        </div>
+
+        <!-- Name/Opinions -->
+        <div class="booking-panel-id-container">
+            <span class="text-xlarge">{{ view.serviceSelected.name }}</span>
+            <span class="text-thin color-gray">{{ 'APP_HOME_BOOKING_PANEL_OPINIONS' | translate }}&nbsp; ({{ 8 }}) </span>
+        </div>
+
+        <!-- Place label-->
+        <div class="booking-panel-section-label text-center">
+            <span class="text-medium text-bold color-normal-pink">{{ 'APP_HOME_BOOKING_PANEL_LOCAL_SECTION' | translate }}</span>
+        </div>
+        <!-- Place radio -->
+        <div class="booking-panel-place-container">
+            
+            <div class="booking-panel-place-enum-container">
+                <custom-radio options="view.bookingPlaceEnum" model="view.bookingPlaceSelected"></custom-radio>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Opinions Modal -->

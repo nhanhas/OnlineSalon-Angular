@@ -90,6 +90,17 @@
     "APP_HOME_MENU_PANEL_OPTION_5" : "CONTACTS",
     "APP_HOME_MENU_PANEL_OPTION_6" : "OFICIAL NOTES",
 
+    "APP_HOME_BOOKING_PANEL_TITLE" :  "Book now",
+    "APP_HOME_SCHEDULE_PANEL_TITLE" :  "Schedule",
+
+    "APP_HOME_BOOKING_PANEL_OPINIONS" : "Opinions",
+    "APP_HOME_BOOKING_PANEL_LOCAL_SECTION" : "PLACE",
+    "APP_HOME_BOOKING_PANEL_PLACE_ENUM_0" : "Where I am now",
+    "APP_HOME_BOOKING_PANEL_PLACE_ENUM_1" : "Professional Salon",
+    "APP_HOME_BOOKING_PANEL_PLACE_ENUM_1_DESC" : "Partner's address or salon",
+    "APP_HOME_BOOKING_PANEL_PLACE_ENUM_2" : "Other address",
+    "APP_HOME_BOOKING_PANEL_PLACE_ENUM_2_DESC" : "Add address to profile",
+
     "APP_VERSION" : "Version 1.11"
 
 

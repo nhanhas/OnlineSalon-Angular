@@ -6,11 +6,11 @@
         <span><i class="fa fa-2x" ng-class="(option.optionValue === model) ? 'fa-circle color-normal-pink' : 'fa-circle-thin color-gray'"></i></span>
         &nbsp;
 
-        <div class="custom-radio-label-descritpion">
+        <div class="custom-radio-label-descritpion text-large">
             <!-- Label -->
-            <span>{{ option.optionLabel }}</span>
+            <span>{{ option.optionLabel | translate }}</span>
             <!-- Description -->
-            <span  class="text-small color-gray" ng-if="option.optionDescription">{{ option.optionDescription }}</span>
+            <span  class="text-small color-gray" ng-if="option.optionDescription">{{ option.optionDescription | translate }}</span>
         </div>
 
     </div>
