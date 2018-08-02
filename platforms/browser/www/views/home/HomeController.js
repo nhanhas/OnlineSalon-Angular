@@ -14,8 +14,8 @@ app
 		messages : [],
 		services : [],
 		favorites : [],
-		bookingPlaceEnum : [], 		//Client Booking panel Options
-		bookingPlaceSelected : 1	//Client Booking panel Options Selected
+		bookingPlaceEnum : [], 		//Client Booking panel Options [PLACE]
+		bookingPlaceSelected : 1	//Client Booking panel Options Selected [PLACE]
 	}
 	
 	//Fullfill booking options (Not dynamic...ENUM)
@@ -220,6 +220,208 @@ app
 	//#A - Book a Favorite service
 	$scope.onBookHandler = function(favorite){
 		//TODO - iterate list of ALL services, and get the service with favorite.id
+		$scope.dummyPartnerServices = [
+			{
+				categoryName : 'Unhas',
+				location : 'in/out',
+				subCategories : [
+					{
+						subCategoryName : 'Manicure',
+						selectedOption : 0,
+						options : [ 
+							{
+								optionLabel : 'Normal',
+								optionValue : 0
+							}, 
+							{
+								optionLabel : 'Francesa',
+								optionValue : 1
+							}, 
+							{
+								optionLabel : 'Gelinho',
+								optionValue : 2
+							},
+							{
+								optionLabel : 'Art',
+								optionValue : 3
+							}, 
+						]
+					},
+					{
+						subCategoryName : 'Pedicure',
+						selectedOption : 0,
+						options : [ 
+							{
+								optionLabel : 'Normal',
+								optionValue : 0
+							}, 
+							{
+								optionLabel : 'Francesa',
+								optionValue : 1
+							}, 
+							{
+								optionLabel : 'Gelinho',
+								optionValue : 2
+							},
+							{
+								optionLabel : 'Art',
+								optionValue : 3
+							}, 
+						]
+					}   
+				]
+			},
+			{
+				categoryName : 'Face',
+				location : 'in',
+				subCategories : [
+					{
+						subCategoryName : 'Relaxe',
+						selectedOption : 0,
+						options : [ 
+							{
+								optionLabel : 'Normal',
+								optionValue : 0
+							}, 
+							{
+								optionLabel : 'Francesa',
+								optionValue : 1
+							}, 
+							{
+								optionLabel : 'Gelinho',
+								optionValue : 2
+							},
+							{
+								optionLabel : 'Art',
+								optionValue : 3
+							}, 
+						]
+					},
+					{
+						subCategoryName : 'Outros',
+						selectedOption : 0,
+						options : [ 
+							{
+								optionLabel : 'Normal',
+								optionValue : 0
+							}, 
+							{
+								optionLabel : 'Francesa',
+								optionValue : 1
+							}, 
+							{
+								optionLabel : 'Gelinho',
+								optionValue : 2
+							},
+							{
+								optionLabel : 'Art',
+								optionValue : 3
+							}, 
+						]
+					}   
+				]
+			},
+			{
+				categoryName : 'Cabelo',
+				location : 'out',
+				subCategories : [
+					{
+						subCategoryName : 'Manicure',
+						selectedOption : 0,
+						options : [ 
+							{
+								optionLabel : 'Normal',
+								optionValue : 0
+							}, 
+							{
+								optionLabel : 'Francesa',
+								optionValue : 1
+							}, 
+							{
+								optionLabel : 'Gelinho',
+								optionValue : 2
+							},
+							{
+								optionLabel : 'Art',
+								optionValue : 3
+							}, 
+						]
+					},
+					{
+						subCategoryName : 'Pedicure',
+						selectedOption : 0,
+						options : [ 
+							{
+								optionLabel : 'Normal',
+								optionValue : 0
+							}, 
+							{
+								optionLabel : 'Francesa',
+								optionValue : 1
+							}, 
+							{
+								optionLabel : 'Gelinho',
+								optionValue : 2
+							},
+							{
+								optionLabel : 'Art',
+								optionValue : 3
+							}, 
+						]
+					}   
+				]
+			},
+			{
+				categoryName : 'Corpo',
+				location : 'in/out',
+				subCategories : [
+					{
+						subCategoryName : 'Manicure',
+						selectedOption : 0,
+						options : [ 
+							{
+								optionLabel : 'Normal',
+								optionValue : 0
+							}, 
+							{
+								optionLabel : 'Francesa',
+								optionValue : 1
+							}, 
+							{
+								optionLabel : 'Gelinho',
+								optionValue : 2
+							},
+							{
+								optionLabel : 'Art',
+								optionValue : 3
+							}, 
+						]
+					},
+					{
+						subCategoryName : 'Pedicure',
+						selectedOption : 0,
+						options : [ 
+							{
+								optionLabel : 'Normal',
+								optionValue : 0
+							}, 
+							{
+								optionLabel : 'Francesa',
+								optionValue : 1
+							}, 
+							{
+								optionLabel : 'Gelinho',
+								optionValue : 2
+							},
+							{
+								optionLabel : 'Art',
+								optionValue : 3
+							}, 
+						]
+					}   
+				]
+			}
+		]
 
 		//#1 - Mark service as view selected
 		$scope.view.serviceSelected = undefined;

@@ -110,3 +110,17 @@
     align-items: flex-start;
     margin-left: 30px;
 }
+.booking-panel-services-container{
+    margin: 10px 0;
+}
+
+.booking-panel-resume-container{
+    margin: 25px 0px;
+    padding: 0 30px;
+}
+.booking-panel-resume-items{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 5px 0;
+}

@@ -11,8 +11,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 70px;
 }
-
+.custom-dropdown-category-name{
+    margin-left: -50px;
+}
 /* Dropdown options */
 .custom-dropdown-options-container{
     padding: 15px;

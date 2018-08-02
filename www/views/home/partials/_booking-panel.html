@@ -52,6 +52,40 @@
 
         </div>
 
+        <!-- Services label-->
+        <div class="booking-panel-section-label text-center">
+            <span class="text-medium text-bold color-normal-pink">{{ 'APP_HOME_BOOKING_PANEL_SERVICES_SECTION' | translate }}</span>
+        </div>
+        <!-- Services radio -->
+        <div class="booking-panel-services-container" ng-repeat="service in dummyPartnerServices">
+            <custom-dropdown category="service"></custom-dropdown>
+        </div>
+
+        <!-- Resume label-->
+        <div class="booking-panel-section-label text-center">
+            <span class="text-medium text-bold color-normal-pink">{{ 'APP_HOME_BOOKING_PANEL_RESUME_SECTION' | translate }}</span>
+        </div>
+        <!-- Resume description -->
+        <div class="booking-panel-resume-container">
+            <div class="booking-panel-resume-items">
+                <span class="text-bold color-gray">{{ 'APP_HOME_BOOKING_PANEL_RESUME_PLACE' | translate }}:</span>
+                <span>Domicílio principal - linha 1 de qualquer sitio</span>
+            </div>
+            <div class="booking-panel-resume-items">
+                <span class="text-bold color-gray">{{ 'APP_HOME_BOOKING_PANEL_RESUME_SERVICE' | translate }}:</span>
+                <span>2</span>
+            </div>
+            <div class="booking-panel-resume-items">
+                <span class="text-large text-bold color-gray">{{ 'APP_HOME_BOOKING_PANEL_RESUME_TOTAL' | translate }}:</span>
+                <span class="text-large text-bold">15€</span>
+            </div>
+            <div class="booking-panel-resume-items">
+                <span class="text-bold color-gray">{{ 'APP_HOME_BOOKING_PANEL_RESUME_PAYMENT' | translate }}:</span>
+                
+            </div>
+        </div>
+
+
     </div>
 
 </div>
