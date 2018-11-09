@@ -1,5 +1,5 @@
 app
-.controller('HomeController', ['$rootScope', '$scope', '$timeout', '$location', '$http','$q', 'FrameworkUtils', 'AppService',   function($rootScope, $scope, $timeout, $location, $http, $q, FrameworkUtils, AppService) {
+.controller('HomeController', ['$rootScope', '$scope', '$timeout', '$location', '$http','$q', 'FrameworkUtils', 'AppService', 'uiGmapGoogleMapApi',  function($rootScope, $scope, $timeout, $location, $http, $q, FrameworkUtils, AppService, uiGmapGoogleMapApi) {
 
 	/**
      * Controller variables
@@ -35,6 +35,7 @@ app
 			optionValue : 2
 		}
 	];
+
 
 	/**
 	 * Later on this will
@@ -151,6 +152,10 @@ app
 				hair : true,
 				treatment : true
 			},
+			coords: {
+				latitude: 45.1451,
+				longitude: -89.6680
+			},
 			picture : 'assets/dev-pics/service-picture-01.png'
 		},
 		{
@@ -164,9 +169,16 @@ app
 				hair : false,
 				treatment : true
 			},
+			coords: {
+				latitude: 40.1451,
+				longitude: -99.6680,
+			},
 			picture : 'assets/dev-pics/service-picture-04.png'
 		}
 	]
+
+
+
 
 	/**
 	 * Behaviour functions Panels

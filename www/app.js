@@ -1,4 +1,4 @@
-var app = angular.module("App", ['ngAnimate', 'ngRoute', 'ui.bootstrap', 'pascalprecht.translate']);
+var app = angular.module("App", ['ngAnimate', 'ngRoute', 'ui.bootstrap', 'pascalprecht.translate', 'uiGmapgoogle-maps']);
 
 //Routes Configuration 
 app.config(['$routeProvider', function($routeProvider) {
@@ -51,5 +51,13 @@ app.config(['$translateProvider', function($translateProvider) {
 
 }])
 
-
-
+app.config(
+    ['uiGmapGoogleMapApiProvider', function(GoogleMapApiProviders) {
+        GoogleMapApiProviders.configure({
+            key: 'AIzaSyCyLSpm5HWUhkaVePlssoSl42A7ilfMsN4',
+            v: '3.20', //defaults to latest 3.X anyhow
+            libraries: 'weather,geometry,visualization',
+            china:false
+        });
+    }]
+);

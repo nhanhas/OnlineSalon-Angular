@@ -6,8 +6,19 @@
     right: 0;
 }
 
+/* Maps CSS */
+.saloon-map-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
 
 
+.dashboard-new-tooltip{
+    border: 1px solid red;
+}
 
 /* Generic Panel CSS */
 .home-panel{

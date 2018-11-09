@@ -2,10 +2,20 @@
 
 <div class="home">
 
+    
+    <div class="saloon-map">
+
+        <!-- we will load favorites as services -->
+        <world-map services="view.favorites" on-book-now="onBookHandler(favorite)" on-schedule="onScheduleHandler(favorite)"></world-map>
+        
+    </div>
+
+
     <!-- Booking Panel -->
     <div ng-include="'/views/home/partials/_booking-panel.html'" ng-if="view.bookingOpened"></div>
     <!-- Schedule Panel -->
     <div ng-include="'/views/home/partials/_schedule-panel.html'" ng-if="view.scheduleOpened"></div>
+
 
 
     <!-- Messages Panel -->
