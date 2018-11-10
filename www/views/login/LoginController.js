@@ -97,13 +97,44 @@ app
     //#E - Confirm [or deny] authorization
     $scope.confirmAuthorization = function(isAllowed){
         //#1 - depending on user confirmation
-        if(isAllowed){
-            //TODO navigate
-            $location.path('/home');
+        if(isAllowed && navigator.geolocation){
+            
+            navigator.permissions.query({name:'geolocation'}).then(function(permissionStatus) {  
+                //#2 - Check if it is already granted
+                if(permissionStatus.state == 'granted'){
+                    console.log("User has geolocation");
+                    $rootScope.allowGeolocation = true;
+                    $location.path('/home');
+                    $rootScope.$apply();
+                    
+                }else if(permissionStatus.state == 'prompt'){
+                    //#2.1 - Get current position to force allowing
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        //console.log(position.coords.latitude, position.coords.longitude);
+                        console.log("User has accepted geolocation");
+                        $rootScope.allowGeolocation = true;
+                        $location.path('/home');
+                        $rootScope.$apply();
+                    },
+                    function (error) { 
+                        if (error.code == error.PERMISSION_DENIED)
+                            console.log("User declined geolocation");
+                        $rootScope.allowGeolocation = false;
+                        $location.path('/home');
+                        $rootScope.$apply();
+                    });    
+                }else{
+                    console.log("User dont use geolocation");
+                    $rootScope.allowGeolocation = false;
+                    $location.path('/home');
+                    $rootScope.$apply();
+                }
+            });
             
         }else{
-            //#3 - return to login
-            $scope.setStep('credentials');            
+            //#3 - Use app without Geolocation          
+            $rootScope.allowGeolocation = false;
+            $location.path('/home');
         }
     }
 

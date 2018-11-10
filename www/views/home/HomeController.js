@@ -153,8 +153,8 @@ app
 				treatment : true
 			},
 			coords: {
-				latitude: 45.1451,
-				longitude: -89.6680
+				latitude: 38.7154824,
+				longitude: -9.1488502
 			},
 			picture : 'assets/dev-pics/service-picture-01.png'
 		},
@@ -170,8 +170,8 @@ app
 				treatment : true
 			},
 			coords: {
-				latitude: 40.1451,
-				longitude: -99.6680,
+				latitude: 38.7354822,
+				longitude: -9.1288501
 			},
 			picture : 'assets/dev-pics/service-picture-04.png'
 		}
