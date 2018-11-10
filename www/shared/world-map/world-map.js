@@ -34,7 +34,7 @@ app
                 scope.services.forEach(service => {
                     
                     //#2.1 - TODO - get icon acording to in/out/etc
-                    let icon = 'assets/marker-heart.png';
+                    let icon = 'assets/marker-heart-green.png';
                     
                     //#2.2 - Setup marker
                     let newMarker = {
