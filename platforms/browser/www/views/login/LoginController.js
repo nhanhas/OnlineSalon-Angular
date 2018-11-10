@@ -22,7 +22,8 @@ app
                 email : '',
                 password : '',
                 repeatPw : '',
-                phone : ''
+                phone : '',
+                photo : undefined
             },
             address : {
                 mainAddress : '',
@@ -143,6 +144,30 @@ app
        $scope.view.signInStep = whatStep;
     }
 
+    //#G - Open or take photo image
+    $scope.browseImages = function(){
+        let inputPhoto = document.getElementById('input-photo');
+        inputPhoto.click();
+
+        inputPhoto.addEventListener('change', function(event){
+            $scope.openFile(event);
+        });
+    }
+    //#G.1 - Read File to Interface (TODO.save image in server)
+    $scope.openFile = function(file) {
+        var input = file.target;
+    
+        var reader = new FileReader();
+        reader.onload = function(){
+          var dataURL = reader.result;
+          var output = document.getElementById('photo-output');
+          output.src = dataURL;
+
+          //#update form photo
+          $scope.view.signInForm.identification.photo = dataURL;
+        };
+        reader.readAsDataURL(input.files[0]);
+      };
 
 
 }]);

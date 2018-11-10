@@ -68,13 +68,22 @@
 
 /* step 0 */
 .sign-step-0-circle{
-    margin-top: 0px;
+    position: relative;
+    overflow: hidden;
+    margin-top: -20px;
     text-align: center;
     padding-top: 35px;
     width: 100px;
     height: 100px;
     border-radius: 50px;
     border: 2px solid white;
+}
+#photo-output{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    
 }
 .sign-step-0-camera{
     padding: 10px;

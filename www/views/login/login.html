@@ -132,15 +132,17 @@
             <div class="sign-step-0-photo-container row text-center color-xDark-pink" style="margin: 0 10px;">
 
                 <!-- cirlce -->
-                <div class="col-xs-4">                    
-                    <div class="sign-step-0-circle color-white background-normal-pink text-center">
+                <div class="col-xs-4">         
+                    <input type='file' accept='image/*' id="input-photo" style="display: none"><br>           
+                    <div class="sign-step-0-circle color-white background-normal-pink text-center" ng-click="browseImages()">
                         +
+                        <img id='photo-output'>
                     </div>
                 </div>
 
                 <!-- camera -->
                 <div class="col-xs-4">
-                    <div class="sign-step-0-camera">
+                    <div class="sign-step-0-camera" ng-click="browseImages()">
                         <span><i class="fa fa-camera fa-2x"></i></span>
                         <br>
                         <span class="text-small">{{ 'APP_SIGNIN_STEP_0_PHOTO_BTN' | translate }}</span>
@@ -149,7 +151,7 @@
 
                 <!-- camera -->
                 <div class="col-xs-4">                
-                    <div class="sign-step-0-gallery">
+                    <div class="sign-step-0-gallery" ng-click="browseImages()">
                         <span><i class="fa fa-image fa-2x"></i></span>
                         <br>
                         <span class="text-small">{{ 'APP_SIGNIN_STEP_0_GALLERY_BTN' | translate }}</span>
