@@ -8,7 +8,7 @@
     
             <div class="custom-option-picker-label-descritpion text-large">
                 <!-- Label -->
-                <span>{{ option.optionLabel | translate }}</span>
+                <span>{{ option.optionLabel | translate }} {{ (option.optionPrice) ? (' - ' + option.optionPrice + '€') : ('') }}</span>
                 <!-- Description -->
                 <span  class="text-small color-gray" ng-if="option.optionDescription">{{ option.optionDescription | translate }}</span>
             </div>

@@ -237,25 +237,31 @@ app
 				categoryName : 'Unhas',
 				location : 'in/out',
 				totalPickedItems : 0,
+				totalPriceItems : 0,
 				subCategories : [
 					{
 						subCategoryName : 'Manicure',
 						numberOfPicked : 0,
+						pricePicked : 0,
 						options : [ 
 							{
 								optionLabel : 'Normal',
+								optionPrice : 9,
 								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Francesa',
+								optionPrice : 11,
 								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Gelinho',
+								optionPrice : 14,
 								optionSelected : false
 							},
 							{
 								optionLabel : 'Art',
+								optionPrice : 16,
 								optionSelected : false
 							}, 
 						]
@@ -263,21 +269,26 @@ app
 					{
 						subCategoryName : 'Pedicure',
 						numberOfPicked : 0,
+						pricePicked : 0,
 						options : [ 
 							{
 								optionLabel : 'Normal',
+								optionPrice : 5,
 								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Francesa',
+								optionPrice : 16,
 								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Gelinho',
+								optionPrice : 17,
 								optionSelected : false
 							},
 							{
 								optionLabel : 'Art',
+								optionPrice : 24,
 								optionSelected : false
 							}, 
 						]
@@ -288,25 +299,31 @@ app
 				categoryName : 'Face',
 				location : 'in',
 				totalPickedItems : 0,
+				totalPriceItems : 0,
 				subCategories : [
 					{
 						subCategoryName : 'Relaxe',
 						numberOfPicked : 0,
+						pricePicked : 0,
 						options : [ 
 							{
 								optionLabel : 'Normal',
+								optionPrice : 2,
 								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Francesa',
+								optionPrice : 5,
 								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Gelinho',
+								optionPrice : 15,
 								optionSelected : false
 							},
 							{
 								optionLabel : 'Art',
+								optionPrice : 17,
 								optionSelected : false
 							}, 
 						]
@@ -314,6 +331,7 @@ app
 					{
 						subCategoryName : 'Outros',
 						numberOfPicked : 0,
+						pricePicked : 0,
 						options : [ 
 							{
 								optionLabel : 'Normal',
@@ -339,25 +357,31 @@ app
 				categoryName : 'Cabelo',
 				location : 'out',
 				totalPickedItems : 0,
+				totalPriceItems : 0,
 				subCategories : [
 					{
 						subCategoryName : 'Manicure',
 						numberOfPicked : 0,
+						pricePicked : 0,
 						options : [ 
 							{
 								optionLabel : 'Normal',
+								optionPrice : 16,
 								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Francesa',
+								optionPrice : 24,
 								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Gelinho',
+								optionPrice : 56,
 								optionSelected : false
 							},
 							{
 								optionLabel : 'Art',
+								optionPrice : 76,
 								optionSelected : false
 							}, 
 						]
@@ -365,6 +389,7 @@ app
 					{
 						subCategoryName : 'Pedicure',
 						numberOfPicked : 0,
+						pricePicked : 0,
 						options : [ 
 							{
 								optionLabel : 'Normal',
@@ -390,25 +415,31 @@ app
 				categoryName : 'Corpo',
 				location : 'in/out',
 				totalPickedItems : 0,
+				totalPriceItems : 0,
 				subCategories : [
 					{
 						subCategoryName : 'Manicure',
 						numberOfPicked : 0,
+						pricePicked : 0,
 						options : [ 
 							{
 								optionLabel : 'Normal',
+								optionPrice : 22,
 								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Francesa',
+								optionPrice : 33,
 								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Gelinho',
+								optionPrice : 32,
 								optionSelected : false
 							},
 							{
 								optionLabel : 'Art',
+								optionPrice : 42,
 								optionSelected : false
 							}, 
 						]
@@ -416,21 +447,26 @@ app
 					{
 						subCategoryName : 'Pedicure',
 						numberOfPicked : 0,
+						pricePicked : 0,
 						options : [ 
 							{
 								optionLabel : 'Normal',
+								optionPrice : 12,
 								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Francesa',
+								optionPrice : 22,
 								optionSelected : false
 							}, 
 							{
 								optionLabel : 'Gelinho',
+								optionPrice : 32,
 								optionSelected : false
 							},
 							{
 								optionLabel : 'Art',
+								optionPrice : 42,
 								optionSelected : false
 							}, 
 						]
@@ -463,7 +499,27 @@ app
 	/************************************** Menu ***********************************/
 
 
+	/************************************** Booking panel ***********************************/
+	//#2 - Display total items picked
+	$scope.getTotalServicesPicked = function(){
+		let totalServices = 0;
 
+		//#1 - Iterate each service to get info 
+		$scope.dummyPartnerServices.forEach((service)=>{
+			totalServices += service.totalPickedItems;
+		})
+		return totalServices;
+	}
+	//#2 - Display total price
+	$scope.getTotalPriceFromPickedService = function(){
+		let totalPriceServices = 0;
+
+		//#1 - Iterate each service to get info 
+		$scope.dummyPartnerServices.forEach((service)=>{
+			totalPriceServices += service.totalPriceItems;
+		})
+		return totalPriceServices;
+	}
 
 
 

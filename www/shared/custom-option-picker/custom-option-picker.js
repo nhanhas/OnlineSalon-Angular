@@ -5,6 +5,7 @@ app
             scope: {
                 options : '=',  // type : { optionLabel : '', optionDescription: '', optionSelected : false }
                 numberOfPicked : '=?',
+                pricePicked : '=?',
                 onPick : '&?' //to update dropdown counter
             },
             templateUrl: 'shared/custom-option-picker/custom-option-picker.html',
@@ -13,6 +14,7 @@ app
                 
                 //Initialize attributes
                 scope.numberOfPicked = scope.numberOfPicked || 0;
+                scope.pricePicked = scope.pricePicked || 0;
                 if (!attrs.onPick) {
                     scope.onPick = undefined;
                 }
@@ -24,8 +26,11 @@ app
                     //#2 - Update number of selected
                     if(option.optionSelected){
                         scope.numberOfPicked++;
+                        scope.pricePicked += option.optionPrice;
+                        
                     }else{
                         scope.numberOfPicked--;
+                        scope.pricePicked -= option.optionPrice;
                     }
 
                     //#3 - call external callback (if exists)

@@ -18,10 +18,12 @@ app
                     $timeout(function(){
                         //#1 - reset counter
                         scope.category.totalPickedItems = 0;
+                        scope.category.totalPriceItems = 0;
 
                         //#2 - iterate array of categories (sub)
                         scope.category.subCategories.forEach(function(subCategory) {
                             scope.category.totalPickedItems += subCategory.numberOfPicked ;
+                            scope.category.totalPriceItems += subCategory.pricePicked ;
                         });
                         console.log(scope.category.totalPickedItems);
                     });
