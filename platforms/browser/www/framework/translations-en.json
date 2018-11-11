@@ -2,6 +2,7 @@
     "APP_LOGIN_EMAIL"  : "Email",
     "APP_LOGIN_PASSWORD" : "Password",
     "APP_LOGIN_ENTER_BTN" : "LOG IN",
+    "APP_LOGIN_CREDENTIALS_ERROR_MESSAGE" : "Your credentials are incorrect.",
     "APP_LOGIN_SIGN_BTN" : "Sign in",
     "APP_LOGIN_MEMORIZE_BTN" : "Remind me",
     "APP_LOGIN_RESET_PW_BTN" : "Forgot password",

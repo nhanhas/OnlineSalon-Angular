@@ -128,6 +128,10 @@ app
                     case undefined:                        
                     case true:
                             scope.MAP_getCurrentPosition();
+                    case false:
+                        //#1 just show map wihtou current position
+                        //#Finally show!
+                        scope.isReady = true;
                                           
                         break;
                 }

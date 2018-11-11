@@ -16,6 +16,7 @@
 /* Step Credentials */
 .login-credentials-form{
     margin: 70px;
+    margin-top: 50px;
 }
 
 .login-credentials-input-container{
@@ -29,14 +30,20 @@
 }
 
 .login-credentials-sign-container{
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .login-credentials-disclaimer{
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     left: 0;
     right: 0;
+}
+
+.login-credentials-message-container{
+    text-align: center;
+    min-height: 30px; /* just to dont show the jump when message appears */
+    padding-top: 10px;
 }
 
 /* Step Authorize */

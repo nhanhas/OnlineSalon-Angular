@@ -56,6 +56,11 @@
                     <custom-button label="{{ 'APP_LOGIN_ENTER_BTN' | translate }}" on-press="userLogin()"></custom-button> 
                 </div>
 
+                <!-- Error message -->
+                <div class="login-credentials-message-container" >
+                    <span class="text-medium color-red" ng-show="view.credentialsMessageError !== ''">{{ view.credentialsMessageError | translate }}</span>
+                </div>
+
                 <!-- Sign in -->
                 <div class="login-credentials-sign-container text-medium color-dark-pink text-center">
                     <span ng-click="signIn()">{{ 'APP_LOGIN_SIGN_BTN' | translate }}</span>
@@ -64,7 +69,7 @@
             </div>
 
             <!-- Disclaimer -->
-            <div class="login-credentials-disclaimer color-dark-pink text-center">
+            <div class="login-credentials-disclaimer text-medium color-dark-pink text-center">
                 <span>{{ 'APP_LOGIN_DISCLAIMER_DESCRIPTION' | translate }}</span>
                 <br>
                 <a class="color-dark-pink text-underline" href="http://www.google.com" target="_blank">{{ 'APP_LOGIN_DISCLAIMER_THERMS' | translate }}</a>
@@ -95,7 +100,7 @@
             </div>
 
             <!-- Disclaimer -->
-            <div class="login-credentials-disclaimer color-dark-pink text-center">
+            <div class="login-credentials-disclaimer text-medium color-dark-pink text-center">
                 <span>{{ 'APP_LOGIN_DISCLAIMER_DESCRIPTION' | translate }}</span>
                 <br>
                 <a class="color-dark-pink text-underline" href="http://www.google.com" target="_blank">{{ 'APP_LOGIN_DISCLAIMER_THERMS' | translate }}</a>

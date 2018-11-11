@@ -11,6 +11,7 @@ app
             password : '',
             remindCredentials : false
         },
+        credentialsMessageError : '',
         signInOpened : false,
         signInStep : 0,
         signInForm : {        
@@ -46,6 +47,12 @@ app
      * Controller behaviours
      */
 
+     //#1 - Get cache if 'remindme'
+     let cachedCredentials = JSON.parse(localStorage.getItem('credentials'));
+     if(cachedCredentials && cachedCredentials.remindCredentials){
+         $scope.view.credentials = cachedCredentials
+     }
+
     //[Watcher] - validate identification form on step 0 of sign in
     $scope.$watch('view.signInForm.identification', function(newVal, oldVal){ 
         //TODO
@@ -64,6 +71,45 @@ app
             $scope.view.signInForm.isAddressFormValid = false;
     }, true);
 
+    //AUX - Reset signInForm
+    $scope.resetSignIn = function(){
+        $scope.view = {
+            stepSelected : 'credentials',        
+            credentials : {
+                username : '',
+                password : '',
+                remindCredentials : false
+            },
+            signInOpened : false,
+            signInStep : 0,
+            signInForm : {        
+                isIdFormValid : false,    
+                isAddressFormValid : false,  
+                isPaymentFormValid : false,  
+                identification : {
+                    name : '',
+                    email : '',
+                    password : '',
+                    repeatPw : '',
+                    phone : '',
+                    photo : undefined
+                },
+                address : {
+                    mainAddress : '',
+                    secondaryAddress : '',
+                    zipcode : '',
+                    city : ''
+                },
+                payment : {
+                    cardName : '',
+                    month : '',
+                    year : '',
+                    ccv : ''
+                }
+                
+            }
+        };
+    }
 
     //#A - Choose language for application
     $scope.setStep = function(step){
@@ -82,10 +128,34 @@ app
     //#C - Login Handler
     $scope.userLogin = function(){
         //#1 - Validate credentials
-        //TODO
+        //TODO (For DEMO)
+        let clientData = localStorage.getItem('clientData');
+        if(clientData){
+            clientData = JSON.parse(clientData);
 
-        //#2 - proceed to next step [in case of valid]
-        $scope.setStep('authorize');
+            if($scope.view.credentials.username === clientData.identification.email &&
+                $scope.view.credentials.password === clientData.identification.password ){
+
+                    //#1 - if "remind me"
+                    if($scope.view.credentials.remindCredentials){
+                        localStorage.setItem('credentials', JSON.stringify($scope.view.credentials));
+                    }else{
+                        localStorage.setItem('credentials', '{}');
+                    }
+
+                    //#2 - proceed to next step [in case of valid]
+                    $scope.setStep('authorize');
+                }else{
+                    //#3 - Show message error
+                    $scope.view.credentialsMessageError = 'APP_LOGIN_CREDENTIALS_ERROR_MESSAGE';
+                }
+        }else{
+            //#3 - Show message error
+            $scope.view.credentialsMessageError = 'APP_LOGIN_CREDENTIALS_ERROR_MESSAGE';
+        }
+        
+
+        
     }
 
     //#D - Sign In Handler
@@ -167,7 +237,17 @@ app
           $scope.view.signInForm.identification.photo = dataURL;
         };
         reader.readAsDataURL(input.files[0]);
-      };
+    };
 
+    //#H - Save Form sign in
+    $scope.saveAll = function(){
+
+        //#TODO - Call Service
+        //#1 - Store it into cache (for demo)
+        localStorage.setItem('clientData', JSON.stringify($scope.view.signInForm));
+
+        //#2 - Navigate to login again
+        $scope.resetSignIn();
+    };
 
 }]);
