@@ -10,6 +10,10 @@ app.config(['$routeProvider', function($routeProvider) {
         when('/home', {
             templateUrl: 'views/home/home.html',
             controller: 'HomeController'
+        }).  
+        when('/profile', {
+            templateUrl: 'views/profile/profile.html',
+            controller: 'ProfileController'
         }).        
         when('/view2', {
             templateUrl: 'views/view2/view2.html',

@@ -1,0 +1,94 @@
+.profile-logo img{
+    max-width: 200px;
+}
+
+.profile-close-button-container{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.profile-step-container{
+    margin: 10px 0;
+}
+.profile-step-align{
+    display: inline-block;
+}
+
+/* step 0 */
+.profile-step-0-circle{
+    position: relative;
+    overflow: hidden;
+    margin-top: -20px;
+    text-align: center;
+    padding-top: 35px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border: 2px solid white;
+}
+#photo-output{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    
+}
+.profile-step-0-camera{
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+.profile-step-0-gallery{
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.profile-step-form{
+    margin: 10px 70px;
+}
+
+.profile-step-form-input-container{
+    margin-bottom: 20px;
+}
+
+.profile-step-form-button-container{
+    margin-bottom: 0;
+}
+
+/* Step 1 */
+.profile-step-1-button{
+    margin-top: 50px;
+}
+
+/* Step 2 */
+.profile-step-2-label-container{
+    margin-bottom: 30px;
+}
+.profile-step-form-month-year{
+    display: flex;
+}
+
+.profile-step-2-inline:nth-of-type(1){
+    width: 120px;
+    margin-right: 10px;
+}
+
+.profile-step-2-inline:nth-of-type(2){
+    width: 120px;
+    margin-right: 50px;
+}
+
+.profile-step-2-button{
+    margin-top: 30px;
+}
+
+.profile-credentials-message-container{
+    text-align: center;
+    min-height: 30px; /* just to dont show the jump when message appears */
+    
+}
+
+.profile-sign-out-button-container{
+    margin-bottom: 20px;
+}

@@ -499,7 +499,9 @@ app
 	}
 
 	/************************************** Menu ***********************************/
-
+	$scope.gotoProfile = function(){
+		$location.path('/profile');
+	}
 
 	/************************************** Booking panel ***********************************/
 	//#A - Display total items picked
