@@ -72,6 +72,7 @@ app
 		}
 	]
 
+	//#DEMO DATA
 	$scope.view.services = [
 		{
 			name : 'Miss Piggy',
@@ -139,6 +140,7 @@ app
 			picture : 'assets/dev-pics/service-picture-05.png'
 		}
 	];
+	$scope.view.services = [];
 
 	$scope.view.favorites = [
 		{
@@ -500,7 +502,7 @@ app
 
 
 	/************************************** Booking panel ***********************************/
-	//#2 - Display total items picked
+	//#A - Display total items picked
 	$scope.getTotalServicesPicked = function(){
 		let totalServices = 0;
 
@@ -510,7 +512,7 @@ app
 		})
 		return totalServices;
 	}
-	//#2 - Display total price
+	//#B - Display total price
 	$scope.getTotalPriceFromPickedService = function(){
 		let totalPriceServices = 0;
 
@@ -520,6 +522,35 @@ app
 		})
 		return totalPriceServices;
 	}
+
+	//#C - Book reservation confirm
+	$scope.confirmBookReservation = function(){
+		//#1 - get the service selected
+		let service = $scope.view.serviceSelected;
+
+		//#DEMO - insert service in "services list"
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1; //January is 0!
+		var hh = today.getHours();
+		var minutes = today.getMinutes();
+		var yyyy = today.getFullYear();
+		if(dd<10){
+		dd='0'+dd;
+		} 
+		if(mm<10){
+			mm='0'+mm;
+		} 
+		var today = dd+'/'+mm+'/'+yyyy;
+
+		service.date = today,
+		service.hour = hh + 'h' + minutes + 'm' ,
+		service.status = 'waiting',
+		$scope.view.services.push(service);
+
+		//#show services panel
+		$scope.showPanel('services');
+	};
 
 
 
