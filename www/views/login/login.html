@@ -1,8 +1,8 @@
-<div class="login">
+<div class="login" ng-class="view.signInOpened ? 'background-white' : ''">
 
     <!-- App Logo -->
     <div class="login-logo text-center">
-        <img src="assets/logo.png">
+        <img src="assets/main-logo-large.png">
     </div>
 
     <!-- Login -->
@@ -114,7 +114,7 @@
     </div>
 
     <!-- Sign in -->
-    <div id="sign-in" ng-if="view.signInOpened">
+    <div id="sign-in" ng-if="view.signInOpened" >
         
         <!-- Close popup button -->
         <div class="sign-close-button-container color-dark-pink" ng-click="view.signInOpened = false">
@@ -124,17 +124,17 @@
         <!-- Steps -->
         <div class="sign-step-container text-center">
             <div class="sign-step-align color-dark-pink">{{ 'APP_SIGNIN_STEP_0' | translate }}</div>
-            <div class="sign-step-align" ng-class="{ 'color-white' : view.signInStep === 0, 'color-dark-pink' : view.signInStep > 0 }"><i class="fa fa-chevron-right"></i></div>
-            <div class="sign-step-align" ng-class="{ 'color-white' : view.signInStep < 1 , 'color-dark-pink' : view.signInStep >= 1 }">{{ 'APP_SIGNIN_STEP_1' | translate }}</div>
-            <div class="sign-step-align" ng-class="{ 'color-white' : view.signInStep < 2 , 'color-dark-pink' : view.signInStep == 2 }"><i class="fa fa-chevron-right"></i></div>
-            <div class="sign-step-align" ng-class="{ 'color-white' : view.signInStep < 2 , 'color-dark-pink' : view.signInStep == 2 }">{{ 'APP_SIGNIN_STEP_2' | translate }}</div>
+            <div class="sign-step-align" ng-class="{ 'color-dark-gray' : view.signInStep === 0, 'color-dark-pink' : view.signInStep > 0 }"><i class="fa fa-chevron-right"></i></div>
+            <div class="sign-step-align" ng-class="{ 'color-dark-gray' : view.signInStep < 1 , 'color-dark-pink' : view.signInStep >= 1 }">{{ 'APP_SIGNIN_STEP_1' | translate }}</div>
+            <div class="sign-step-align" ng-class="{ 'color-dark-gray' : view.signInStep < 2 , 'color-dark-pink' : view.signInStep == 2 }"><i class="fa fa-chevron-right"></i></div>
+            <div class="sign-step-align" ng-class="{ 'color-dark-gray' : view.signInStep < 2 , 'color-dark-pink' : view.signInStep == 2 }">{{ 'APP_SIGNIN_STEP_2' | translate }}</div>
         </div>
 
         <!-- Step 0 - Identification -->
         <div class="sign-step-0" ng-if="view.signInStep === 0">
 
             <!-- photo and pictures -->
-            <div class="sign-step-0-photo-container row text-center color-xDark-pink" style="margin: 0 10px;">
+            <div class="sign-step-0-photo-container row text-center color-dark-gray" style="margin: 0 10px;">
 
                 <!-- cirlce -->
                 <div class="col-xs-4">         
@@ -170,7 +170,7 @@
 
                 <!-- Name -->
                 <div class="sign-step-form-input-container">
-                    <custom-input label="{{ 'APP_SIGNIN_STEP_0_NAME' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_0_NAME_DESC' | translate }}" model="view.signInForm.identification.name"></custom-input>
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_0_NAME' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_0_NAME_DESC' | translate }}" under-label-class="color-dark-gray" model="view.signInForm.identification.name"></custom-input>
                 </div>
 
                 <!-- Email -->
@@ -180,7 +180,7 @@
 
                 <!-- Password -->
                 <div class="sign-step-form-input-container">
-                    <custom-input label="{{ 'APP_SIGNIN_STEP_0_PASSWORD' | translate }}" input-type="password" under-label="{{ 'APP_SIGNIN_STEP_0_PASSWORD_DESC' | translate }}" model="view.signInForm.identification.password"></custom-input>
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_0_PASSWORD' | translate }}" input-type="password" under-label="{{ 'APP_SIGNIN_STEP_0_PASSWORD_DESC' | translate }}" under-label-class="color-dark-gray" model="view.signInForm.identification.password"></custom-input>
                 </div>
 
                 <!-- Repeat Password-->
@@ -190,7 +190,7 @@
 
                 <!-- Phone -->
                 <div class="sign-step-form-input-container">
-                    <custom-input label="{{ 'APP_SIGNIN_STEP_0_PHONE' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_0_PHONE_DESC' | translate }}" model="view.signInForm.identification.phone"></custom-input>
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_0_PHONE' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_0_PHONE_DESC' | translate }}" under-label-class="color-dark-gray" model="view.signInForm.identification.phone"></custom-input>
                 </div>
                 
                 <!-- Save Button -->
@@ -215,22 +215,22 @@
 
                 <!-- Main Address -->
                 <div class="sign-step-form-input-container">
-                    <custom-input label="{{ 'APP_SIGNIN_STEP_1_ADDRESS1' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_1_ADDRESS1_DESC' | translate }}" model="view.signInForm.address.mainAddress"></custom-input>
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_1_ADDRESS1' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_1_ADDRESS1_DESC' | translate }}" under-label-class="color-dark-gray" model="view.signInForm.address.mainAddress"></custom-input>
                 </div>
 
                 <!-- Seconday Address -->
                 <div class="sign-step-form-input-container">
-                    <custom-input under-label="{{ 'APP_SIGNIN_STEP_1_ADDRESS2_DESC' | translate }}" model="view.signInForm.address.secondaryAddress"></custom-input>
+                    <custom-input under-label="{{ 'APP_SIGNIN_STEP_1_ADDRESS2_DESC' | translate }}" under-label-class="color-dark-gray" model="view.signInForm.address.secondaryAddress"></custom-input>
                 </div>
 
                 <!-- ZipCode -->
                 <div class="sign-step-form-input-container">
-                    <custom-input label="{{ 'APP_SIGNIN_STEP_1_ZIPCODE' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_1_ZIPCODE_DESC' | translate }}" model="view.signInForm.address.zipcode"></custom-input>
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_1_ZIPCODE' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_1_ZIPCODE_DESC' | translate }}" under-label-class="color-dark-gray" model="view.signInForm.address.zipcode"></custom-input>
                 </div>
 
                 <!-- City -->
                 <div class="sign-step-form-input-container">
-                    <custom-input label="{{ 'APP_SIGNIN_STEP_1_CITY' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_1_CITY_DESC' | translate }}" model="view.signInForm.address.city"></custom-input>
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_1_CITY' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_1_CITY_DESC' | translate }}" under-label-class="color-dark-gray" model="view.signInForm.address.city"></custom-input>
                 </div>
 
                 <!-- Save Button -->
@@ -254,28 +254,28 @@
             <div class="sign-step-form" style="margin-top:50px">
                 
                 <div class="sign-step-2-label-container">
-                    <label class="color-xDark-pink">{{ 'APP_SIGNIN_STEP_2_TITLE_01' | translate }}</label>
+                    <label class="color-dark-gray">{{ 'APP_SIGNIN_STEP_2_TITLE_01' | translate }}</label>
                     <br>
-                    <label class="color-xDark-pink">{{ 'APP_SIGNIN_STEP_2_TITLE_02' | translate }}</label> 
+                    <label class="color-dark-gray">{{ 'APP_SIGNIN_STEP_2_TITLE_02' | translate }}</label> 
                 </div>
 
                 <!-- Card Name -->
                 <div class="sign-step-form-input-container">
-                    <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_NAME' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_NAME_DESC' | translate }}" model="view.signInForm.payment.cardName"></custom-input>
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_NAME' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_NAME_DESC' | translate }}" under-label-class="color-dark-gray" model="view.signInForm.payment.cardName"></custom-input>
                 </div>
 
                 <!-- Month / Year -->
                 <div class="sign-step-form-month-year">
                     <div class="sign-step-form-input-container sign-step-2-inline">
-                        <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_MONTH' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_MONTH_DESC' | translate }}" model="view.signInForm.payment.month"></custom-input>                    
+                        <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_MONTH' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_MONTH_DESC' | translate }}" under-label-class="color-dark-gray" model="view.signInForm.payment.month"></custom-input>                    
                     </div>
 
                     <div class="sign-step-form-input-container sign-step-2-inline">
-                        <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_YEAR' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_YEAR_DESC' | translate }}" model="view.signInForm.payment.year"></custom-input>                    
+                        <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_YEAR' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_YEAR_DESC' | translate }}" under-label-class="color-dark-gray" model="view.signInForm.payment.year"></custom-input>                    
                     </div>
 
                     <div class="sign-step-form-input-container">
-                        <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_CCV' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_CCV_DESC' | translate }}" model="view.signInForm.payment.ccv"></custom-input>                    
+                        <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_CCV' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_CCV_DESC' | translate }}" under-label-class="color-dark-gray" model="view.signInForm.payment.ccv"></custom-input>                    
                     </div>
                 </div>
                 

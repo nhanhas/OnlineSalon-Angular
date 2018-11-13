@@ -29,6 +29,7 @@ background-color: #fce8f2;
 .color-darkText        { color: #343434}
 .color-red             { color: #ff0000}
 .color-gray            { color: #b3b3b3}
+.color-dark-gray       { color: #3a3a3a}
 
 .color-heart-red       { color: #e12961}
 .color-heart-green     { color: #3bb441}
@@ -54,7 +55,7 @@ background-color: #fce8f2;
 .background-gray            { background-color: #b3b3b3}
 .background-message-gray    { background-color: #f8f7f5}
 .background-grass-green     { background-color: #c6dd91}
-
+.background-dark-gray       { background-color: #9b9b9b}
 
 
 /* Text Sizes */

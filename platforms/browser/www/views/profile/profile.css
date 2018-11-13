@@ -1,3 +1,7 @@
+.profile{
+    height: 100%;
+}
+
 .profile-logo img{
     max-width: 200px;
 }
@@ -91,4 +95,10 @@
 
 .profile-sign-out-button-container{
     margin-bottom: 20px;
+}
+
+
+/* overwrite custom-input colors */
+.profile-step-form-input-container .custom-input-underlabel{
+  
 }
