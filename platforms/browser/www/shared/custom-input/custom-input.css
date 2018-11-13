@@ -7,17 +7,17 @@
     text-align: center; 
     background-color: rgba(0,0,0,0);
     border: none;
-    border-bottom: 1px solid #c482bf; 
+    border-bottom: 1px solid #c482bf5c; 
     border-radius: 0;
     font-size: 16px;
-    color: #67178c
+    color: #3a3a3a
 }
 .custom-input-container input:focus{
     outline: none;
 }
 
 .custom-input-container input::placeholder{
-    color: #67178c
+    color: #3a3a3a
 }
 
 .custom-input-underlabel{
