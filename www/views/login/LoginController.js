@@ -16,8 +16,7 @@ app
         signInStep : 0,
         signInForm : {        
             isIdFormValid : false,    
-            isAddressFormValid : false,  
-            isPaymentFormValid : false,  
+            isCodeFormValid : false,
             identification : {
                 name : '',
                 email : '',
@@ -26,17 +25,8 @@ app
                 phone : '',
                 photo : undefined
             },
-            address : {
-                mainAddress : '',
-                secondaryAddress : '',
-                zipcode : '',
-                city : ''
-            },
-            payment : {
-                cardName : '',
-                month : '',
-                year : '',
-                ccv : ''
+            code : {
+                confirmationCode : ''
             }
             
         }
@@ -62,13 +52,13 @@ app
             $scope.view.signInForm.isIdFormValid = false;
     }, true);
 
-    //[Watcher] - validate address form on step 1 of sign in
-    $scope.$watch('view.signInForm.address', function(newVal, oldVal){ 
+    //[Watcher] - validate code form on step 1 of sign in
+    $scope.$watch('view.signInForm.code', function(newVal, oldVal){ 
         //TODO
-        if($scope.view.signInForm.address.mainAddress !== '')
-            $scope.view.signInForm.isAddressFormValid = true;
+        if($scope.view.signInForm.code.confirmationCode !== '')
+            $scope.view.signInForm.isCodeFormValid = true;
         else
-            $scope.view.signInForm.isAddressFormValid = false;
+            $scope.view.signInForm.isCodeFormValid = false;
     }, true);
 
     //AUX - Reset signInForm
@@ -80,12 +70,12 @@ app
                 password : '',
                 remindCredentials : false
             },
+            credentialsMessageError : '',
             signInOpened : false,
             signInStep : 0,
             signInForm : {        
                 isIdFormValid : false,    
-                isAddressFormValid : false,  
-                isPaymentFormValid : false,  
+                isCodeFormValid : false,
                 identification : {
                     name : '',
                     email : '',
@@ -94,17 +84,8 @@ app
                     phone : '',
                     photo : undefined
                 },
-                address : {
-                    mainAddress : '',
-                    secondaryAddress : '',
-                    zipcode : '',
-                    city : ''
-                },
-                payment : {
-                    cardName : '',
-                    month : '',
-                    year : '',
-                    ccv : ''
+                code : {
+                    confirmationCode : ''
                 }
                 
             }
@@ -249,5 +230,15 @@ app
         //#2 - Navigate to login again
         $scope.resetSignIn();
     };
+
+    //#I - Submit Form Sign in
+    $scope.submitRegistration = function(){
+        //#TODO - Call Registration and then show CODE input screen
+        $scope.view.signInForm.code.confirmationCode = 'P0VXA1663';
+        
+        //#2 - Show confirmation code step
+        $scope.continueSignSteps(1);
+        
+    }
 
 }]);
