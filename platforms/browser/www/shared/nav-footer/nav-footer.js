@@ -7,7 +7,9 @@ app
                 services : '=?',  // number of services
                 openMessages : '&',
                 openServices : '&',
-                openFavorites: '&'
+                openFavorites: '&',
+                openMenu : '&',
+                expandFilter : '&'
             },
             templateUrl: 'shared/nav-footer/nav-footer.html',
 
@@ -27,12 +29,29 @@ app
                     scope.openFavorites = undefined;
                 }
 
+                if (!attrs.openMenu) {
+                    scope.openMenu = undefined;
+                }
+                if (!attrs.expandFilter) {
+                    scope.expandFilter = undefined;
+                }
+
                 //Open Menu
+                scope.onOpenMenuHandler = function(){
+                    scope.openMenu();
+                }   
+
+                //Expand Filter
+                scope.onExpandFilterHandler = function(){
+                    scope.expandFilter();
+                }
+
+                //Open Messages
                 scope.onOpenMessagesHandler = function(){
                     scope.openMessages();
                 }   
 
-                //Expand Filter
+                //Expand Services
                 scope.onOpenServicesHandler = function(){
                     scope.openServices();
                 }

@@ -1,6 +1,11 @@
-<navbar open-menu="showPanel('menu')" expand-filter="testFunction()"></navbar>
+<nav-footer open-menu="showPanel('menu')" expand-filter="testFunction()" messages="view.messages.length" services="view.services.length" open-messages="showPanel('messages')" open-services="showPanel('services')" open-favorites="showPanel('favorites')"></nav-footer>
 
-<div class="home">
+<div class="home" ng-class="{ 'home-full-height' : (
+                                                view.bookingOpened || 
+                                                view.scheduleOpened || 
+                                                view.messagesOpened ||
+                                                view.servicesOpened ||
+                                                view.favoritesOpened) }">
 
     
     <div class="saloon-map">
@@ -28,7 +33,11 @@
 
 </div>
 
-<nav-footer messages="view.messages.length" services="view.services.length" open-messages="showPanel('messages')" open-services="showPanel('services')" open-favorites="showPanel('favorites')"></nav-footer>
+<navbar ng-if=" !(  view.bookingOpened || 
+                    view.scheduleOpened || 
+                    view.messagesOpened ||
+                    view.servicesOpened ||
+                    view.favoritesOpened )"></navbar>
 
 
  <!-- Menu Panel -->

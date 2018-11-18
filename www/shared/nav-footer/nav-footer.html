@@ -1,8 +1,13 @@
 <!-- Bottom navbar -->
 <div class="nav-footer background-gray color-white">
 
+    <!-- Menu burger -->
+	<div class="navbar-footer-menu-item" ng-click="onOpenMenuHandler()">
+		<span><i class="fa fa-bars fa-2x"></i></span>
+	</div>
+
     <!-- Favorites -->
-	<div class="nav-footer-menu-item" ng-click="onOpenFavoritesHandler()">
+	<div class="navbar-footer-menu-item" ng-click="onOpenFavoritesHandler()">
         <span class="fa-stack">
             <i class="fa fa-heart fa-stack-2x"></i>
             <i class="fa fa-heart fa-stack-1x color-light-pink"></i>
@@ -11,15 +16,23 @@
 	</div>
 
     <!-- Messages -->
-	<div class="nav-footer-menu-item" ng-click="onOpenMessagesHandler()">
+	<div class="navbar-footer-menu-item" ng-click="onOpenMessagesHandler()">
         <span><i class="fa fa-bell fa-2x"></i></span>
         <div class="nav-footer-alert-sign nav-footer-alert-yellow" ng-if="messages > 0">{{ messages }}</div>
+        <span class="text-extra-small">&nbsp;</span>
     </div>
     
     <!-- Services -->
-	<div class="nav-footer-menu-item" ng-click="onOpenServicesHandler()">
+	<div class="navbar-footer-menu-item" ng-click="onOpenServicesHandler()">
         <span><i class="fa fa-shopping-bag fa-2x"></i></span>
         <div class="nav-footer-alert-sign background-red" ng-if="services > 0">{{ services }}</div>
+        <span class="text-extra-small">&nbsp;</span>
+    </div>
+    
+    <!-- Menu 'filter' -->
+	<div class="navbar-footer-menu-item" ng-click="onExpandFilterHandler()">
+		<span><i class="fa fa-search fa-rotate-90 fa-2x"></i></span>
+		<span class="text-small">{{ 'APP_COMPONENT_HEADER_FILTER' | translate }}</span>
 	</div>
 
 </div>

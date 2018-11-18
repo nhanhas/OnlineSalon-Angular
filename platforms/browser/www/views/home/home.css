@@ -1,9 +1,13 @@
 .home{
     position: absolute;
-    top: 70px;
-    bottom : 50px;
+    top: 50px;
+    bottom: 70px;
     left: 0;
     right: 0;
+}
+
+.home-full-height{
+    bottom: 0;
 }
 
 /* Maps CSS */
