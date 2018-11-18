@@ -43,6 +43,7 @@ app
 	 */
 	$scope.view.messages = [
 		{
+			id: 0,
 			title: 'OFERTA 50% EM UNHAS',
 			date : '12 / 09 / 2018',
 			description : 'Lorem ipsum dolor sit amet, consectetur adipisc- ing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -50,6 +51,7 @@ app
 			alreadySeen : false
 		},
 		{
+			id: 1,
 			title: 'OFERTA 15% EM TODOS OS SERVIÇOS',
 			date : '09 / 09 / 2018',
 			description : 'Lorem ipsum dolor sit amet, consectetur adipisc- ing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -57,6 +59,7 @@ app
 			alreadySeen : false
 		},
 		{
+			id: 2,
 			title: 'OFERTA 34% EM TRATAMENTOS',
 			date : '03 / 08 / 2018',
 			description : 'Lorem ipsum dolor sit amet, consectetur adipisc- ing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -64,6 +67,7 @@ app
 			alreadySeen : false
 		},
 		{
+			id: 3,
 			title: 'OFERTA 100% EM TUDO',
 			date : '19 / 08 / 2018',
 			description : 'Lorem ipsum dolor sit amet, consectetur adipisc- ing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',

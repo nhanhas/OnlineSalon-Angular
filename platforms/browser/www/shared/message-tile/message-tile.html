@@ -1,12 +1,15 @@
 <div class="message-tile background-message-gray">
-
+    
     <img ng-src="{{ message.picture }}">
-    <span class="message-tile-title color-normal-pink">{{ message.title }}</span>
-    <span class="text-small">{{ message.date }}</span>
-    <span class="message-tile-description text-small">{{ message.description }}</span>
 
-    <!-- Dismiss button -->
-    <div class="message-close-button-container color-disband-cross" ng-click="onDismissMessageHandler()">
+    <div class="message-tile-info-container">
+        <span class="message-tile-title color-normal-pink">{{ message.title }}</span>
+        <span class="text-small">{{ message.date }}</span>
+        <span class="message-tile-description text-small">{{ message.description }}</span>
+    </div>
+
+     <!-- Dismiss button -->
+     <div class="message-close-button-container color-disband-cross" ng-click="onDismissMessageHandler()">
         <span><i class="fa fa-times-thin fa-2x"></i></span>   
     </div>
 

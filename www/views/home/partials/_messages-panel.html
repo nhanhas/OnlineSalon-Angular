@@ -9,9 +9,11 @@
 
     <div class="home-panel-data-container">
 
-        <div class="home-panel-data-tile" ng-repeat="message in view.messages">
-            <message-tile message="message" on-dismiss="dismissMessage(message)"></message-tile>
-        </div>
+        <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+            <div uib-slide ng-repeat="message in view.messages" index="message.id">
+                <message-tile message="message" on-dismiss="dismissMessage(message)"></message-tile>
+            </div>
+          </div>
 
     </div>
 

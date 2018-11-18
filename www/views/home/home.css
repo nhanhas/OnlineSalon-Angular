@@ -147,3 +147,37 @@
 .booking-panel-button-booknow-container:nth-of-type(2){
     margin-top: 20px;
 }
+
+/* carousel */
+.carousel{
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.carousel-control.right {
+    background-image: none;
+    background-repeat: no-repeat;
+}
+.carousel-control.left {
+    background-image: none;
+    background-repeat: no-repeat;
+}
+/*controls*/
+.carousel-control{
+    top: 50% !important;
+    text-shadow: none !important;
+}
+.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right{
+    top: auto !important;
+    bottom: 20px !important;
+    font-size: 30px;
+    color: #f391c9;
+}
+.carousel-inner, .carousel-inner>.item.active{
+    height: 100%;
+}
+.carousel-indicators .active, .carousel-indicators li{
+    background-color: rgb(246, 197, 224);
+}
