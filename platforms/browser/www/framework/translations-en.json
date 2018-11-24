@@ -42,6 +42,8 @@
     "APP_SIGNIN_STEP_1_CITY" : "City",
     "APP_SIGNIN_STEP_1_CITY_DESC" : "*MAIN ADDRESS CITY",
 
+    "APP_LOADING_PINCODE_VALIDATING_MSG" : "Validating your code",
+
     "APP_SIGNIN_STEP_2_TITLE_01" : "CREDIT CARD",
     "APP_SIGNIN_STEP_2_TITLE_02" : "DATA",
     "APP_SIGNIN_STEP_2_CARD_NAME"  : "Card name",
@@ -119,6 +121,8 @@
     "APP_PROFILE_SAVE_BTN" : "SAVE PROFILE",
     "APP_PROFILE_SAVE_MESSAGE" : "Changes saved with success",
     "APP_PROFILE_LOGOUT_BTN" : "SIGN OUT",
+
+    "APP_LOADING_DEFAULT_MSG" : "We are processing your data",
 
     "APP_VERSION" : "Version 1.11"
 

@@ -1,6 +1,6 @@
 .login{
-    height: 667px;
-
+    height: 100%;
+    min-height: 570px;
 }
 
 .login-logo img{
@@ -38,12 +38,12 @@
     margin-top: 20px;
 }
 
-.login-credentials-disclaimer{
-    position: absolute;
+/*.login-credentials-disclaimer{
+   position: absolute;
     bottom: 10px;
     left: 0;
     right: 0;
-}
+}*/
 
 .login-credentials-message-container{
     text-align: center;
@@ -57,7 +57,7 @@
 }
 
 .login-authorize-buttons{
-    margin: 0 70px;
+    margin: 0 70px 70px;
 }
 .login-authorize-button-container{
     margin-bottom: 30px;

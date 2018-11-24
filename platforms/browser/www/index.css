@@ -1,4 +1,8 @@
+html{
+  height: 100%;
+}
 body{
+height: 100%;  
 background-color: #fce8f2;
 }
 .container{
@@ -6,6 +10,7 @@ background-color: #fce8f2;
 }
 
 .container{
+  min-height: 100%;
   width:100%;
 }
 

@@ -5,6 +5,8 @@ app
      * Controller variables
      */
     $scope.view = {
+        isLoading : false,
+        loadingMessage : undefined,
         stepSelected : 'language',        
         credentials : {
             username : '',
@@ -223,21 +225,72 @@ app
     //#H - Save Form sign in
     $scope.saveAll = function(){
 
-        //#TODO - Call Service
-        //#1 - Store it into cache (for demo)
-        localStorage.setItem('clientData', JSON.stringify($scope.view.signInForm));
+        let pinCode = $scope.view.signInForm.code.confirmationCode;
 
-        //#2 - Navigate to login again
-        $scope.resetSignIn();
+        //#1.1 - Call loading Screen
+        $scope.view.isLoading = true;
+        $scope.view.loadingMessage = 'APP_LOADING_PINCODE_VALIDATING_MSG';
+
+        //#1 - Make the server Call
+        AppService.LOGIN_validatePIN(pinCode).then((result)=>{
+            //#1.1 - Remove loading
+            $scope.view.isLoading = false;
+            $scope.view.loadingMessage = undefined;
+
+            console.log(result);
+
+            //#1.2 - Process result
+            if(result.code === 0){
+                //#2 - Store it into cache (for demo)
+                localStorage.setItem('clientData', JSON.stringify($scope.view.signInForm));
+
+                //#3 - Navigate to login again
+                $scope.resetSignIn();
+            }else{
+                //#4 - Show message error
+                //#TODO
+            }
+            
+        })
+
+        
     };
 
     //#I - Submit Form Sign in
     $scope.submitRegistration = function(){
-        //#TODO - Call Registration and then show CODE input screen
-        $scope.view.signInForm.code.confirmationCode = 'P0VXA1663';
+        //#TODO - make email and password validation
+
+        //#1 - Prepare client data to send to server
+        let clientData = {
+            name : $scope.view.signInForm.identification.name,
+            email_address : $scope.view.signInForm.identification.email,
+            password : $scope.view.signInForm.identification.phone,
+            telemovel : $scope.view.signInForm.identification.password
+        };
+
+        //#1.1 - Call loading Screen
+        $scope.view.isLoading = true;
+
+        //#2 - Make the server Call
+        AppService.LOGIN_addNewUser(clientData).then(function(result){
+            //#2.1 - Remove loading
+            $scope.view.isLoading = false;
+            $scope.view.loadingMessage = undefined;
+
+            console.log(result);
+
+            //#2.2 - Process result
+            if(result.code === 0){
+                //#2.3 - Show confirmation code step
+                $scope.continueSignSteps(1);    
+            }else{
+                //#2.4 - Show message error
+                //#TODO
+            }
+            
+        });
+
         
-        //#2 - Show confirmation code step
-        $scope.continueSignSteps(1);
         
     }
 

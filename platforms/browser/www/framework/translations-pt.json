@@ -44,6 +44,8 @@
     "APP_SIGNIN_STEP_1_CITY" : "Localidade",
     "APP_SIGNIN_STEP_1_CITY_DESC" : "*LOCALIDADE MORADA PRINCIPAL",
 
+    "APP_LOADING_PINCODE_VALIDATING_MSG" : "A validar o seu código",
+
     "APP_SIGNIN_STEP_2_TITLE_01" : "DADOS DO",
     "APP_SIGNIN_STEP_2_TITLE_02" : "CARTÃO DE CRÉDITO",
     "APP_SIGNIN_STEP_2_CARD_NAME"  : "Nome no cartão",
@@ -125,6 +127,8 @@
     "APP_PROFILE_SAVE_BTN" : "GRAVAR ALTERAÇÕES",
     "APP_PROFILE_SAVE_MESSAGE" : "Alterações gravadas com sucesso",
     "APP_PROFILE_LOGOUT_BTN" : "TERMINAR SESSÃO",
+
+    "APP_LOADING_DEFAULT_MSG" : "Estamos a processar os seus dados",
 
     "APP_VERSION" : "Versão 1.11"
 }
