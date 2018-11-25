@@ -65,6 +65,10 @@ app
 
     //AUX - Reset signInForm
     $scope.resetSignIn = function(){
+        
+        //#FIX - ng-class wrong usage
+        jQuery('body').css('background-color', '#fce8f2');
+
         $scope.view = {
             stepSelected : 'credentials',        
             credentials : {
@@ -141,10 +145,21 @@ app
         
     }
 
-    //#D - Sign In Handler
+    //#D - Sign In Handler (open)
     $scope.signIn = function(){
+        //#FIX - ng-class wrong usage
+        jQuery('body').css('background-color', '#FFFFFF');
         //#1 - show sign in popup
         $scope.view.signInOpened = true;
+        
+    }
+
+    //#D.1 - Sign In Handler (close)
+    $scope.signInClose = function(){
+        //#FIX - ng-class wrong usage
+        jQuery('body').css('background-color', '#fce8f2');
+        //#1 - show sign in popup
+        $scope.view.signInOpened = false;
         
     }
 

@@ -21,7 +21,7 @@ app.service('FrameworkUtils', ['$http', function($http) {
      //POST Type
      this.Http_POST  = function(serviceURL, data){
          return $http({
-                     method: 'POST',
+                     method: 'POST',                     
                      data: data,
                      url: serviceURL
                  }).then(function successCallback(response) {

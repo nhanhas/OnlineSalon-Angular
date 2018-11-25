@@ -1,4 +1,4 @@
-<div class="login" ng-class="view.signInOpened ? 'background-white' : ''">
+<div class="login" >
 
     <!-- App Logo -->
     <div class="login-logo text-center">
@@ -117,7 +117,7 @@
     <div id="sign-in" ng-if="view.signInOpened" >
         
         <!-- Close popup button -->
-        <div class="sign-close-button-container color-dark-pink" ng-click="view.signInOpened = false">
+        <div class="sign-close-button-container color-dark-pink" ng-click="signInClose()">
             <span><i class="fa fa-times-thin fa-2x"></i></span>
         </div>
         
