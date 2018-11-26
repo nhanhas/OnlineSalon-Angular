@@ -14,7 +14,6 @@ app
                 scope.isLoading = scope.isLoading || false;
                 scope.loadingMessage = scope.loadingMessage || 'APP_LOADING_DEFAULT_MSG';
             
-
             }
         };
 

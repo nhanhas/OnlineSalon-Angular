@@ -211,6 +211,11 @@
                     <custom-button label="{{ 'APP_SIGNIN_CONFIRM_BTN' | translate }}" is-disabled="!view.signInForm.isCodeFormValid" on-press="saveAll()"></custom-button> 
                 </div>
 
+                <!-- Error message -->
+                <div class="login-credentials-message-container" >
+                    <span class="text-medium color-red" ng-show="view.pinCodeMessageError !== ''">{{ view.pinCodeMessageError | translate }}</span>
+                </div>
+
             </div>
 
         </div>

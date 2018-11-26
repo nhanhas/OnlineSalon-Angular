@@ -14,11 +14,13 @@ app
             remindCredentials : false
         },
         credentialsMessageError : '',
+        pinCodeMessageError : '',
         signInOpened : false,
         signInStep : 0,
         signInForm : {        
             isIdFormValid : false,    
             isCodeFormValid : false,
+            user_id: '', //fulfilled when sign in requested!
             identification : {
                 name : '',
                 email : '',
@@ -77,11 +79,13 @@ app
                 remindCredentials : false
             },
             credentialsMessageError : '',
+            pinCodeMessageError : '',
             signInOpened : false,
             signInStep : 0,
             signInForm : {        
                 isIdFormValid : false,    
                 isCodeFormValid : false,
+                user_id: '', //fulfilled when sign in requested!
                 identification : {
                     name : '',
                     email : '',
@@ -239,23 +243,26 @@ app
 
     //#H - Save Form sign in
     $scope.saveAll = function(){
-
-        let pinCode = $scope.view.signInForm.code.confirmationCode;
+        //#1 - Prepare data to call validate Pin service
+        let pinServiceParams = {
+            pin : $scope.view.signInForm.code.confirmationCode,
+            user_id : $scope.view.signInForm.user_id
+        };
 
         //#1.1 - Call loading Screen
         $scope.view.isLoading = true;
         $scope.view.loadingMessage = 'APP_LOADING_PINCODE_VALIDATING_MSG';
 
         //#1 - Make the server Call
-        AppService.LOGIN_validatePIN(pinCode).then((result)=>{
+        AppService.LOGIN_validatePIN(pinServiceParams).then((result)=>{
             //#1.1 - Remove loading
             $scope.view.isLoading = false;
             $scope.view.loadingMessage = undefined;
 
             console.log(result);
-
+            
             //#1.2 - Process result
-            if(result.code === 0){
+            if(result && result.code === 0){
                 //#2 - Store it into cache (for demo)
                 localStorage.setItem('clientData', JSON.stringify($scope.view.signInForm));
 
@@ -263,7 +270,7 @@ app
                 $scope.resetSignIn();
             }else{
                 //#4 - Show message error
-                //#TODO
+                $scope.view.pinCodeMessageError = 'APP_SIGNIN_PINCODE_ERROR_MESSAGE';
             }
             
         })
@@ -285,6 +292,7 @@ app
 
         //#1.1 - Call loading Screen
         $scope.view.isLoading = true;
+        $scope.view.loadingMessage = 'APP_LOADING_DEFAULT_MSG';
 
         //#2 - Make the server Call
         AppService.LOGIN_addNewUser(clientData).then(function(result){
@@ -295,8 +303,11 @@ app
             console.log(result);
 
             //#2.2 - Process result
-            if(result.code === 0){
-                //#2.3 - Show confirmation code step
+            if(result && result.code === 0){
+                //#2.3.1 - Set user_id response to call at validate pin
+                $scope.view.signInForm.user_id = result.user_id;
+
+                //#2.3.2 - Show confirmation code step
                 $scope.continueSignSteps(1);    
             }else{
                 //#2.4 - Show message error
