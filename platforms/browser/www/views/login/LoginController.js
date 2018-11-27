@@ -305,7 +305,7 @@ app
             //#2.2 - Process result
             if(result && result.code === 0){
                 //#2.3.1 - Set user_id response to call at validate pin
-                $scope.view.signInForm.user_id = result.user_id;
+                $scope.view.signInForm.user_id = result.data.user_id;
 
                 //#2.3.2 - Show confirmation code step
                 $scope.continueSignSteps(1);    

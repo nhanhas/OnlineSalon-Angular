@@ -5,7 +5,7 @@
     <div class="message-tile-info-container">
         <span class="message-tile-title color-normal-pink">{{ message.title }}</span>
         <span class="text-small">{{ message.date }}</span>
-        <span class="message-tile-description text-small">{{ message.description }}</span>
+        <div class="message-tile-description text-small" style="white-space: pre-line;" ng-bind-html="message.description">{{  }}</div>
     </div>
 
      <!-- Dismiss button -->

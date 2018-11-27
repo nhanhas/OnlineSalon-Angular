@@ -7,10 +7,10 @@
 
     <div class="text-large text-thin color-gray">{{ 'APP_HOME_MESSAGES_PANEL_TITLE' | translate }}</div>
 
-    <div class="home-panel-data-container">
+    <div class="home-panel-data-container" ng-if="view.messages && view.messages.length > 0">
 
         <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-            <div uib-slide ng-repeat="message in view.messages" index="message.id">
+            <div uib-slide ng-repeat="message in view.messages track by message.id" index="message.id">
                 <message-tile message="message" on-dismiss="dismissMessage(message)"></message-tile>
             </div>
           </div>

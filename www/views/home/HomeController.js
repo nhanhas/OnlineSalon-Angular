@@ -1,10 +1,12 @@
 app
-.controller('HomeController', ['$rootScope', '$scope', '$timeout', '$location', '$http','$q', 'FrameworkUtils', 'AppService', 'uiGmapGoogleMapApi',  function($rootScope, $scope, $timeout, $location, $http, $q, FrameworkUtils, AppService, uiGmapGoogleMapApi) {
-
+.controller('HomeController', ['$rootScope', '$scope', '$timeout', '$location', '$http','$q', '$sce', 'FrameworkUtils', 'AppService', 'uiGmapGoogleMapApi',  function($rootScope, $scope, $timeout, $location, $http, $q, $sce, FrameworkUtils, AppService, uiGmapGoogleMapApi) {
+	
 	/**
      * Controller variables
      */
     $scope.view = {
+		isLoading : true,
+        loadingMessage : 'APP_HOME_LOADING_DEFAULT_MESSAGE',
 		favoritesOpened : false,
 		messagesOpened : false,
 		servicesOpened : false,
@@ -183,6 +185,66 @@ app
 		}
 	]
 
+
+	//#INITIALIZE Home data
+	$scope.initialize = function(){
+		
+		//#1 - Prepare Queue of promises
+		let promises = [];
+		//#1.1 - Promotions
+		promises.push($scope.getAllPromotions());
+
+		//#Finally get all promises
+		$q.all(promises).then((result)=>{
+			//Show screen
+			$scope.view.isLoading = false;
+		});
+
+	};
+
+	/**
+	 * Functions to retrieve 
+	 * server data
+	 */
+	//#A - Get Promotions from server
+	$scope.getAllPromotions = function(){
+		//#0 - Reset messages list 
+		$scope.view.messages = [];
+
+		//#1 - Get Promotions by calling server
+		return AppService.HOME_getPromotions().then((result)=>{
+
+			console.log(result);
+
+			//#2 - Process result
+			if(result && result.data){
+				let listOfPromo = JSON.parse(result.data);
+				
+				//#Note - index to carousel
+				let index = 0;
+				//#3 - Iterate list to prepare to show
+				listOfPromo.forEach((promotion)=>{
+
+					//#3.1 - Create a new item 
+					let newMessage = {
+						id: index,
+						promoIdentifier: promotion.id,//it is a server identifier
+						title: promotion.title,
+						date : promotion.date_init,
+						description : $sce.trustAsHtml(promotion.content),
+						picture : promotion.image_url,
+						alreadySeen : false
+					};
+
+					//#3.2 - Push it to messages List
+					$scope.view.messages.push(newMessage);
+					index++;
+				});
+
+			}
+
+		});
+	};
 
 
 
@@ -559,11 +621,15 @@ app
 	};
 
 
+	//#1 - Load Application Data from Server
+	$scope.initialize();
 
 
-	$scope.inputModel = '';
+
+	
 	
 	//#TEST Function 
+	$scope.inputModel = '';
 	$scope.testFunction = function (){
 		alert('testFunction');
 	}

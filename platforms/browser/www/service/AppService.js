@@ -47,4 +47,18 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
         });
     }
 
+    /**
+     * #D - Get Promotions to Home
+     * parameter to server: none. 
+     * It is a GET 
+     */
+    this.HOME_getPromotions  = function(){
+        
+        let serviceURL = this.serviceWS + '/getPromotions';
+
+        return FrameworkUtils.Http_GET(serviceURL).then(function(result){     
+            return result.data;
+        });
+    }
+
 }]);
