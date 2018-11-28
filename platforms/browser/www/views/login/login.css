@@ -124,6 +124,11 @@
     margin-top: 50px;
 }
 
+.login-error-message-container{
+    margin-bottom: 20px;
+}
+
+
 /* Step 2 */
 .sign-step-2-label-container{
     margin-bottom: 30px;

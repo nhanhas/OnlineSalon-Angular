@@ -15,6 +15,7 @@ app
         },
         credentialsMessageError : '',
         pinCodeMessageError : '',
+        signMessageError : '',
         signInOpened : false,
         signInStep : 0,
         signInForm : {        
@@ -311,13 +312,18 @@ app
                 $scope.continueSignSteps(1);    
             }else{
                 //#2.4 - Show message error
-                //#TODO
+                $scope.view.signMessageError = $scope.getTranslationByCode(result.code);
             }
             
         });
 
         
         
+    }
+
+    //#J - Get Locales translations according to error 'code' 
+    $scope.getTranslationByCode = function(code){
+        return 'APP_LOGIN_ERROR_' + code.toString();        
     }
 
 }]);

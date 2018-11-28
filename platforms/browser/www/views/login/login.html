@@ -187,8 +187,13 @@
                 
                 
                 <!-- Submit Form -->
-                <div class="sign-step-form-button-container">
+                <div class="">
                     <custom-button label="{{ 'APP_SIGNIN_CODE_BTN' | translate }}" icon="fa-chevron-right" is-disabled="!view.signInForm.isIdFormValid" on-press="submitRegistration()"></custom-button> 
+                </div>
+
+                <!-- Error message -->
+                <div class="login-credentials-message-container login-error-message-container" style="margin-bottom: 20px;">
+                    <span class="text-medium color-red" ng-show="view.signMessageError !== ''">{{ view.signMessageError | translate }}</span>
                 </div>
 
             </div>
