@@ -119,35 +119,54 @@ app
 
     //#C - Login Handler
     $scope.userLogin = function(){
+        //#0 - Clean message error 
+        $scope.view.credentialsMessageError = '';
+
         //#1 - Validate credentials
-        //TODO (For DEMO)
-        let clientData = localStorage.getItem('clientData');
-        if(clientData){
-            clientData = JSON.parse(clientData);
+        //TODO     
+        if($scope.view.credentials.username !== '' && $scope.view.credentials.password !== '' ){
+            //#1 - if "remind me"
+            if($scope.view.credentials.remindCredentials){
+                localStorage.setItem('credentials', JSON.stringify($scope.view.credentials));
+            }else{
+                localStorage.setItem('credentials', '{}');
+            }
 
-            if($scope.view.credentials.username === clientData.identification.email &&
-                $scope.view.credentials.password === clientData.identification.password ){
+            //#2.1 - prepare data to login 
+            let credentials = { username : $scope.view.credentials.username, password : $scope.view.credentials.password};
+            
+            //#2.2 - Call loading Screen
+            $scope.view.isLoading = true;
+            $scope.view.loadingMessage = undefined;
 
-                    //#1 - if "remind me"
-                    if($scope.view.credentials.remindCredentials){
-                        localStorage.setItem('credentials', JSON.stringify($scope.view.credentials));
-                    }else{
-                        localStorage.setItem('credentials', '{}');
-                    }
+            //#2.3 - Call Login from server
+            AppService.LOGIN_userLogin(credentials).then((result)=>{
+                //#2.3.1 - Reset cache user info
+                localStorage.setItem('userInfo', '{}');
+                console.log(result);
 
-                    //#2 - proceed to next step [in case of valid]
+                //#2.4 - Remove loading
+                $scope.view.isLoading = false;
+                
+                //#2.5 - Process response
+                if(result.code === 0){
+                    //#2.5.1 - Store userInfo in cache
+                    localStorage.setItem('userInfo', JSON.stringify(result.data.user));
+
+                    //#2.5.2 - [SUCCESS] proceed to next step [in case of valid]
                     $scope.setStep('authorize');
                 }else{
                     //#3 - Show message error
-                    $scope.view.credentialsMessageError = 'APP_LOGIN_CREDENTIALS_ERROR_MESSAGE';
+                    $scope.view.credentialsMessageError = $scope.getTranslationByCode(result.code);
                 }
+                
+            });
+                
         }else{
             //#3 - Show message error
             $scope.view.credentialsMessageError = 'APP_LOGIN_CREDENTIALS_ERROR_MESSAGE';
         }
-        
-
-        
+    
     }
 
     //#D - Sign In Handler (open)

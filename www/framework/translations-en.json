@@ -64,6 +64,7 @@
 
     "APP_LOGIN_ERROR_102" : "Your data is invalid.",
     "APP_LOGIN_ERROR_103" : "Already exists an user with given email",
+    "APP_LOGIN_ERROR_104" : "Your login credentials are not correct or user with this email is not signed in",
 
     "APP_COMPONENT_HEADER_HEART_1" : "IN",
     "APP_COMPONENT_HEADER_HEART_EXPLAIN_1" : "(HOME)",

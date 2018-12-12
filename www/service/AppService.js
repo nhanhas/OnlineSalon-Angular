@@ -8,13 +8,22 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
     //this.serviceWS = 'http://192.168.1.80:8000/server';
     this.serviceWS = 'http://salaonline.makeitdigital.pt';
    
-    /**
+    /********************************************************************************
      * Login 
+     ********************************************************************************/
+    /**
+     * #A - Login user in Application
+     * parameter to server:
+     * { username : "", password : "" }
      */
-    //#A - Login user in Application
     this.LOGIN_userLogin  = function(credentials){
         
-        return false;
+        let serviceURL = this.serviceWS + '/authenticateUser';
+        let parameter = credentials;
+
+        return FrameworkUtils.Http_POST(serviceURL, parameter).then(function(result){     
+            return result.data;
+        });
     };
 
     /**
@@ -47,6 +56,9 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
         });
     }
 
+    /********************************************************************************
+     * Home
+     ********************************************************************************/
     /**
      * #D - Get Promotions to Home
      * parameter to server: none. 
@@ -55,6 +67,20 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
     this.HOME_getPromotions  = function(){
         
         let serviceURL = this.serviceWS + '/getPromotions';
+
+        return FrameworkUtils.Http_GET(serviceURL).then(function(result){     
+            return result.data;
+        });
+    }
+
+    /**
+     * #E - Get All Services to Home
+     * parameter to server: none. 
+     * It is a GET 
+     */
+    this.HOME_getAllServices  = function(){
+        
+        let serviceURL = this.serviceWS + '/getAllServices';
 
         return FrameworkUtils.Http_GET(serviceURL).then(function(result){     
             return result.data;

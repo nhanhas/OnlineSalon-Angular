@@ -66,6 +66,7 @@
 
     "APP_LOGIN_ERROR_102" : "Os dados introduzidos não são válidos.",
     "APP_LOGIN_ERROR_103" : "Já existe um utilizador registado com este email",
+    "APP_LOGIN_ERROR_104" : "Os dados introduzidos não estão corretos ou o utilizador com este email não está registado",
 
     "APP_COMPONENT_HEADER_HEART_1" : "IN",
     "APP_COMPONENT_HEADER_HEART_EXPLAIN_1" : "(DOMICÍLIO)",
