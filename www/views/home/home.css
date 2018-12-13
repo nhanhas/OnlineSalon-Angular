@@ -148,6 +148,17 @@
     margin-top: 20px;
 }
 
+/* Search Panel */
+.home-panel-search{
+    position: fixed;
+    z-index: 1;
+    width: 65%;
+    right: 0;
+    top: 50px;
+    bottom: 70px;
+}
+
+
 /* carousel */
 .carousel{
     position: absolute;

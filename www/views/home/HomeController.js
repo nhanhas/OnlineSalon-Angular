@@ -11,6 +11,7 @@ app
 		messagesOpened : false,
 		servicesOpened : false,
 		menuOpened : false,
+		searchOpened : false,
 		bookingOpened : false,
 		serviceSelected : undefined, //service selected to booking/schedule
 		messages : [],
@@ -268,6 +269,7 @@ app
 		$scope.view.messagesOpened = false;
 		$scope.view.servicesOpened = false;
 		$scope.view.menuOpened = false;
+		$scope.view.searchOpened = false;
 
 		//#services panel reset (booking/schedule a service)
 		$scope.view.bookingOpened = false;
@@ -288,6 +290,9 @@ app
 			case 'menu':
 				$scope.view.menuOpened = true;
 				break;
+			case 'search':
+				$scope.view.searchOpened = true;
+				break;	
 			//#ii - services sections	
 			case 'booking':
 				$scope.view.bookingOpened = true;
