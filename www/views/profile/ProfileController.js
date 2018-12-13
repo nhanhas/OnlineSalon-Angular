@@ -39,8 +39,30 @@ app
      * Controller behaviours
      */
     //#1 - get stored data
-    let profileData = localStorage.getItem('clientData');
-    $scope.view.profileForm = JSON.parse(profileData);
+    (()=>{
+        //#1.1 - Get profile from cache
+        let profileData = localStorage.getItem('userInfo');
+        profileData = JSON.parse(profileData);
+        
+        //#1.2 - Fulfill identification form
+        $scope.view.profileForm.identification = {
+            name: profileData.name,
+            email: profileData.email,
+            password: profileData.password,
+            repeatPw: profileData.repeatPw,
+            phone: profileData.phone,
+            photo: profileData.photo,
+        };
+
+        //#1.3 - Fulfill address form
+        $scope.view.profileForm.address = {
+            mainAddress: profileData.address1,
+            secondaryAddress: profileData.address2,
+            zipcode: profileData.postalCode,
+            city: profileData.city
+        }
+    })();
+    
 
     
     //#G - Open or take photo image
@@ -73,7 +95,7 @@ app
 
         //#TODO - Call Service
         //#1 - Store it into cache (for demo)
-        localStorage.setItem('clientData', JSON.stringify($scope.view.profileForm));
+        //localStorage.setItem('clientData', JSON.stringify($scope.view.profileForm));
 
         //#2 - Show message
         $scope.view.messageError = 'APP_PROFILE_SAVE_MESSAGE';

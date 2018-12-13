@@ -137,7 +137,7 @@ app
             
             //#2.2 - Call loading Screen
             $scope.view.isLoading = true;
-            $scope.view.loadingMessage = undefined;
+            $scope.view.loadingMessage = 'APP_LOADING_DEFAULT_MSG';
 
             //#2.3 - Call Login from server
             AppService.LOGIN_userLogin(credentials).then((result)=>{

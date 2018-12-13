@@ -87,4 +87,21 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
         });
     }
 
+    /********************************************************************************
+     * Generic
+     ********************************************************************************/
+    /**
+     * #C - refresh and save location
+     * parameter to server:
+     * {"id_user": "","lat": "", "long": ""}  
+     */
+    this.GENERIC_saveLocation  = function(locationParameter){
+        
+        let serviceURL = this.serviceWS + '/saveLocation';
+        let parameter = locationParameter;
+
+        return FrameworkUtils.Http_POST(serviceURL, parameter).then(function(result){     
+            return result.data;
+        });
+    }
 }]);

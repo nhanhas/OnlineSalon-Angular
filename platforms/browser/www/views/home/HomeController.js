@@ -193,6 +193,8 @@ app
 		let promises = [];
 		//#1.1 - Promotions
 		promises.push($scope.getAllPromotions());
+		//#1.2 - All Service
+		promises.push($scope.getAllServices());
 
 		//#Finally get all promises
 		$q.all(promises).then((result)=>{
@@ -218,7 +220,7 @@ app
 
 			//#2 - Process result
 			if(result && result.data){
-				let listOfPromo = JSON.parse(result.data);
+				let listOfPromo = result.data;
 				
 				//#Note - index to carousel
 				let index = 0;
@@ -246,7 +248,14 @@ app
 		});
 	};
 
-
+	//#A - Get All Services from server
+	$scope.getAllServices = function(){
+		
+		//#1 - Get All Services by calling server
+		return AppService.HOME_getAllServices().then((result)=>{
+			console.log(result);
+		});
+	};
 
 	/**
 	 * Behaviour functions Panels
