@@ -116,7 +116,7 @@ app
 
 
                 //#1 - Initialize Google Map configuration
-                scope.map = {center: {latitude: 38.7354823, longitude: -9.1288447 }, zoom: 4 , options: {scrollwheel: false, disableDefaultUI: true}};
+                scope.map = {center: {latitude: 38.7354823, longitude: -9.1288447 }, zoom: 4 , options: {scrollwheel: true, disableDefaultUI: true}};
                 
                 //#2 - Prepare to create each marker for each service
                 scope.$watch('services', function(newVal, oldVal){

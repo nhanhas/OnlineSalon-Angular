@@ -36,20 +36,59 @@ app.service('FrameworkUtils', ['$http', function($http) {
       * Basic Utils
       */   
  
-     //Parameters from QueryString 
-     this.getParameterByName = function (name, url) {
-         if (!url) {
-             url = window.location.href;
-         }
-         name = name.replace(/[\[\]]/g, "\\$&");
-         var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-         results = regex.exec(url);
-         if (!results) return null;
-         if (!results[2]) return '';
-         return decodeURIComponent(results[2].replace(/\+/g, " "));
-     }
+    //Parameters from QueryString 
+    this.getParameterByName = function (name, url) {
+        if (!url) {
+            url = window.location.href;
+        }
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
  
- 
+    //Get a Logged User
+    this.getLoggedUser = function(){
+        return JSON.parse(localStorage.getItem('userInfo'));
+    }
+
+    //Get user current position
+    this.getUserCurrentPosition = function(){	
+        if(navigator.geolocation){
+            try {
+                //#1 - check again from geolocation param
+                return navigator.permissions.query({name:'geolocation'}).then(function(permissionStatus) {  
+                    if(permissionStatus.state == 'granted'){
+                        //#2 - get actual position				
+                        return new Promise(function (resolve, reject) {
+                            navigator.geolocation.getCurrentPosition(function (position) {
+                                let coordinates = position.coords;
+                                resolve({ lat: coordinates.latitude, long: coordinates.longitude });
+                            });
+                        });
+                    }else{
+                        return new Promise(function (resolve, reject) {
+                            resolve({ lat: 0, long: 0 });
+                        });
+                    }		
+                });
+            } catch (error) {
+                return new Promise(function (resolve, reject) {
+                    resolve({ lat: 0, long: 0 });
+                });
+            }	
+        }else{
+            return new Promise(function (resolve, reject) {
+                resolve({ lat: 0, long: 0 });
+            });
+        }
+        
+		
+	}
+
+
  }]);
  
  

@@ -87,6 +87,21 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
         });
     }
 
+    /**
+     * #F - Get all professional services arround
+     * parameter to server:
+     * {"id_user":0 ,"lat":"","long":"","distance":50}
+     */
+    this.HOME_getProfessionalsArround  = function(localizationParam){
+        
+        let serviceURL = this.serviceWS + '/getProfessionalsArround';
+        let parameter = localizationParam;
+
+        return FrameworkUtils.Http_POST(serviceURL, parameter).then(function(result){     
+            return result.data;
+        });
+    }
+
     /********************************************************************************
      * Generic
      ********************************************************************************/

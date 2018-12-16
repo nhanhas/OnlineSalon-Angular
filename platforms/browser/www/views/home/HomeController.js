@@ -17,6 +17,8 @@ app
 		messages : [],
 		services : [],
 		favorites : [],
+		allServicesToOffer : [],
+		servicesArround: [], 
 		bookingPlaceEnum : [], 		//Client Booking panel Options [PLACE]
 		bookingPlaceSelected : 1	//Client Booking panel Options Selected [PLACE]
 	}
@@ -186,7 +188,6 @@ app
 		}
 	]
 
-
 	//#INITIALIZE Home data
 	$scope.initialize = function(){
 		
@@ -196,11 +197,16 @@ app
 		promises.push($scope.getAllPromotions());
 		//#1.2 - All Service
 		promises.push($scope.getAllServices());
+		//#1.3 - All professional services
+		promises.push($scope.getProfessionalsArround());
 
 		//#Finally get all promises
 		$q.all(promises).then((result)=>{
 			//Show screen
-			$scope.view.isLoading = false;
+			$timeout(()=>{
+				$scope.view.isLoading = false;
+			});
+			
 		});
 
 	};
@@ -249,15 +255,82 @@ app
 		});
 	};
 
-	//#A - Get All Services from server
+	//#B - Get All Services from server
 	$scope.getAllServices = function(){
 		
 		//#1 - Get All Services by calling server
 		return AppService.HOME_getAllServices().then((result)=>{
 			console.log(result);
+			$scope.view.allServicesToOffer = result.data;
 		});
 	};
 
+	//#B - Get All Professionals arround from server
+	$scope.getProfessionalsArround = function(){
+		//#0 - Get Logged User
+		let userInfo = FrameworkUtils.getLoggedUser();
+
+		//#1 - Get current position/dummy position (depending on permissions)
+		return FrameworkUtils.getUserCurrentPosition().then((localizationParam)=>{
+			localizationParam.id_user = userInfo.id_user;
+			localizationParam.distance = 50;
+			//#2 - Get Professionals Arround by calling server
+			return AppService.HOME_getProfessionalsArround(localizationParam).then((result)=>{
+				console.log(result);
+				//#2.0 - reset all arround services
+				$scope.view.favorites = [];
+				let services = result.data;
+				//#2.1 - Fulfill services props and push it 
+				services.forEach((serviceItem) => {
+					let newService = new ServiceVO();
+					newService.id = serviceItem.id_prof;
+
+					newService.name = serviceItem.name;    
+					newService.email = serviceItem.email;    
+					newService.phone = serviceItem.phone;    
+					newService.address1 = serviceItem.address1;    
+					newService.rating = '';
+
+					//#2.2 - [in, out, in/out]
+					newService.location = ((service)=>{
+						if(service.in === "1")
+							return 'in';
+						if(service.out === "1")
+							return 'out';
+						if(service.in_e_out === "1")
+							return 'in/out';
+						if(service.busy === "1")
+							return 'busy';
+					})(serviceItem);
+
+					//#2.3 - Main skills
+					newService.skills = ((service)=>{
+						let skills = {	nails : false,
+										body : false,
+										hair : false,
+										treatment : false
+									};
+						skills.nails = serviceItem.main_services.includes("3");
+						skills.body = serviceItem.main_services.includes("6");
+						skills.hair = serviceItem.main_services.includes("5"); 
+						skills.treatment = serviceItem.main_services.includes("1");//TODO
+						return skills;
+					})(serviceItem);
+
+					//#2.4 - World Coordinates
+					newService.coords = { latitude: parseFloat(serviceItem.lat), longitude: parseFloat(serviceItem.long) };
+					
+					//#2.5 - Parse all services available to partner services
+					newService.getServices(serviceItem.services, $scope.view.allServicesToOffer);
+
+					//#3 - Push it to services Arround array
+					$scope.view.favorites.push(newService);					
+				});
+			});
+		});		
+	};
+
+	
 	/**
 	 * Behaviour functions Panels
 	 */
@@ -589,7 +662,7 @@ app
 		let totalServices = 0;
 
 		//#1 - Iterate each service to get info 
-		$scope.dummyPartnerServices.forEach((service)=>{
+		$scope.view.serviceSelected.myServices.forEach((service)=>{
 			totalServices += service.totalPickedItems;
 		})
 		return totalServices;
@@ -599,7 +672,7 @@ app
 		let totalPriceServices = 0;
 
 		//#1 - Iterate each service to get info 
-		$scope.dummyPartnerServices.forEach((service)=>{
+		$scope.view.serviceSelected.myServices.forEach((service)=>{
 			totalPriceServices += service.totalPriceItems;
 		})
 		return totalPriceServices;

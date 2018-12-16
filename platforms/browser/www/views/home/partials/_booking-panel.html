@@ -57,7 +57,7 @@
             <span class="text-medium text-bold color-normal-pink">{{ 'APP_HOME_BOOKING_PANEL_SERVICES_SECTION' | translate }}</span>
         </div>
         <!-- Services radio -->
-        <div class="booking-panel-services-container" ng-repeat="service in dummyPartnerServices">
+        <div class="booking-panel-services-container" ng-repeat="service in view.serviceSelected.myServices" ng-if="view.serviceSelected.myServices.length > 0">
             <custom-dropdown category="service" total-picked-items="service.servicesPicked"></custom-dropdown>
         </div>
 
@@ -69,7 +69,7 @@
         <div class="booking-panel-resume-container">
             <div class="booking-panel-resume-items">
                 <span class="text-bold color-gray">{{ 'APP_HOME_BOOKING_PANEL_RESUME_PLACE' | translate }}:</span>
-                <span>Domicílio principal - linha 1 de qualquer sitio</span>
+                <span>{{ view.serviceSelected.address1 }}</span>
             </div>
             <div class="booking-panel-resume-items">
                 <span class="text-bold color-gray">{{ 'APP_HOME_BOOKING_PANEL_RESUME_SERVICE' | translate }}:</span>
