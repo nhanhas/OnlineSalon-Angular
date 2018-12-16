@@ -60,6 +60,28 @@ class ServiceVO {
 
     };
 
+    //function to acquired picked services (used in booking)
+    getPickedServices(){
+        let whatIsPicked = [];
+        //#1 - iterate categories
+        this.myServices.forEach((category)=>{            
+            //#2 - iterate subcategories
+            category.subCategories.forEach((subCategory)=>{                  
+                //#3 - iterate services to check witch ones are picked
+                subCategory.options.forEach((service)=>{
+                    //#4 - push it if picked
+                    if(service.optionSelected){
+                        whatIsPicked.push(service.optionId);
+                    }
+                })
+            });
+
+        });
+
+        //#10 - Finaly, return what is picked
+        return whatIsPicked;
+
+    };
 
     constructor() {
        

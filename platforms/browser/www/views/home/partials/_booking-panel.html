@@ -1,4 +1,4 @@
-<div class="home-panel background-white">
+<div class="home-panel background-white" ng-if="view.serviceSelected">
 
     <!-- Close popup button -->
     <div class="home-panel-close-btn-container color-gray" ng-click="showPanel()">
@@ -57,7 +57,7 @@
             <span class="text-medium text-bold color-normal-pink">{{ 'APP_HOME_BOOKING_PANEL_SERVICES_SECTION' | translate }}</span>
         </div>
         <!-- Services radio -->
-        <div class="booking-panel-services-container" ng-repeat="service in view.serviceSelected.myServices" ng-if="view.serviceSelected.myServices.length > 0">
+        <div class="booking-panel-services-container" ng-repeat="service in view.serviceSelected.myServices">
             <custom-dropdown category="service" total-picked-items="service.servicesPicked"></custom-dropdown>
         </div>
 

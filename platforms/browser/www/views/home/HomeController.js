@@ -198,7 +198,7 @@ app
 		//#1.2 - All Service
 		promises.push($scope.getAllServices());
 		//#1.3 - All professional services
-		promises.push($scope.getProfessionalsArround());
+		//promises.push($scope.getProfessionalsArround()); - This will be inside getAllservices
 
 		//#Finally get all promises
 		$q.all(promises).then((result)=>{
@@ -262,10 +262,13 @@ app
 		return AppService.HOME_getAllServices().then((result)=>{
 			console.log(result);
 			$scope.view.allServicesToOffer = result.data;
+			
+			//#2 - We call professionals here because the promise of all services
+			$scope.getProfessionalsArround();
 		});
 	};
 
-	//#B - Get All Professionals arround from server
+	//#C - Get All Professionals arround from server
 	$scope.getProfessionalsArround = function(){
 		//#0 - Get Logged User
 		let userInfo = FrameworkUtils.getLoggedUser();
@@ -632,7 +635,9 @@ app
 		
 		//#1 - Mark service as view selected
 		$scope.view.serviceSelected = undefined;
-		$scope.view.serviceSelected = favorite;
+		$timeout(()=>{
+			$scope.view.serviceSelected = favorite;
+		})		
 
 		//#2 - Show the booking panel
 		$scope.showPanel('booking');
@@ -682,29 +687,70 @@ app
 	$scope.confirmBookReservation = function(){
 		//#1 - get the service selected
 		let service = $scope.view.serviceSelected;
+		let pickedServices = service.getPickedServices();
 
-		//#DEMO - insert service in "services list"
-		var today = new Date();
-		var dd = today.getDate();
-		var mm = today.getMonth()+1; //January is 0!
-		var hh = today.getHours();
-		var minutes = today.getMinutes();
-		var yyyy = today.getFullYear();
-		if(dd<10){
-		dd='0'+dd;
-		} 
-		if(mm<10){
-			mm='0'+mm;
-		} 
-		var today = dd+'/'+mm+'/'+yyyy;
+		let requestServiceParam = {
+			id_client: FrameworkUtils.getLoggedUser().id_user,
+			id_profissional : service.id,
+			services: pickedServices,
+			in_out: service.location,
+			address: service.address1,
+			price: $scope.getTotalPriceFromPickedService(),
+			date_service: (()=>{
+				//#1 - parse date
+				var today = new Date();
+				var dd = today.getDate();
+				var mm = today.getMonth()+1; //January is 0!
+				var hh = today.getHours();
+				var minutes = today.getMinutes();
+				var yyyy = today.getFullYear();
+				if(dd<10){
+					dd='0'+dd;
+				} 
+				if(mm<10){
+					mm='0'+mm;
+				} 
+				//#2 - return formatted date
+				return dd+'-'+mm+'-'+yyyy+ ' ' + hh+':'+minutes+':00';
+			})()
+		};
 
-		service.date = today,
-		service.hour = hh + 'h' + minutes + 'm' ,
-		service.status = 'waiting',
-		$scope.view.services.push(service);
+		$scope.view.isLoading = true;
+        $scope.view.loadingMessage = 'APP_HOME_LOADING_DEFAULT_MESSAGE';
 
-		//#show services panel
-		$scope.showPanel('services');
+		//#2 - Request a service to server
+		return AppService.HOME_requestService(requestServiceParam).then((result)=>{
+			console.log(result);
+
+			$scope.view.isLoading = false;
+
+			//#DEMO - insert service in "services list"
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1; //January is 0!
+			var hh = today.getHours();
+			var minutes = today.getMinutes();
+			var yyyy = today.getFullYear();
+			if(dd<10){
+				dd='0'+dd;
+			} 
+			if(mm<10){
+				mm='0'+mm;
+			} 
+			var today = dd+'/'+mm+'/'+yyyy;
+
+			service.date = today,
+			service.hour = hh + 'h' + minutes + 'm' ,
+			service.status = 'waiting',
+			$scope.view.services.push(service);
+
+			//#show services panel
+			$scope.showPanel('services');
+
+		});
+
+
+		
 	};
 
 

@@ -102,6 +102,21 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
         });
     }
 
+    /**
+     * #G - Request a service 
+     * parameter to server:
+     * {"id_client":0,"id_profissional":"","services":['416','415'],"date_service":"2018-12-14 00:02:00","in_out":"in","price":20.2,"address":""}
+     */
+    this.HOME_requestService  = function(requestServiceParam){
+        
+        let serviceURL = this.serviceWS + '/requestService';
+        let parameter = requestServiceParam;
+
+        return FrameworkUtils.Http_POST(serviceURL, parameter).then(function(result){     
+            return result.data;
+        });
+    }
+
     /********************************************************************************
      * Generic
      ********************************************************************************/
