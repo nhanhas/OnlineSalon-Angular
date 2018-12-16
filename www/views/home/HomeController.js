@@ -187,7 +187,8 @@ app
 			picture : 'assets/dev-pics/service-picture-04.png'
 		}
 	]
-
+	$scope.view.favorites = [];
+	
 	//#INITIALIZE Home data
 	$scope.initialize = function(){
 		
@@ -262,7 +263,7 @@ app
 		return AppService.HOME_getAllServices().then((result)=>{
 			console.log(result);
 			$scope.view.allServicesToOffer = result.data;
-			
+
 			//#2 - We call professionals here because the promise of all services
 			$scope.getProfessionalsArround();
 		});
@@ -716,7 +717,7 @@ app
 		};
 
 		$scope.view.isLoading = true;
-        $scope.view.loadingMessage = 'APP_HOME_LOADING_DEFAULT_MESSAGE';
+        $scope.view.loadingMessage = 'APP_HOME_BOOKING_PANEL_SCHEDULENOW_BUTTON_LOADING';
 
 		//#2 - Request a service to server
 		return AppService.HOME_requestService(requestServiceParam).then((result)=>{
