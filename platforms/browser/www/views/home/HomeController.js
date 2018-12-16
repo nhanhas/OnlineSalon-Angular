@@ -675,7 +675,7 @@ app
 			services: pickedServices,
 			in_out: service.location,
 			address: service.address1,
-			price: $scope.getTotalPriceFromPickedService(),
+			price: service.getTotalPriceFromPickedService(),
 			date_service: (()=>{
 				//#1 - parse date
 				var today = new Date();
