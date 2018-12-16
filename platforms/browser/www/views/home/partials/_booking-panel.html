@@ -73,11 +73,11 @@
             </div>
             <div class="booking-panel-resume-items">
                 <span class="text-bold color-gray">{{ 'APP_HOME_BOOKING_PANEL_RESUME_SERVICE' | translate }}:</span>
-                <span>{{ getTotalServicesPicked() }}</span>
+                <span>{{ view.serviceSelected.getTotalServicesPicked() }}</span>
             </div>
             <div class="booking-panel-resume-items">
                 <span class="text-large text-bold color-gray">{{ 'APP_HOME_BOOKING_PANEL_RESUME_TOTAL' | translate }}:</span>
-                <span class="text-large text-bold">{{ getTotalPriceFromPickedService() }}€</span>
+                <span class="text-large text-bold">{{ view.serviceSelected.getTotalPriceFromPickedService() }}€</span>
             </div>
             <div class="booking-panel-resume-items">
                 <span class="text-bold color-gray">{{ 'APP_HOME_BOOKING_PANEL_RESUME_PAYMENT' | translate }}:</span>

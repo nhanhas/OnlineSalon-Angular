@@ -188,7 +188,7 @@ app
 		}
 	]
 	$scope.view.favorites = [];
-	
+
 	//#INITIALIZE Home data
 	$scope.initialize = function(){
 		
@@ -662,29 +662,8 @@ app
 		$location.path('/profile');
 	}
 
-	/************************************** Booking panel ***********************************/
-	//#A - Display total items picked
-	$scope.getTotalServicesPicked = function(){
-		let totalServices = 0;
-
-		//#1 - Iterate each service to get info 
-		$scope.view.serviceSelected.myServices.forEach((service)=>{
-			totalServices += service.totalPickedItems;
-		})
-		return totalServices;
-	}
-	//#B - Display total price
-	$scope.getTotalPriceFromPickedService = function(){
-		let totalPriceServices = 0;
-
-		//#1 - Iterate each service to get info 
-		$scope.view.serviceSelected.myServices.forEach((service)=>{
-			totalPriceServices += service.totalPriceItems;
-		})
-		return totalPriceServices;
-	}
-
-	//#C - Book reservation confirm
+	/************************************** Booking panel ***********************************/	
+	//#A - Book reservation confirm
 	$scope.confirmBookReservation = function(){
 		//#1 - get the service selected
 		let service = $scope.view.serviceSelected;

@@ -4,7 +4,7 @@
  */
 class ServiceVO {
     
-    //function to parse available services to partner services
+    //function to parse available services to partner services. It goes to this.myServices
     getServices(ownedServices, allServices){
         let whatToOffer = [];
         //#1 - iterate categories
@@ -59,6 +59,30 @@ class ServiceVO {
         this.myServices = whatToOffer;
 
     };
+
+    //function to get price from picked services
+    getTotalPriceFromPickedService(){
+		let totalPriceServices = 0;
+
+		//#1 - Iterate each service to get info 
+		this.myServices.forEach((service)=>{
+			totalPriceServices += service.totalPriceItems;
+		})
+        return totalPriceServices;
+    }
+
+    //function to get the number of picked services
+    getTotalServicesPicked(){
+		let totalServices = 0;
+
+		//#1 - Iterate each service to get info 
+		this.myServices.forEach((service)=>{
+			totalServices += service.totalPickedItems;
+		})
+        return totalServices;
+    }
+       
+        
 
     //function to acquired picked services (used in booking)
     getPickedServices(){
