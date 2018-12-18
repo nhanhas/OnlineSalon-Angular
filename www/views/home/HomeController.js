@@ -20,7 +20,13 @@ app
 		allServicesToOffer : [],
 		servicesArround: [], 
 		bookingPlaceEnum : [], 		//Client Booking panel Options [PLACE]
-		bookingPlaceSelected : 1	//Client Booking panel Options Selected [PLACE]
+		bookingPlaceSelected : 1,	//Client Booking panel Options Selected [PLACE]
+		//for search panel
+		search: {
+			mode: 'default',
+			services : [], //this is a clone of 'allServicesToOffer'
+		}
+
 	}
 	
 	//Fullfill booking options (Not dynamic...ENUM)
@@ -262,7 +268,10 @@ app
 		//#1 - Get All Services by calling server
 		return AppService.HOME_getAllServices().then((result)=>{
 			console.log(result);
+			//#1.1 - Fulfill services to offer list
 			$scope.view.allServicesToOffer = result.data;
+			//#1.2 - init our search panel
+			$scope.initSearchPanel();
 
 			//#2 - We call professionals here because the promise of all services
 			$scope.getProfessionalsArround();
@@ -733,6 +742,24 @@ app
 		
 	};
 
+
+	/************************************** Search panel ***********************************/	
+	//#A  - This function will initialize and reset panel options
+	$scope.initSearchPanel = function(){
+		//#1 - Make a copy of services
+		$scope.view.search.services = angular.copy($scope.view.allServicesToOffer);
+	};
+
+	//#B - Behavior when a main category is selected
+	$scope.serachSelectCategory = function(category){
+		let oldValueSelection = category.picked;
+		//#1 - iterate category items to mark them
+		category.subCategories.forEach((subCategory)=>{
+			subCategory.picked = !oldValueSelection;
+		});
+		//#2 - marke categoy as picked
+		category.picked = !oldValueSelection;
+	};
 
 	//#1 - Load Application Data from Server
 	$scope.initialize();

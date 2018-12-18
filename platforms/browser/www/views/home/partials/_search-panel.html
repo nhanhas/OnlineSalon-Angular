@@ -1,10 +1,61 @@
-<div class="home-panel-search background-dark-gray home-menu-container home-menu-animation">
+<div class="home-panel-search background-white home-menu-container home-menu-animation">
     
     <!-- Close popup button -->
-    <div class="home-panel-close-btn-container color-white" ng-click="showPanel()">
+    <div class="home-panel-close-btn-container color-gray" ng-click="showPanel()">
         <span><i class="fa fa-times-thin fa-3x"></i></span>
     </div>
 
-   
+    <div class="text-large text-thin color-gray">{{ 'APP_HOME_SEARCH_PANEL_TITLE' | translate }}</div>
+
+    <div class="home-panel-data-container">
+
+        <!-- Simple search -->
+        <div ng-if="view.search.mode === 'default'">
+
+            <!-- Main Category -->
+            <div class="home-search-default-option" ng-repeat="service in view.search.services" ng-click="serachSelectCategory(service)">                
+                <span><i class="fa fa-2x" ng-class="(service.picked === true) ? 'fa-circle color-normal-pink' : 'fa-circle-thin color-gray'"></i></span>
+                &nbsp;
+                <span  class="text-large text-bold color-darkText">{{ service.categoryName }}</span>                
+            </div>
+        </div>
+
+        <!-- Advanced search -->
+        <div class="home-search-advanced-container" ng-if="view.search.mode === 'advanced'">
+
+            <div class="home-search-advanced-option" ng-repeat="category in view.search.services" >            
+                <!-- Main Category -->
+                <div class="home-search-advanced-option-item" ng-click="serachSelectCategory(category)">
+                    <span><i class="fa fa-2x" ng-class="(category.picked === true) ? 'fa-circle color-normal-pink' : 'fa-circle-thin color-gray'"></i></span>
+                    &nbsp;
+                    <span  class="text-large text-bold color-darkText">{{ category.categoryName }}</span>     
+                </div>          
+                
+                <!-- SubCategory -->
+                <div class="home-search-advanced-option-item" ng-repeat="subCategory in category.subCategories" >
+                    <span><i class="fa fa-2x" ng-class="(category.picked === true) ? 'fa-circle color-normal-pink' : 'fa-circle-thin color-gray'"></i></span>
+                    &nbsp;
+                    <span  class="text-large color-gray">{{ subCategory.subCategoryName }}</span>
+                </div>
+
+            </div>  
+
+
+
+        </div>
+
+        <!-- Search mode switcher / Filter Button -->
+        <div class="home-search-search-switch">
+            <!-- Search mode switcher -->
+            <span class="text-small text-bold color-gray"ng-click="view.search.mode='advanced'" ng-if="view.search.mode === 'default'">+&nbsp;{{ 'APP_HOME_SEARCH_PANEL_SWITCHER_DEFAULT' | translate }}</span>
+            <span class="text-small text-bold color-gray"ng-click="view.search.mode='default'" ng-if="view.search.mode === 'advanced'">+&nbsp;{{ 'APP_HOME_SEARCH_PANEL_SWITCHER_ADVANCED' | translate }}</span>
+
+            <!-- Filter Button -->
+            <div class="home-search-btn-container">
+                <custom-button label="{{ 'APP_HOME_SEARCH_PANEL_BTN' | translate }}" icon="fa-chevron-right" on-press=""></custom-button> 
+            </div>
+        </div>
+
+    </div>
  
 </div> 

@@ -11,7 +11,7 @@ class ServiceVO {
         allServices.forEach((category)=>{
             //#2 - create category header
             let newCategory = {
-                name: category.categoryName,
+                categoryName: category.categoryName,
                 location: 'in/out',//TODO
                 totalPickedItems : 0,//TODO
                 totalPriceItems : 0,//TODO

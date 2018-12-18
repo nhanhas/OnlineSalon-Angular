@@ -156,8 +156,46 @@
     right: 0;
     top: 50px;
     bottom: 70px;
+    text-align: center;
+    padding-top: 30px;
 }
 
+.home-search-default-option{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 60px;
+    margin-top: 20px;
+}
+.home-search-advanced-container{
+    overflow: scroll;
+    position: absolute;
+    bottom: 100px;
+    top: 60px;
+    left: 0;
+    right: 0;
+}
+.home-search-advanced-option{
+    text-align: left;
+    margin-left: 60px;
+}
+.home-search-advanced-option-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.home-search-search-switch{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+}
+.home-search-btn-container{
+    margin: 10px 30px;
+}
 
 /* carousel */
 .carousel{
