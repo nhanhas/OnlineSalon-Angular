@@ -275,6 +275,9 @@ app
 
 			//#2 - We call professionals here because the promise of all services
 			$scope.getProfessionalsArround();
+
+			//#3 - Get booked services
+			$scope.getBookedServices();
 		});
 	};
 
@@ -303,6 +306,7 @@ app
 					newService.phone = serviceItem.phone;    
 					newService.address1 = serviceItem.address1;    
 					newService.rating = '';
+					newService.picture = (serviceItem.photo && serviceItem.photo !== '') ? serviceItem.photo : newService.picture;
 
 					//#2.2 - [in, out, in/out]
 					newService.location = ((service)=>{
@@ -340,9 +344,86 @@ app
 					$scope.view.favorites.push(newService);					
 				});
 			});
+
+			
 		});		
 	};
 
+	//#D - Get list of requested services
+	$scope.getBookedServices = function(){
+		//#1 - Get logged user
+		let userInfo = FrameworkUtils.getLoggedUser();
+		let serviceParam = { id_client : userInfo.id_user};
+		//#2 - Get List of booked services Arround by calling server
+		return AppService.HOME_getBookedServices(serviceParam).then((result)=>{
+			console.log(result);
+			//#2.0 - reset all arround services
+			$scope.view.services = [];
+			let services = result.data;
+			//#2.1 - Fulfill services props and push it 
+			services.forEach((serviceItem) => {
+				let newService = new ServiceVO();
+				newService.id = serviceItem.id_prof;
+
+				newService.name = serviceItem.name;    
+				newService.email = serviceItem.email;    
+				newService.phone = serviceItem.phone;    
+				newService.address1 = serviceItem.address1;    
+				newService.rating = '';
+				newService.picture = (serviceItem.photo && serviceItem.photo !== '') ? serviceItem.photo : newService.picture;
+
+				newService.date = serviceItem.date_service !== '' ? serviceItem.date_service.split(' ')[0] : '';
+        		newService.hour = serviceItem.date_service !== '' ? serviceItem.date_service.split(' ')[1] : '';
+
+				//#2.2 - [in, out, in/out]
+				newService.location = ((service)=>{
+					if(service.in === "1")
+						return 'in';
+					if(service.out === "1")
+						return 'out';
+					if(service.in_e_out === "1")
+						return 'in/out';
+					if(service.busy === "1")
+						return 'busy';
+				})(serviceItem);
+
+				//#2.3 - Main skills
+				newService.skills = ((service)=>{
+					let skills = {	nails : false,
+									body : false,
+									hair : false,
+									treatment : false
+								};
+					skills.nails = serviceItem.main_services.includes("3");
+					skills.body = serviceItem.main_services.includes("6");
+					skills.hair = serviceItem.main_services.includes("5"); 
+					skills.treatment = serviceItem.main_services.includes("4");//TODO
+					return skills;
+				})(serviceItem);
+
+				//#2.4 - World Coordinates
+				newService.coords = { latitude: parseFloat(serviceItem.lat), longitude: parseFloat(serviceItem.long) };
+				
+				//#2.5 - Parse all services available to partner services
+				newService.getServices(serviceItem.services, $scope.view.allServicesToOffer);
+
+				//#2.6 - Status
+				newService.status = ((status)=>{
+					switch (status) {
+						case '1':
+							return 'waiting';
+						case '2':
+							return 'confirmed';							
+						case '3':							
+							return 'rejected';
+					}
+				})(serviceItem.estado);
+
+				//#3 - Push it to services Arround array
+				$scope.view.services.push(newService);					
+			});
+		});
+	};
 	
 	/**
 	 * Behaviour functions Panels
@@ -751,7 +832,7 @@ app
 	};
 
 	//#B - Behavior when a main category is selected
-	$scope.serachSelectCategory = function(category){
+	$scope.searchSelectCategory = function(category){
 		let oldValueSelection = category.picked;
 		//#1 - iterate category items to mark them
 		category.subCategories.forEach((subCategory)=>{
@@ -759,6 +840,20 @@ app
 		});
 		//#2 - marke categoy as picked
 		category.picked = !oldValueSelection;
+	};
+
+	//#C - Function when a subcategory is selected
+	$scope.searchSelectSubCategory = function(subCategory, category){
+		//#1 - initialize as All Selected
+		let isAllCategorySelected = true 
+		category.subCategories.forEach((subCategoryItem)=>{
+			if(subCategoryItem === subCategory)
+				subCategory.picked = !subCategory.picked;
+				//Update category picked
+				isAllCategorySelected = isAllCategorySelected && subCategory.picked;
+		});
+		//#2 - Update category with 'all selected' 
+		category.picked = isAllCategorySelected;
 	};
 
 	//#1 - Load Application Data from Server

@@ -13,7 +13,7 @@
         <div ng-if="view.search.mode === 'default'">
 
             <!-- Main Category -->
-            <div class="home-search-default-option" ng-repeat="service in view.search.services" ng-click="serachSelectCategory(service)">                
+            <div class="home-search-default-option" ng-repeat="service in view.search.services" ng-click="searchSelectCategory(service)">                
                 <span><i class="fa fa-2x" ng-class="(service.picked === true) ? 'fa-circle color-normal-pink' : 'fa-circle-thin color-gray'"></i></span>
                 &nbsp;
                 <span  class="text-large text-bold color-darkText">{{ service.categoryName }}</span>                
@@ -25,14 +25,14 @@
 
             <div class="home-search-advanced-option" ng-repeat="category in view.search.services" >            
                 <!-- Main Category -->
-                <div class="home-search-advanced-option-item" ng-click="serachSelectCategory(category)">
+                <div class="home-search-advanced-option-item" ng-click="searchSelectCategory(category)">
                     <span><i class="fa fa-2x" ng-class="(category.picked === true) ? 'fa-circle color-normal-pink' : 'fa-circle-thin color-gray'"></i></span>
                     &nbsp;
                     <span  class="text-large text-bold color-darkText">{{ category.categoryName }}</span>     
                 </div>          
                 
                 <!-- SubCategory -->
-                <div class="home-search-advanced-option-item" ng-repeat="subCategory in category.subCategories" >
+                <div class="home-search-advanced-option-item" ng-repeat="subCategory in category.subCategories" ng-click="searchSelectSubCategory(subCategory, category)">
                     <span><i class="fa fa-2x" ng-class="(category.picked === true) ? 'fa-circle color-normal-pink' : 'fa-circle-thin color-gray'"></i></span>
                     &nbsp;
                     <span  class="text-large color-gray">{{ subCategory.subCategoryName }}</span>

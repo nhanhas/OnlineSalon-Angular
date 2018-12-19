@@ -117,6 +117,21 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
         });
     }
 
+    /**
+     * #H - Request a list of requested services 
+     * parameter to server:
+     * {"id_client":0}
+     */
+    this.HOME_getBookedServices  = function(listServiceParam){
+        
+        let serviceURL = this.serviceWS + '/listServices';
+        let parameter = listServiceParam;
+
+        return FrameworkUtils.Http_POST(serviceURL, parameter).then(function(result){     
+            return result.data;
+        });
+    }
+
     /********************************************************************************
      * Generic
      ********************************************************************************/
