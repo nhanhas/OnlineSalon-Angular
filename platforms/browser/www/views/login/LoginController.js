@@ -282,8 +282,8 @@ app
         let clientData = {
             name : $scope.view.signInForm.identification.name,
             email_address : $scope.view.signInForm.identification.email,
-            password : $scope.view.signInForm.identification.phone,
-            telemovel : $scope.view.signInForm.identification.password
+            password : $scope.view.signInForm.identification.password,
+            telemovel : $scope.view.signInForm.identification.phone
         };
 
         //#1.1 - Call loading Screen

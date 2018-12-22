@@ -847,11 +847,14 @@ app
 		//#1 - initialize as All Selected
 		let isAllCategorySelected = true 
 		category.subCategories.forEach((subCategoryItem)=>{
-			if(subCategoryItem === subCategory)
+			if(subCategoryItem === subCategory){
 				subCategory.picked = !subCategory.picked;
-				//Update category picked
-				isAllCategorySelected = isAllCategorySelected && subCategory.picked;
+				
+			}
+			//Update category picked
+			isAllCategorySelected = isAllCategorySelected && subCategoryItem.picked;
 		});
+
 		//#2 - Update category with 'all selected' 
 		category.picked = isAllCategorySelected;
 	};
