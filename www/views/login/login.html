@@ -6,7 +6,7 @@
     </div>
 
     <!-- Login -->
-    <div id="login" ng-if="!view.signInOpened">
+    <div id="login" ng-if="!view.signInOpened && !view.forgotPwOpened">
     
         <!-- Stage 1 - Language-->
         <div id="language" ng-if="view.stepSelected === 'language'">
@@ -47,7 +47,7 @@
                         <span><i class="fa" ng-class="{'fa-circle' : view.credentials.remindCredentials}"></i></span>&nbsp;{{ 'APP_LOGIN_MEMORIZE_BTN' | translate }}
                     </div>
 
-                    <div class="pull-right"><span>{{ 'APP_LOGIN_RESET_PW_BTN' | translate }}</div>
+                    <div class="pull-right" ng-click="forgotPw()"><span>{{ 'APP_LOGIN_RESET_PW_BTN' | translate }}</div>
                 
                 </div>
 
@@ -120,8 +120,7 @@
         <div class="sign-close-button-container color-dark-pink" ng-click="signInClose()">
             <span><i class="fa fa-times-thin fa-2x"></i></span>
         </div>
-        
-       
+               
         <!-- Step 0 - Identification -->
         <div class="sign-step-0" ng-if="view.signInStep === 0">
 
@@ -225,6 +224,58 @@
 
         </div>
 
+
+    </div>
+
+    <!-- Forgot password -->
+    <div id="forgot-pw" ng-if="view.forgotPwOpened">
+
+        <!-- Close popup button -->
+        <div class="sign-close-button-container color-dark-pink" ng-click="forgotPwClose()">
+            <span><i class="fa fa-times-thin fa-2x"></i></span>
+        </div>
+
+        <!-- Form : identification -->
+        <div class="forgot-pw-step-form">
+
+            <!-- Step 0 - Email Id -->
+            <div class="forgot-pw-step-0" ng-if="view.forgotPwStep === 0">
+
+                <!-- Description -->
+                <div class="forgot-pw-desc text-center color-dark-pink">
+                    <div>{{ 'APP_FORGOT_PW_INFO_LABEL' | translate }}</div>            
+                </div>
+
+                <!-- Email -->
+                <div class="forgot-pw-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_0_EMAIL' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_0_EMAIL_DESC' | translate }}"  under-label-class="color-red" model="view.forgotPwForm.email"></custom-input>
+                </div>
+
+                 <!-- Submit email -->
+                 <div class="forgot-pw-step-form-button-container">
+                    <custom-button label="{{ 'APP_SIGNIN_CONFIRM_BTN' | translate }}" is-disabled="!view.forgotPwForm.isEmailValid" on-press="requestNewPw()"></custom-button> 
+                </div>
+
+                <!-- Error message -->
+                <div class="forgot-pw-credentials-message-container" >
+                    <span class="text-medium color-red" ng-show="view.forgotPwMessageError !== ''">{{ view.forgotPwMessageError | translate }}</span>
+                </div>
+
+            </div>
+
+            <!-- Step 1 - Success -->
+            <div class="forgot-pw-step-1" ng-if="view.forgotPwStep === 1">
+
+                <!-- Description -->
+                <div class="forgot-pw-desc text-center color-dark-pink">
+                    <div>{{ 'APP_FORGOT_PW_SUCCESS_LABEL' | translate }}</div>            
+                </div>
+
+            </div>
+
+        </div>
+
+        
 
     </div>
  

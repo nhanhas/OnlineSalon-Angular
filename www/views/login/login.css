@@ -150,3 +150,25 @@
 .sign-step-2-button{
     margin-top: 70px;
 }
+
+/* Forgot Password View */
+.forgot-pw-step-form{
+    margin: 10px 70px;
+}
+
+.forgot-pw-step-form-input-container{
+    margin-bottom: 20px;
+}
+.forgot-pw-desc{
+    white-space: pre-wrap;
+}
+
+.forgot-pw-step-form-button-container{
+    margin-bottom: 20px;
+}
+
+.forgot-pw-credentials-message-container{
+    text-align: center;
+    min-height: 30px; /* just to dont show the jump when message appears */
+    padding-top: 10px;
+}

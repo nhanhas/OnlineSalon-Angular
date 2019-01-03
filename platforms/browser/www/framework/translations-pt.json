@@ -64,6 +64,12 @@
     "APP_SIGNIN_ADDRESS_BTN" : "MORADA",
     "APP_SIGNIN_PAYMENT_BTN" : "PAGAMENTO",
 
+    "APP_FORGOT_PW_INFO_LABEL" : "Para recuperar a sua password, por favor introduza o e-mail com o qual se registou",
+    "APP_LOADING_FORGOT_PW_MSG" : "A enviar e-mail com recuperação de password",
+    "APP_FORGOT_PW_ERROR_MESSAGE" : "Ocurreu um erro a enviar e-mail ou o e-mail não está registado",
+    "APP_FORGOT_PW_SUCCESS_LABEL" : "E-mail com recuperação de password foi enviado com sucesso",
+
+
     "APP_LOGIN_ERROR_102" : "Os dados introduzidos não são válidos.",
     "APP_LOGIN_ERROR_103" : "Já existe um utilizador registado com este email",
     "APP_LOGIN_ERROR_104" : "Os dados introduzidos não estão corretos ou o utilizador com este email não está registado",

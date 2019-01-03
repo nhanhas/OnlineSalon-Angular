@@ -16,6 +16,7 @@ app
         credentialsMessageError : '',
         pinCodeMessageError : '',
         signMessageError : '',
+        forgotPwMessageError: '',
         signInOpened : false,
         signInStep : 0,
         signInForm : {        
@@ -34,6 +35,12 @@ app
                 confirmationCode : ''
             }
             
+        },
+        forgotPwOpened : false,
+        forgotPwStep : 0,
+        forgotPwForm : {
+            email : '',
+            isEmailValid : false
         }
     };
     
@@ -64,6 +71,15 @@ app
             $scope.view.signInForm.isCodeFormValid = true;
         else
             $scope.view.signInForm.isCodeFormValid = false;
+    }, true);
+
+    //[Watcher] - validate email form forgot pw is fulfilled
+    $scope.$watch('view.forgotPwForm.email', function(newVal, oldVal){ 
+        //TODO
+        if($scope.view.forgotPwForm.email !== '')
+            $scope.view.forgotPwForm.isEmailValid = true;
+        else
+            $scope.view.forgotPwForm.isEmailValid = false;
     }, true);
 
     //AUX - Reset signInForm
@@ -319,6 +335,57 @@ app
     //#J - Get Locales translations according to error 'code' 
     $scope.getTranslationByCode = function(code){
         return 'APP_LOGIN_ERROR_' + code.toString();        
+    }
+
+    //#K - Forgot Password Handler (open)
+    $scope.forgotPw = function(){
+        //#FIX - ng-class wrong usage
+        jQuery('body').css('background-color', '#FFFFFF');
+        //#1 - show sign in popup
+        $scope.view.forgotPwOpened = true;
+        
+    }
+
+    //#L - Forgot Password Handler (close)
+    $scope.forgotPwClose = function(){
+        //#FIX - ng-class wrong usage
+        jQuery('body').css('background-color', '#fce8f2');
+        //#1 - show forgot password popup
+        $scope.view.forgotPwOpened = false;
+        
+    }
+
+    //#M - Call service to forgot pw
+    $scope.requestNewPw = function(){
+
+        //#1 - clean messages
+        $scope.view.forgotPwMessageError = '';
+
+        let forgotPwParamenter = {
+            email : $scope.view.forgotPwForm.email
+        };
+
+        //#1.1 - Call loading Screen
+        $scope.view.isLoading = true;
+        $scope.view.loadingMessage = 'APP_LOADING_FORGOT_PW_MSG';
+        
+        //#1 - Make the server Call
+        AppService.LOGIN_forgotPW(forgotPwParamenter).then((result)=>{
+            //#1.1 - Remove loading
+            $scope.view.isLoading = false;
+            $scope.view.loadingMessage = undefined;
+
+            console.log(result);
+
+            if(result && result.code === 0){
+                //#2 - Navigate to Success Page
+                $scope.view.forgotPwStep = 1;
+        
+            }else{
+                 //#3 - Show message error
+                 $scope.view.forgotPwMessageError = 'APP_FORGOT_PW_ERROR_MESSAGE';
+            }
+        });
     }
 
 }]);

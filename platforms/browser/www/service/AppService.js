@@ -6,7 +6,8 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
 
     //App Service URL  
     //this.serviceWS = 'http://192.168.1.80:8000/server';
-    this.serviceWS = 'http://salaoonline.tk';
+    //this.serviceWS = 'http://salaoonline.tk';
+    this.serviceWS = 'https://salaonline.makeitdigital.pt';
    
     /********************************************************************************
      * Login 
@@ -56,11 +57,26 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
         });
     }
 
+    /**
+     * #D- Send forgot pw request
+     * parameter to server:
+     * {"email": ""}  
+     */
+    this.LOGIN_forgotPW  = function(forgotPwParameter){
+        
+        let serviceURL = this.serviceWS + '/resetPassword';
+        let parameter = forgotPwParameter;
+
+        return FrameworkUtils.Http_POST(serviceURL, parameter).then(function(result){     
+            return result.data;
+        });
+    }
+
     /********************************************************************************
      * Home
      ********************************************************************************/
     /**
-     * #D - Get Promotions to Home
+     * #A - Get Promotions to Home
      * parameter to server: none. 
      * It is a GET 
      */
@@ -74,7 +90,7 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
     }
 
     /**
-     * #E - Get All Services to Home
+     * #B - Get All Services to Home
      * parameter to server: none. 
      * It is a GET 
      */
@@ -88,7 +104,7 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
     }
 
     /**
-     * #F - Get all professional services arround
+     * #C - Get all professional services arround
      * parameter to server:
      * {"id_user":0 ,"lat":"","long":"","distance":50}
      */
@@ -103,7 +119,7 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
     }
 
     /**
-     * #G - Request a service 
+     * #D - Request a service 
      * parameter to server:
      * {"id_client":0,"id_profissional":"","services":['416','415'],"date_service":"2018-12-14 00:02:00","in_out":"in","price":20.2,"address":""}
      */
@@ -118,7 +134,7 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
     }
 
     /**
-     * #H - Request a list of requested services 
+     * #E - Request a list of requested services 
      * parameter to server:
      * {"id_client":0}
      */
@@ -136,7 +152,7 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
      * Generic
      ********************************************************************************/
     /**
-     * #C - refresh and save location
+     * #A - refresh and save location
      * parameter to server:
      * {"id_user": "","lat": "", "long": ""}  
      */

@@ -62,6 +62,11 @@
     "APP_SIGNIN_ADDRESS_BTN" : "ADDRESS",
     "APP_SIGNIN_PAYMENT_BTN" : "PAYMENT",
 
+    "APP_FORGOT_PW_INFO_LABEL" : "To recover your lost password, please insert your signed in e-mail",
+    "APP_LOADING_FORGOT_PW_MSG" : "Sending email with password recovery",
+    "APP_FORGOT_PW_ERROR_MESSAGE" : "An error occured on sending e-mail or this e-mail is not signed in",
+    "APP_FORGOT_PW_SUCCESS_LABEL" : "E-mail sent with success with password recovery",
+
     "APP_LOGIN_ERROR_102" : "Your data is invalid.",
     "APP_LOGIN_ERROR_103" : "Already exists an user with given email",
     "APP_LOGIN_ERROR_104" : "Your login credentials are not correct or user with this email is not signed in",
