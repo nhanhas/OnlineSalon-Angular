@@ -150,5 +150,17 @@
 
     "APP_LOADING_DEFAULT_MSG" : "Estamos a processar os seus dados",
 
-    "APP_VERSION" : "Versão 1.11"
+    "APP_VERSION" : "Versão 1.11",
+
+
+
+
+
+
+    "APP_HOME_PRO_RATING_LABEL" : "CLASSIFICAÇÃO",
+    "APP_HOME_PRO_DASHBOARD_ACCEPTANCE_LABEL" : "ACEITAÇÃO",
+    "APP_HOME_PRO_DASHBOARD_REJECTION_LABEL" : "REJEIÇÃO",
+    "APP_HOME_PRO_DASHBOARD_FIVE_STAR_LABEL" : "SERVIÇOS DE 5*"
+    
+
 }

@@ -1,8 +1,72 @@
 <nav-footer open-menu="showPanel('menu')" messages="view.messages.length" open-messages="showPanel('messages')" app-mode="professional"></nav-footer>
 
 <!--  Main content -->
-<div class="home-pro">
+<div class="home-pro background-white">
     
+    <!-- Name / Rating -->
+    <div class="home-pro-pictures">
+
+        <!-- Picture -->
+        <div class="home-pro-name-rating-container">
+            <div class="home-pro-img-container">
+                <img ng-src="{{ view.professional.picture }}">             
+            </div>
+            <span class="color-gray">{{ view.professional.name }}</span>
+        </div>
+        
+
+        <!-- Rating -->
+        <div class="home-pro-rating-container">
+            <span class="color-normal-pink"><i class="fa fa-star fa-3x"></i></span>
+            <span class="color-white">{{ view.professional.rating }}</span>
+            <span class="text-small color-gray">{{ 'APP_HOME_PRO_RATING_LABEL' | translate }}</span>
+        </div>
+        
+    </div>
+
+    <!-- Dashboard -->
+    <div class="home-pro-dashboard-container">
+        <div>
+            <!-- Acceptance -->
+            <div class="home-pro-dashboard-circle">
+                <span class="text-bold">{{ view.professional.acceptance }}</span>         
+            </div>
+
+            <!-- Icon -->
+            <div class="home-pro-dash-description">
+                <span><i class="fa fa-thumbs-o-up fa-2x color-normal-pink"></i></span>
+                <span class="color-gray text-small">{{ 'APP_HOME_PRO_DASHBOARD_ACCEPTANCE_LABEL' | translate }}</span>
+            </div>
+        </div>      
+
+        <div>
+            <!-- Rejection -->
+            <div class="home-pro-dashboard-circle">
+                <span class="text-bold">{{ view.professional.rejection }}</span>         
+            </div>
+
+            <!-- Icon -->
+            <div class="home-pro-dash-description">
+                <span><i class="fa fa-thumbs-o-down fa-2x color-normal-pink"></i></span>
+                <span class="color-gray text-small">{{ 'APP_HOME_PRO_DASHBOARD_REJECTION_LABEL' | translate }}</span>
+            </div>
+        </div>  
+
+        <div>
+            <!-- 5 star services -->
+            <div class="home-pro-dashboard-circle">
+                <span class="text-bold">{{ view.professional.qualityServices }}</span>         
+            </div>
+            
+            <!-- Icon -->
+            <div class="home-pro-dash-description home-pro-dash-description-stars">
+                <span><i  ng-repeat="i in [0, 1, 2, 3, 4]" class="fa fa-star-o color-normal-pink"></i></span>
+                <span class="color-gray text-small">{{ 'APP_HOME_PRO_DASHBOARD_FIVE_STAR_LABEL' | translate }}</span>
+            </div>
+        </div>  
+
+    </div>
+
 </div>
 
 <navbar is-online="view.isOnline" app-mode="professional"></navbar>

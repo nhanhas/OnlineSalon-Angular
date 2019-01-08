@@ -143,7 +143,12 @@
 
     "APP_LOADING_DEFAULT_MSG" : "We are processing your data",
 
-    "APP_VERSION" : "Version 1.11"
+    "APP_VERSION" : "Version 1.11",
 
 
+
+
+
+
+    "APP_HOME_PRO_RATING_LABEL" : "RATING"
 }

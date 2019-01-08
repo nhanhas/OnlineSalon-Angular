@@ -12,13 +12,23 @@ app
 		menuOpened : false,
         messages : [],
         services : [],
-        isOnline : false
+		isOnline : false,
+		professional : undefined
         
     }
     
 
-
-
+	/**
+	 * Dummy data
+	 */
+	$scope.view.professional = {
+		name: 'Nome parceira',
+		rating : 4.98,
+		picture: 'assets/dev-pics/service-picture-01.png',
+		acceptance : '100%',
+		rejection : '0%',
+		qualityServices : '6.355'
+	}
 
 
     //#INITIALIZE Home data
