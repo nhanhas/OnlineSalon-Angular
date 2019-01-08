@@ -1,0 +1,12 @@
+<nav-footer open-menu="showPanel('menu')" messages="view.messages.length" open-messages="showPanel('messages')" app-mode="professional"></nav-footer>
+
+<!--  Main content -->
+<div class="home-pro">
+    
+</div>
+
+<navbar is-online="view.isOnline" app-mode="professional"></navbar>
+
+
+ <!-- Menu Panel -->
+ <div ng-include="'/views/home/partials/_menu-panel.html'" ng-if="view.menuOpened"></div>

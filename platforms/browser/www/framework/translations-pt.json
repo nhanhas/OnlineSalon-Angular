@@ -83,6 +83,7 @@
     "APP_COMPONENT_HEADER_FILTER" : "SERVIÇOS",
 
     "APP_COMPONENT_FOOTER_FAVORITES" : "FAVORITOS",
+    "APP_COMPONENT_FOOTER_SERVICES" : "SERVIÇOS",
 
     "greeting"  : "Olá",
     "greeting_one" : "Bem vindo ao React Native!",

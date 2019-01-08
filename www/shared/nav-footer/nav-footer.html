@@ -1,5 +1,5 @@
-<!-- Bottom navbar -->
-<div class="nav-footer background-gray color-white">
+<!-- Client Mode -->
+<div class="nav-footer background-gray color-white" ng-if="appMode === 'client'">
 
     <!-- Menu burger -->
 	<div class="navbar-footer-menu-item" ng-click="onOpenMenuHandler()">
@@ -34,5 +34,32 @@
 		<span><i class="fa fa-search fa-rotate-90 fa-2x"></i></span>
 		<span class="text-small">{{ 'APP_COMPONENT_HEADER_FILTER' | translate }}</span>
 	</div>
+
+</div>
+
+<!-- Professional Mode -->
+<div class="nav-footer-pro background-gray color-white" ng-if="appMode === 'professional'">
+
+    <!-- Menu burger -->
+	<div class="navbar-footer-menu-item" ng-click="onOpenMenuHandler()">
+		<span><i class="fa fa-bars fa-2x"></i></span>
+	</div>
+
+    <div class="nav-footer-right-group">
+        <!-- Services -->
+        <div class="navbar-footer-menu-item" ng-click="">
+            <span class="fa-stack">
+                <i class="fa fa-map-marker fa-stack-2x"></i>            
+            </span>
+            <span class="text-small">&nbsp;{{ 'APP_COMPONENT_FOOTER_SERVICES' | translate }}</span>
+        </div>
+    
+        <!-- Messages -->
+        <div class="navbar-footer-menu-item" ng-click="onOpenMessagesHandler()">
+            <span><i class="fa fa-bell fa-2x"></i></span>
+            <div class="nav-footer-alert-sign nav-footer-alert-yellow" ng-if="messages > 0">{{ messages }}</div>
+            <span class="text-extra-small">&nbsp;</span>
+        </div>
+    </div>
 
 </div>

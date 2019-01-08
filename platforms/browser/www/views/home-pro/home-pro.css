@@ -1,0 +1,11 @@
+.home-pro{
+    position: absolute;
+    top: 50px;
+    bottom: 70px;
+    left: 0;
+    right: 0;
+}
+
+.home-pro-full-height{
+    bottom: 0;
+}

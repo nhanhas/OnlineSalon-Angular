@@ -21,3 +21,17 @@
     align-items: center;
     position: relative;
 }
+
+/* Professional mode */ 
+.navbar-pro {
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+.navbar-menu-item-pro{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    width: 110px;
+    justify-content: space-evenly;
+}

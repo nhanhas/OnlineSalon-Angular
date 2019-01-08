@@ -5,11 +5,12 @@ app
             scope: {
                 messages : '=?', // number of messages
                 services : '=?',  // number of services
-                openMessages : '&',
-                openServices : '&',
-                openFavorites: '&',
-                openMenu : '&',
-                expandFilter : '&'
+                openMessages : '&?',
+                openServices : '&?',
+                openFavorites: '&?',
+                openMenu : '&?',
+                expandFilter : '&?',
+                appMode : '@?' //What mode [client, professional]
             },
             templateUrl: 'shared/nav-footer/nav-footer.html',
 
@@ -18,6 +19,7 @@ app
                 //Init attributes
                 scope.isDisabled = scope.messages || 0;
                 scope.isDisabled = scope.services || 0;
+                scope.appMode = scope.appMode || 'client';
 
                 if (!attrs.openMessages) {
                     scope.openMessages = undefined;

@@ -19,6 +19,10 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl: 'views/view2/view2.html',
             controller: 'View2Controller'
         }).
+        when('/home-pro', {
+            templateUrl: 'views/home-pro/home-pro.html',
+            controller: 'HomeProController'
+        }).
         otherwise({
             redirectTo: '/login' 
         });
@@ -65,3 +69,6 @@ app.config(
         });
     }]
 );
+
+//App Mode (client or professoial)
+app.constant('APP_CONFIG', { "mode" : 'PRO' });
