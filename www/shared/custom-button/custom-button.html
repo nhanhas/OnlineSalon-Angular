@@ -13,3 +13,11 @@
      ng-class="{'custom-button-disabled' : isDisabled}">
     {{ label }} <span ng-if="icon !== ''">&nbsp;<i class="fa {{icon}}"></i></span>
 </div>
+
+<!-- thin-white -->
+<div class="custom-button-container custom-button-thin-white color-xDark-pink " 
+     ng-click="onPressHandler()" 
+     ng-if="layout === 'thin-white'"
+     ng-class="{'custom-button-disabled' : isDisabled}">
+    {{ label }} <span ng-if="icon !== ''">&nbsp;<i class="fa {{icon}}"></i></span>
+</div>

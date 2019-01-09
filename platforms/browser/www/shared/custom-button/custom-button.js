@@ -4,7 +4,7 @@ app
             restrict: 'EA',
             scope: {
                 label: '@',
-                layout: '@?', //[default, large]
+                layout: '@?', //[default, large, thin]
                 icon : '@?',
                 onPress : '&', 
                                 

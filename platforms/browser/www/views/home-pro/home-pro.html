@@ -26,8 +26,8 @@
 
     <!-- Dashboard -->
     <div class="home-pro-dashboard-container">
+        <!-- Acceptance -->
         <div>
-            <!-- Acceptance -->
             <div class="home-pro-dashboard-circle">
                 <span class="text-bold">{{ view.professional.acceptance }}</span>         
             </div>
@@ -39,8 +39,8 @@
             </div>
         </div>      
 
+        <!-- Rejection -->
         <div>
-            <!-- Rejection -->
             <div class="home-pro-dashboard-circle">
                 <span class="text-bold">{{ view.professional.rejection }}</span>         
             </div>
@@ -52,8 +52,8 @@
             </div>
         </div>  
 
+        <!-- 5 star services -->
         <div>
-            <!-- 5 star services -->
             <div class="home-pro-dashboard-circle">
                 <span class="text-bold">{{ view.professional.qualityServices }}</span>         
             </div>
@@ -64,7 +64,33 @@
                 <span class="color-gray text-small">{{ 'APP_HOME_PRO_DASHBOARD_FIVE_STAR_LABEL' | translate }}</span>
             </div>
         </div>  
+    </div>
 
+    <!-- Congratulations -->
+    <div class="home-pro-congratz-container background-menu-pink">
+
+        <!-- Close popup button -->
+        <div class="home-pro-congratz-close-btn-container color-white" ng-click="">
+            <span><i class="fa fa-times-thin fa-3x"></i></span>
+        </div>
+
+        <!-- Pic -->
+        <div class="home-pro-congratz-img-container">
+            <img width="100px" src="assets/pro-congratz.png">
+        </div>
+
+        <!-- Details -->
+        <div class="color-white">
+            <span class="text-bold">PARABÉNS!!</span>
+            <br>
+            <span class="text-thin">Realizou 50 serviços na semana.<br>A sua dedicação merece ser comemorada.</span>
+        </div>
+
+        <!-- Share -->
+        <div class="home-pro-share-button">
+            <custom-button label="{{ 'APP_HOME_PRO_SHARE_BTN_LABEL' | translate }}" layout="thin-white" on-press=""></custom-button>
+        </div>
+        
     </div>
 
 </div>

@@ -1,9 +1,8 @@
 .home-pro{
-    position: absolute;
-    top: 50px;
-    bottom: 70px;
-    left: 0;
-    right: 0;
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    padding-bottom: 50px;
 }
 
 .home-pro-full-height{
@@ -22,6 +21,7 @@
     justify-content: space-evenly;
     align-items: center;
     margin-top: 20px;
+    padding-top: 15px;
 }
 .home-pro-img-container{
     width: 80px;
@@ -89,4 +89,27 @@
     height: 43px;
     margin-top: 10px;
     padding-top: 10px;
+}
+
+/* Congratz */
+.home-pro-congratz-container{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 15px 0;
+    position: relative;
+}
+.home-pro-congratz-close-btn-container{
+    position: absolute;
+    top: 0;
+    right: 20px;
+}
+.home-pro-congratz-img-container{
+    margin: 10px 0px;
+}
+.home-pro-share-button{
+    width: 100%;
+    padding: 20px 20px 25px;
 }
