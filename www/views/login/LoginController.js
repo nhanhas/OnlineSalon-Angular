@@ -1,5 +1,5 @@
 app
-.controller('LoginController', ['$rootScope', '$scope', '$timeout', '$location', '$http','$q', '$translate', 'FrameworkUtils', 'AppService',   function($rootScope, $scope, $timeout, $location, $http, $q, $translate,FrameworkUtils, AppService) {
+.controller('LoginController', ['$rootScope', '$scope', '$timeout', '$location', '$http','$q', '$translate', 'FrameworkUtils', 'AppService', 'APP_CONFIG',   function($rootScope, $scope, $timeout, $location, $http, $q, $translate,FrameworkUtils, AppService, APP_CONFIG) {
 
     /**
      * Controller variables
@@ -211,14 +211,20 @@ app
             FrameworkUtils.getUserCurrentPosition().then(()=>{
                 //#3 - Use app without Geolocation          
                 $rootScope.allowGeolocation = true;
-                $location.path('/home');
+                if(APP_CONFIG.mode === 'PRO')
+                    $location.path('/home-pro');
+                else
+                    $location.path('/home');
                 $rootScope.$apply();
             })
             
         }else{
             //#3 - Use app without Geolocation          
             $rootScope.allowGeolocation = false;
-            $location.path('/home');
+            if(APP_CONFIG.mode === 'PRO')
+                $location.path('/home-pro');
+            else
+                $location.path('/home');
             
         }
     }
