@@ -8,13 +8,14 @@ app
 		isLoading : true,
         loadingMessage : 'APP_HOME_LOADING_DEFAULT_MESSAGE',		
         messagesOpened : false,
-		servicesOpened : false,
+		requestsOpened : false,
 		menuOpened : false,
-        messages : [],
-        services : [],
+		messages : [],
+		clientsRequests : [],
 		isOnline : false,
 		professional : undefined,
-        hintsToBeFive : []
+		hintsToBeFive : []
+		
     }
     
 
@@ -30,6 +31,7 @@ app
 		qualityServices : '6.355'
 	}
 
+	//5 Star Hints
 	$scope.view.hintsToBeFive = [
 		{
 			name: 'Nome opinião A',
@@ -41,8 +43,25 @@ app
 			date : 'dd/mm/aaa',
 			text: 'Lorem ipsum dolor sit amet, consectetur adipisc- ing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 		},
+		{
+			name: 'Nome opinião C',
+			date : 'dd/mm/aaa',
+			text: 'Lorem ipsum dolor sit amet, consectetur adipisc- ing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+		},
+		{
+			name: 'Nome opinião D',
+			date : 'dd/mm/aaa',
+			text: 'Lorem ipsum dolor sit amet, consectetur adipisc- ing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+		}
 	]
-
+	$scope.view.clientsRequests = [
+		{
+			name : 'Miguel Pereira',
+			picture: 'assets/dev-pics/service-picture-02.png',
+			distanceBetween : 5,
+			requestedServices : 'Unhas, depilação, massagem'
+		}
+	]
 
     //#INITIALIZE Home data
 	$scope.initialize = function(){
@@ -76,7 +95,7 @@ app
 	$scope.showPanel = function(panel){
 		//#1 - First we reset all 'Opened' flags
 		$scope.view.messagesOpened = false;
-		$scope.view.servicesOpened = false;
+		$scope.view.requestsOpened = false;
 		$scope.view.menuOpened = false;
 
 		//#services panel reset (booking/schedule a service)
@@ -89,8 +108,8 @@ app
 			case 'messages':
 				$scope.view.messagesOpened = true;
 				break;
-			case 'services':
-				$scope.view.servicesOpened = true;
+			case 'requests':
+				$scope.view.requestsOpened = true;
 				break;
 			case 'menu':
 				$scope.view.menuOpened = true;
@@ -100,7 +119,8 @@ app
 	}
 
 
-    
+	//#1 - Load Application Data from Server
+	$scope.initialize();
 
 
 }]);

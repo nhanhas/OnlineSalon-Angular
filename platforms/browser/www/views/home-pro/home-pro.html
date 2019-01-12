@@ -1,121 +1,138 @@
-<nav-footer open-menu="showPanel('menu')" messages="view.messages.length" open-messages="showPanel('messages')" app-mode="professional"></nav-footer>
+<nav-footer open-menu="showPanel('menu')" messages="view.messages.length" open-messages="showPanel('messages')" requests="view.clientsRequests.length" open-requests="showPanel('requests')" app-mode="professional"></nav-footer>
 
 <!--  Main content -->
-<div class="home-pro background-white">
-    
-    <!-- Name / Rating -->
-    <div class="home-pro-pictures">
+<div class="home-pro background-white" ng-class="{ 'home-pro-full-height' : (                                                   
+                                                    view.messagesOpened ||
+                                                    view.requestsOpened) }">
+    <!-- Note: This ng-if must be the same as "nav-bar ng-if conditions" -->
+    <div ng-if=" !(  view.messagesOpened ||
+                    view.requestsOpened)">                                    
+        <!-- Name / Rating -->
+        <div class="home-pro-pictures">
 
-        <!-- Picture -->
-        <div class="home-pro-name-rating-container">
-            <div class="home-pro-img-container">
-                <img ng-src="{{ view.professional.picture }}">             
-            </div>
-            <span class="color-gray">{{ view.professional.name }}</span>
-        </div>
-        
-
-        <!-- Rating -->
-        <div class="home-pro-rating-container">
-            <span class="color-normal-pink"><i class="fa fa-star fa-3x"></i></span>
-            <span class="color-white">{{ view.professional.rating }}</span>
-            <span class="text-small color-gray">{{ 'APP_HOME_PRO_RATING_LABEL' | translate }}</span>
-        </div>
-        
-    </div>
-
-    <!-- Dashboard -->
-    <div class="home-pro-dashboard-container">
-        <!-- Acceptance -->
-        <div>
-            <div class="home-pro-dashboard-circle">
-                <span class="text-bold">{{ view.professional.acceptance }}</span>         
-            </div>
-
-            <!-- Icon -->
-            <div class="home-pro-dash-description">
-                <span><i class="fa fa-thumbs-o-up fa-2x color-normal-pink"></i></span>
-                <span class="color-gray text-small">{{ 'APP_HOME_PRO_DASHBOARD_ACCEPTANCE_LABEL' | translate }}</span>
-            </div>
-        </div>      
-
-        <!-- Rejection -->
-        <div>
-            <div class="home-pro-dashboard-circle">
-                <span class="text-bold">{{ view.professional.rejection }}</span>         
-            </div>
-
-            <!-- Icon -->
-            <div class="home-pro-dash-description">
-                <span><i class="fa fa-thumbs-o-down fa-2x color-normal-pink"></i></span>
-                <span class="color-gray text-small">{{ 'APP_HOME_PRO_DASHBOARD_REJECTION_LABEL' | translate }}</span>
-            </div>
-        </div>  
-
-        <!-- 5 star services -->
-        <div>
-            <div class="home-pro-dashboard-circle">
-                <span class="text-bold">{{ view.professional.qualityServices }}</span>         
+            <!-- Picture -->
+            <div class="home-pro-name-rating-container">
+                <div class="home-pro-img-container">
+                    <img ng-src="{{ view.professional.picture }}">             
+                </div>
+                <span class="color-gray">{{ view.professional.name }}</span>
             </div>
             
-            <!-- Icon -->
-            <div class="home-pro-dash-description home-pro-dash-description-stars">
-                <span><i  ng-repeat="i in [0, 1, 2, 3, 4]" class="fa fa-star-o color-normal-pink"></i></span>
-                <span class="color-gray text-small">{{ 'APP_HOME_PRO_DASHBOARD_FIVE_STAR_LABEL' | translate }}</span>
+
+            <!-- Rating -->
+            <div class="home-pro-rating-container">
+                <span class="color-normal-pink"><i class="fa fa-star fa-3x"></i></span>
+                <span class="color-white">{{ view.professional.rating }}</span>
+                <span class="text-small color-gray">{{ 'APP_HOME_PRO_RATING_LABEL' | translate }}</span>
             </div>
-        </div>  
+            
+        </div>
+
+        <!-- Dashboard -->
+        <div class="home-pro-dashboard-container">
+            <!-- Acceptance -->
+            <div>
+                <div class="home-pro-dashboard-circle">
+                    <span class="text-bold">{{ view.professional.acceptance }}</span>         
+                </div>
+
+                <!-- Icon -->
+                <div class="home-pro-dash-description">
+                    <span><i class="fa fa-thumbs-o-up fa-2x color-normal-pink"></i></span>
+                    <span class="color-gray text-small">{{ 'APP_HOME_PRO_DASHBOARD_ACCEPTANCE_LABEL' | translate }}</span>
+                </div>
+            </div>      
+
+            <!-- Rejection -->
+            <div>
+                <div class="home-pro-dashboard-circle">
+                    <span class="text-bold">{{ view.professional.rejection }}</span>         
+                </div>
+
+                <!-- Icon -->
+                <div class="home-pro-dash-description">
+                    <span><i class="fa fa-thumbs-o-down fa-2x color-normal-pink"></i></span>
+                    <span class="color-gray text-small">{{ 'APP_HOME_PRO_DASHBOARD_REJECTION_LABEL' | translate }}</span>
+                </div>
+            </div>  
+
+            <!-- 5 star services -->
+            <div>
+                <div class="home-pro-dashboard-circle">
+                    <span class="text-bold">{{ view.professional.qualityServices }}</span>         
+                </div>
+                
+                <!-- Icon -->
+                <div class="home-pro-dash-description home-pro-dash-description-stars">
+                    <span><i  ng-repeat="i in [0, 1, 2, 3, 4]" class="fa fa-star-o color-normal-pink"></i></span>
+                    <span class="color-gray text-small">{{ 'APP_HOME_PRO_DASHBOARD_FIVE_STAR_LABEL' | translate }}</span>
+                </div>
+            </div>  
+        </div>
+
+        <!-- Congratulations -->
+        <div class="home-pro-congratz-container background-menu-pink">
+
+            <!-- Close popup button -->
+            <div class="home-pro-congratz-close-btn-container color-white" ng-click="">
+                <span><i class="fa fa-times-thin fa-3x"></i></span>
+            </div>
+
+            <!-- Pic -->
+            <div class="home-pro-congratz-img-container">
+                <img width="100px" src="assets/pro-congratz.png">
+            </div>
+
+            <!-- Details -->
+            <div class="color-white">
+                <span class="text-bold">PARABÉNS!!</span>
+                <br>
+                <span class="text-thin">Realizou 50 serviços na semana.<br>A sua dedicação merece ser comemorada.</span>
+            </div>
+
+            <!-- Share -->
+            <div class="home-pro-share-button">
+                <custom-button label="{{ 'APP_HOME_PRO_SHARE_BTN_LABEL' | translate }}" layout="thin-white" on-press=""></custom-button>
+            </div>
+            
+        </div>
+
+        <!-- 5* Hints -->
+        <div class="home-pro-hints-container">
+            <!-- title -->
+            <div class="home-pro-hints-title text-center">
+                <span class="text-xlarge text-thin color-normal-pink">{{ 'APP_HOME_PRO_HINTS_TITLE_LABEL' | translate }}</span>
+            </div>
+
+            <!-- Hints -->
+            <div class="home-pro-hint-item" ng-repeat="hint in view.hintsToBeFive">
+                <!-- Name -->
+                <span class="text-bold">{{ hint.name }}</span>
+                <!-- Date -->
+                <span class="text-thin text-small color-normal-pink">{{ hint.date }}</span>
+                <!-- Text -->
+                <span>{{ hint.text }}</span>
+            </div>
+
+        </div>
     </div>
 
-    <!-- Congratulations -->
-    <div class="home-pro-congratz-container background-menu-pink">
 
-        <!-- Close popup button -->
-        <div class="home-pro-congratz-close-btn-container color-white" ng-click="">
-            <span><i class="fa fa-times-thin fa-3x"></i></span>
-        </div>
-
-        <!-- Pic -->
-        <div class="home-pro-congratz-img-container">
-            <img width="100px" src="assets/pro-congratz.png">
-        </div>
-
-        <!-- Details -->
-        <div class="color-white">
-            <span class="text-bold">PARABÉNS!!</span>
-            <br>
-            <span class="text-thin">Realizou 50 serviços na semana.<br>A sua dedicação merece ser comemorada.</span>
-        </div>
-
-        <!-- Share -->
-        <div class="home-pro-share-button">
-            <custom-button label="{{ 'APP_HOME_PRO_SHARE_BTN_LABEL' | translate }}" layout="thin-white" on-press=""></custom-button>
-        </div>
-        
-    </div>
-
-    <!-- 5* Hints -->
-    <div class="home-pro-hints-container">
-        <!-- title -->
-        <div class="home-pro-hints-title text-center">
-            <span class="text-xlarge text-thin color-normal-pink">{{ 'APP_HOME_PRO_HINTS_TITLE_LABEL' | translate }}</span>
-        </div>
-
-        <!-- Hints -->
-        <div class="home-pro-hint-item" ng-repeat="hint in view.hintsToBeFive">
-            <!-- Name -->
-            <span class="text-bold">{{ hint.name }}</span>
-            <!-- Date -->
-            <span class="text-thin text-small color-normal-pink">{{ hint.date }}</span>
-            <!-- Text -->
-            <span>{{ hint.text }}</span>
-        </div>
-
-    </div>
+    <!-- Request Services Panel -->
+    <div ng-include="'/views/home-pro/partials/_requests-panel.html'" ng-if="view.requestsOpened"></div>
 
 </div>
 
-<navbar is-online="view.isOnline" app-mode="professional"></navbar>
+
+
+<navbar is-online="view.isOnline" app-mode="professional" 
+        ng-if=" !(  view.messagesOpened ||
+                    view.requestsOpened)"></navbar>
 
 
  <!-- Menu Panel -->
  <div ng-include="'/views/home/partials/_menu-panel.html'" ng-if="view.menuOpened"></div>
+
+
+  <!-- Loading -->
+  <loading is-loading="view.isLoading" loading-message="view.loadingMessage"></loading>

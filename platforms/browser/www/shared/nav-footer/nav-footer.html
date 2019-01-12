@@ -47,10 +47,12 @@
 
     <div class="nav-footer-right-group">
         <!-- Services -->
-        <div class="navbar-footer-menu-item" ng-click="">
-            <span class="fa-stack">
-                <i class="fa fa-map-marker fa-stack-2x"></i>            
+        <div class="navbar-footer-menu-item" ng-click="onOpenRequestsHandler()">
+            <span class="map-marker fa-stack">
+                <i class="fa fa-map-marker fa-stack-2x"></i>
+                <i class="fa fa-map-marker fa-stack-1x"></i>
             </span>
+            <div class="nav-footer-alert-sign background-red" ng-if="requests > 0">{{ requests }}</div>
             <span class="text-small">&nbsp;{{ 'APP_COMPONENT_FOOTER_SERVICES' | translate }}</span>
         </div>
     

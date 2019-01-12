@@ -10,7 +10,9 @@ app
                 openFavorites: '&?',
                 openMenu : '&?',
                 expandFilter : '&?',
-                appMode : '@?' //What mode [client, professional]
+                appMode : '@?', //What mode [client, professional],
+                openRequests : '&?', //on open client requests panel (PRO mode) 
+                requests : '=?'// number of client requests (PRO mode)
             },
             templateUrl: 'shared/nav-footer/nav-footer.html',
 
@@ -38,6 +40,10 @@ app
                     scope.expandFilter = undefined;
                 }
 
+                if (!attrs.openRequests) {
+                    scope.openRequests = undefined;
+                }
+
                 //Open Menu
                 scope.onOpenMenuHandler = function(){
                     scope.openMenu();
@@ -62,6 +68,11 @@ app
                 scope.onOpenFavoritesHandler = function(){
                     scope.openFavorites();
                 }   
+
+                //Expand Requests
+                scope.onOpenRequestsHandler = function(){
+                    scope.openRequests();
+                }
 
             }
         };

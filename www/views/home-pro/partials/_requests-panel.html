@@ -1,0 +1,19 @@
+<!-- List of Client requests -->
+<div class="home-pro-panel background-white">
+    
+    <!-- Close popup button -->
+    <div class="home-pro-panel-close-btn-container color-gray" ng-click="showPanel()">
+        <span><i class="fa fa-times-thin fa-3x"></i></span>
+    </div>
+
+    <div class="text-large text-thin color-gray">{{ 'APP_HOME_PRO_SERVICES_REQUESTS_PANEL_TITLE' | translate }}</div>
+
+    <div class="home-pro-panel-data-container">
+
+        <div class="home-pro-panel-data-tile" ng-repeat="request in view.clientsRequests">
+
+        </div>
+
+    </div>
+
+</div>

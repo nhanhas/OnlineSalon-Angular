@@ -1,12 +1,14 @@
 .home-pro{
-    position: relative;
-    margin-top: 50px;
-    margin-bottom: 70px;
-    padding-bottom: 50px;
+    position: absolute;
+    top: 50px;
+    padding-bottom: 70px;
+    left: 0;
+    right: 0;
 }
 
 .home-pro-full-height{
     bottom: 0;
+    margin-bottom: 0;
 }
 
 .home-pro-name-rating-container{
@@ -123,4 +125,35 @@
     display: flex;
     flex-direction: column;
     margin: 20px 15px 35px;
+}
+
+
+/* Generic Panel CSS */
+.home-pro-panel{
+    position: absolute;
+    min-height: 100%;
+    left: 0;
+    right: 0;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 50px;
+}
+.home-pro-panel-close-btn-container{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+.home-pro-panel-data-tile{
+    margin-bottom: 15px;
+}
+.home-pro-panel-data-container{
+    width: 100%;
+    margin-top: 25px;
+
 }
