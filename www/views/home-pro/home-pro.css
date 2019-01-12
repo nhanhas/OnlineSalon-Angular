@@ -113,3 +113,14 @@
     width: 100%;
     padding: 20px 20px 25px;
 }
+
+/* 5* Hints */
+.home-pro-hints-container{
+    margin-top: 40px;
+}
+
+.home-pro-hint-item{
+    display: flex;
+    flex-direction: column;
+    margin: 20px 15px 35px;
+}

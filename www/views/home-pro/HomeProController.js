@@ -13,8 +13,8 @@ app
         messages : [],
         services : [],
 		isOnline : false,
-		professional : undefined
-        
+		professional : undefined,
+        hintsToBeFive : []
     }
     
 
@@ -29,6 +29,19 @@ app
 		rejection : '0%',
 		qualityServices : '6.355'
 	}
+
+	$scope.view.hintsToBeFive = [
+		{
+			name: 'Nome opinião A',
+			date : 'dd/mm/aaa',
+			text: 'Lorem ipsum dolor sit amet, consectetur adipisc- ing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+		},
+		{
+			name: 'Nome opinião B',
+			date : 'dd/mm/aaa',
+			text: 'Lorem ipsum dolor sit amet, consectetur adipisc- ing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+		},
+	]
 
 
     //#INITIALIZE Home data

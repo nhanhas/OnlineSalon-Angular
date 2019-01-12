@@ -93,6 +93,25 @@
         
     </div>
 
+    <!-- 5* Hints -->
+    <div class="home-pro-hints-container">
+        <!-- title -->
+        <div class="home-pro-hints-title text-center">
+            <span class="text-xlarge text-thin color-normal-pink">{{ 'APP_HOME_PRO_HINTS_TITLE_LABEL' | translate }}</span>
+        </div>
+
+        <!-- Hints -->
+        <div class="home-pro-hint-item" ng-repeat="hint in view.hintsToBeFive">
+            <!-- Name -->
+            <span class="text-bold">{{ hint.name }}</span>
+            <!-- Date -->
+            <span class="text-thin text-small color-normal-pink">{{ hint.date }}</span>
+            <!-- Text -->
+            <span>{{ hint.text }}</span>
+        </div>
+
+    </div>
+
 </div>
 
 <navbar is-online="view.isOnline" app-mode="professional"></navbar>
