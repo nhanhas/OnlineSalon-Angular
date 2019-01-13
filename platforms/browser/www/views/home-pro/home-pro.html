@@ -4,10 +4,12 @@
 <div class="home-pro background-white" ng-class="{ 'home-pro-full-height' : (                                                   
                                                     view.messagesOpened ||
                                                     view.trackingOpened ||
+                                                    view.executionOpened ||
                                                     view.requestsOpened) }">
     <!-- Note: This ng-if must be the same as "nav-bar ng-if conditions" except tracking panel-->
     <div ng-if=" !(  view.messagesOpened ||
                     view.trackingOpened ||
+                    view.executionOpened ||
                     view.requestsOpened)">                                    
         <!-- Name / Rating -->
         <div class="home-pro-pictures">
@@ -125,6 +127,9 @@
 
     <!-- Tracking Services Panel -->
     <div ng-include="'/views/home-pro/partials/_tracking-panel.html'" ng-if="view.trackingOpened"></div>
+
+    <!-- Execution Services Panel -->
+    <div ng-include="'/views/home-pro/partials/_execution-panel.html'" ng-if="view.executionOpened"></div>
 
 </div>
 

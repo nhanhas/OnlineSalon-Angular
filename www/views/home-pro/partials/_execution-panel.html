@@ -1,0 +1,69 @@
+<!-- This panel is responsible to show execution of service -->
+<div class="home-pro-panel background-white">
+
+    <!-- Close popup button -->
+    <div class="home-pro-panel-close-btn-container color-gray" ng-click="showPanel()">
+        <span><i class="fa fa-times-thin fa-3x"></i></span>
+    </div>
+
+    <div class="text-large text-thin color-gray">{{ 'APP_HOME_PRO_SERVICES_EXECUTION_PANEL_TITLE' | translate }}</div>
+    
+    <div class="home-pro-panel-data-container">
+
+        <!-- Client request tile --> 
+        <div class="home-pro-execution-request-container">
+            <client-request request="view.selectedRequest" mode="on-execution"></client-request>        
+        </div>
+
+        <!-- Time elapsed -->
+        <div class="home-pro-execution-time-lapse">   
+            <!-- Label elapsed time -->
+            <span class="text-small color-light-orange">{{ 'APP_HOME_PRO_SERVICES_EXECUTION_PANEL_ELAPSED_TIME' | translate }}</span>
+            <span class="text-large text-bold">1h 20m 11s</span>
+        </div>
+
+        <!-- Finish Service -->
+        <div class="home-pro-execution-finish-btn-container">
+            <custom-button label="{{ 'APP_HOME_PRO_SERVICES_EXECUTION_PANEL_FINISH' | translate }}" layout="default" on-press="onFinishRequest()" is-disabled="view.selectedRequest.status === 'finished'"></custom-button> 
+        </div>
+
+        <!-- Payments -->
+        <div class="home-pro-execution-payment-container">
+            
+            <!-- In course payment -->
+            <span class="text-small color-normal-pink" ng-if="view.selectedRequest.payment.status === 'in-course'">{{ 'APP_HOME_PRO_SERVICES_EXECUTION_PANEL_PAYMENT_IN_COURSE' | translate }}</span>
+
+            <!-- payment done -->
+            <span class="text-small text-bold" ng-if="view.selectedRequest.payment.status === 'paid'">{{ 'APP_HOME_PRO_SERVICES_EXECUTION_PANEL_PAYMENT_DONE' | translate }}</span>
+
+            <!-- Resume -->
+            <div class="" ng-if="view.selectedRequest.payment.status === 'paid'">
+
+                <!-- Bill -->
+                <div class="home-pro-execution-resume-items text-center">
+                    <span class="text-bold color-gray">{{ 'APP_HOME_PRO_SERVICES_EXECUTION_PANEL_SERVICES' | translate }}:</span>
+                    <span>{{ view.selectedRequest.payment.services }}</span>
+                </div>
+                <div class="home-pro-execution-resume-items text-center">
+                    <span class="text-large text-bold color-gray">{{ 'APP_HOME_PRO_SERVICES_EXECUTION_PANEL_TOTAL' | translate }}:</span>
+                    <span class="text-large text-bold">{{ view.selectedRequest.payment.total }}€</span>
+                </div>
+
+                <!-- Rating -->
+                <div class="home-pro-execution-rating-container">
+                    <span class="text-small color-light-orange">{{ 'APP_HOME_PRO_SERVICES_EXECUTION_PANEL_RATING' | translate }}</span>
+                    <span class="text-small">{{ 'APP_HOME_PRO_SERVICES_EXECUTION_PANEL_RATING_DESC_1' | translate }}</span>
+                    <span class="text-small">{{ 'APP_HOME_PRO_SERVICES_EXECUTION_PANEL_RATING_DESC_2' | translate }}</span>
+
+                    <!-- Rate stars -->
+                    <span><i  ng-repeat="i in [0, 1, 2, 3, 4]" class="fa fa-star-o fa-2x color-normal-pink"></i></span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

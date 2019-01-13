@@ -167,3 +167,36 @@
     left: 30px;
     right: 30px; 
 }
+
+/* Execution panel CSS */
+.home-pro-execution-time-lapse{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.home-pro-execution-finish-btn-container{
+    margin: 40px 40px 20px;
+}
+
+.home-pro-execution-payment-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-pro-execution-resume-items{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 5px 0;
+}
+.home-pro-execution-rating-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}

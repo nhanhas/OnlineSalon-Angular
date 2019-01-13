@@ -9,6 +9,8 @@ app
         loadingMessage : 'APP_HOME_LOADING_DEFAULT_MESSAGE',		
         messagesOpened : false,
 		requestsOpened : false,
+		executionOpened: false,
+		trackingOpened : false,
 		menuOpened : false,
 		messages : [],
 		clientsRequests : [],
@@ -56,19 +58,33 @@ app
 		}
 	]
 	$scope.view.clientsRequests = [
-		{
+		{	
+			id: 1,
 			name : 'Miguel Pereira',
 			picture: 'assets/dev-pics/service-picture-02.png',
 			distanceBetween : 5,
 			requestedServices : 'Unhas, depilação, massagem',
-			status : 'waiting'
+			status : 'waiting',
+			payment: {
+				status : '',
+				services: 2,
+				total : 15,								
+			},
+			rating : 0
 		},
 		{
+			id : 2,
 			name : 'Josí Tortuga',
 			picture: 'assets/dev-pics/service-picture-03.png',
 			distanceBetween : 5,
 			requestedServices : 'Unhas, depilação, massagem',
-			status : 'accepted'
+			status : 'accepted',
+			payment: {
+				status : '',
+				services: 5,
+				total : 125,								
+			},
+			rating : 0
 		}
 	]
 
@@ -106,6 +122,7 @@ app
 		$scope.view.messagesOpened = false;
 		$scope.view.requestsOpened = false;
 		$scope.view.trackingOpened = false;
+		$scope.view.executionOpened = false;
 		$scope.view.menuOpened = false;
 
 		//#services panel reset (booking/schedule a service)
@@ -123,6 +140,9 @@ app
 				break;
 			case 'tracking':
 				$scope.view.trackingOpened = true;
+				break;
+			case 'execution':
+				$scope.view.executionOpened = true;
 				break;
 			case 'menu':
 				$scope.view.menuOpened = true;
@@ -147,6 +167,56 @@ app
 		})
 	};
 
+
+	/************************************** Tracking panel ***********************************/	
+	//#A - When a request selected is accepted from tracking panel
+	$scope.onAcceptClient = function(request){
+		//#1 - Update to Accepted status
+		request.status = 'accepted';
+		//#2 - Update select service object (must be the same as reques)
+		$scope.view.selectedRequest = request;
+	}
+
+	//#B - When a request selected is reject from tracking panel
+	$scope.onRejectClient = function(request){
+		//#1 - Remove it from the list
+		for(var i = 0; i < $scope.view.clientsRequests.length; i++){
+			if($scope.view.clientsRequests[i].id === request.id){
+				$scope.view.clientsRequests.splice(i, 1);
+			}
+		}
+
+		//#2 - remove service selected from focus
+		$scope.selectedRequest = undefined;
+		//#3 - go to list services		
+		$scope.showPanel('requests');
+	}
+
+	//#C - When a request selected is started from tracking panel
+	$scope.onStartClient = function(request){
+		//#1 - Update select service object (must be the same as reques)
+		$scope.view.selectedRequest = request;
+
+		$scope.showPanel('execution');
+	}
+
+	//#D - When a request selected is called to finish
+	$scope.onFinishRequest = function(){
+		//#1 - mark request as finished
+		$scope.view.selectedRequest.status = 'finished';
+
+		//#2 - Update payment status to 'in-course'
+		$scope.view.selectedRequest.payment.status = 'in-course';
+
+		//#3 - TODO REMOVE 
+		$scope.view.isLoading = true;
+        $scope.view.loadingMessage = 'APP_HOME_PRO_SERVICES_EXECUTION_PANEL_FINISHING_LOADING';
+		$timeout(()=>{
+			$scope.view.isLoading = false;
+			$scope.view.selectedRequest.payment.status = 'paid';
+		}, 3000)
+
+	}
 
 	//#1 - Load Application Data from Server
 	$scope.initialize();

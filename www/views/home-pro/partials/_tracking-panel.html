@@ -20,7 +20,10 @@
 
         <!-- Request Tile -->
         <div class="home-pro-tracking-request-container">
-            <client-request request="view.selectedRequest" mode="on-map"></client-request>
+            <client-request request="view.selectedRequest" 
+                            on-accept="onAcceptClient(request)"
+                            on-reject="onRejectClient(request)"
+                            on-start="onStartClient(request)" mode="on-map"></client-request>
         </div>
 
 

@@ -32,12 +32,12 @@
     <!-- Accept / Reject buttons -->
     <div class="client-request-waiting-btns text-center text-medium color-white" ng-if="request.status === 'waiting'">
         <!-- Accept -->
-        <div class="client-request-btn background-green">
+        <div class="client-request-btn background-green" ng-click="onAcceptHandler()">
             {{ 'APP_COMPONENT_CLIENT_REQUEST_ACCEPT_BTN' | translate }}
         </div>
 
         <!-- Reject -->
-        <div class="client-request-btn background-red">
+        <div class="client-request-btn background-red" ng-click="onRejectHandler()">
             {{ 'APP_COMPONENT_CLIENT_REQUEST_REJECT_BTN' | translate }}
         </div>
 
@@ -46,7 +46,7 @@
     <!-- Begin Service -->
     <div class="text-center text-medium color-white" ng-if="request.status === 'accepted'">
         <!-- Begin service -->
-        <div class="client-request-btn background-green">
+        <div class="client-request-btn background-green" ng-click="onStartHandler()">
             {{ 'APP_COMPONENT_CLIENT_REQUEST_BEGIN_BTN' | translate }}
         </div>
     </div>
