@@ -1,0 +1,77 @@
+.client-request{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding: 10px;
+}
+.client-request-img-container{
+    width: 70px;
+    height: 70px;
+    border-radius: 40px;
+    border: 2px solid white;
+    overflow: hidden;
+}
+
+.client-request-img-container img{
+    width: 100%;
+    border-radius: 40px;
+}
+
+.client-request-id-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+    padding-right: 90px;
+}
+.client-request-id-container span:nth-of-type(1){
+    color : #cccccc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 170px;
+}
+.client-request-id-container span:nth-of-type(2){
+    font-weight: bold;
+}
+
+.client-request-contacts-container{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.client-request-contact{ margin-right: 10px;}
+.client-request-contact span{
+    font-size: 11px;
+}
+
+/* on-map items */
+.client-request-top-container{
+    text-align: center;
+    padding: 5px 0;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.client-request-bottom-container{
+    margin-top: 5px;
+}
+.client-request-waiting-btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.client-request-waiting-btns > div:nth-of-type(1){
+    margin-right: 3px
+}
+.client-request-waiting-btns > div:nth-of-type(2){
+    margin-left: 3px
+}
+
+.client-request-btn{
+    width: 100%;
+    padding: 7px 5px;    
+}

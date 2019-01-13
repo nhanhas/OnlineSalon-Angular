@@ -8,7 +8,7 @@
 
 .home-pro-full-height{
     bottom: 0;
-    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .home-pro-name-rating-container{
@@ -156,4 +156,13 @@
     width: 100%;
     margin-top: 25px;
 
+}
+
+
+/* Tracking panel CSS */
+.home-pro-tracking-request-container{
+    position: absolute;
+    bottom: 100px;
+    left: 30px;
+    right: 30px; 
 }

@@ -11,7 +11,7 @@
     <div class="home-pro-panel-data-container">
 
         <div class="home-pro-panel-data-tile" ng-repeat="request in view.clientsRequests">
-
+            <client-request request="request" mode="list" on-select="onSelectClientRequest(request)"></client-request>
         </div>
 
     </div>

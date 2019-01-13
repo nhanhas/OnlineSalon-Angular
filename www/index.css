@@ -52,10 +52,12 @@ body{
 .background-lightGray       { background-color: #F0F0F0}
 .background-darkText        { background-color: #343434}
 .background-red             { background-color: #ff0000}
+.background-green           { background-color: #8fc52a}
 .background-gray            { background-color: #b3b3b3}
 .background-message-gray    { background-color: #f8f7f5}
 .background-grass-green     { background-color: #c6dd91}
 .background-dark-gray       { background-color: #9b9b9b}
+.background-alert-yellow    { background-color: #dadf00}
 
 
 /* Text Sizes */

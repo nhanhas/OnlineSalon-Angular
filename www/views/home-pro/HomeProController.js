@@ -12,6 +12,7 @@ app
 		menuOpened : false,
 		messages : [],
 		clientsRequests : [],
+		selectedRequest : undefined, //this is the main 'on handle' service
 		isOnline : false,
 		professional : undefined,
 		hintsToBeFive : []
@@ -59,7 +60,15 @@ app
 			name : 'Miguel Pereira',
 			picture: 'assets/dev-pics/service-picture-02.png',
 			distanceBetween : 5,
-			requestedServices : 'Unhas, depilação, massagem'
+			requestedServices : 'Unhas, depilação, massagem',
+			status : 'waiting'
+		},
+		{
+			name : 'Josí Tortuga',
+			picture: 'assets/dev-pics/service-picture-03.png',
+			distanceBetween : 5,
+			requestedServices : 'Unhas, depilação, massagem',
+			status : 'accepted'
 		}
 	]
 
@@ -96,6 +105,7 @@ app
 		//#1 - First we reset all 'Opened' flags
 		$scope.view.messagesOpened = false;
 		$scope.view.requestsOpened = false;
+		$scope.view.trackingOpened = false;
 		$scope.view.menuOpened = false;
 
 		//#services panel reset (booking/schedule a service)
@@ -111,12 +121,31 @@ app
 			case 'requests':
 				$scope.view.requestsOpened = true;
 				break;
+			case 'tracking':
+				$scope.view.trackingOpened = true;
+				break;
 			case 'menu':
 				$scope.view.menuOpened = true;
 				break;
 		}
 
 	}
+
+
+	/************************************** Request panel ***********************************/	
+	//#A - When a request is selected from the list
+	$scope.onSelectClientRequest = function(request){
+		//#1 - Reset the selection
+		$scope.view.selectedRequest = undefined;
+		$timeout(()=>{
+			//#2 - Select a new client request
+			$scope.view.selectedRequest = request;
+
+			//#3 - Show it in Panel
+			$scope.showPanel('tracking');
+
+		})
+	};
 
 
 	//#1 - Load Application Data from Server

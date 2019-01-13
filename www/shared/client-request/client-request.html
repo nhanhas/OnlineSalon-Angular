@@ -1,0 +1,55 @@
+<!-- On-map usage -->
+<div class="client-request-top-container" ng-if="mode === 'on-map'" 
+    ng-class="{ 'background-normal-pink' : request.status === 'waiting',
+                'background-alert-yellow' : request.status === 'accepted'}">
+
+    <!-- When client request is waiting -->    
+    <span class="color-white" ng-if="request.status === 'waiting'">{{ 'APP_COMPONENT_CLIENT_REQUEST_ON_MAP_WAITING' | translate }}</span>
+    <!-- When client request is accepted -->    
+    <span class="color-white" ng-if="request.status === 'accepted'">{{ 'APP_COMPONENT_CLIENT_REQUEST_ON_MAP_ACCEPTED' | translate }}</span>
+
+    <span class="color-white text-thin text-small">{{ translatedDistanceLabel }}</span>
+
+</div>
+
+<!-- Main client request -->
+<div class="client-request background-message-gray" ng-click="onSelectRequestHandler()">
+    
+    <div class="client-request-img-container">
+        <img ng-src="{{ request.picture }}"> 
+    </div>
+    <div class="client-request-id-container">
+        <span class="text-large">{{ request.name }}</span>
+        <span class="text-small text-bold">{{ 'APP_COMPONENT_CLIENT_REQUEST_SERVICES_REQUESTED' | translate }}:</span>
+        <span class="text-small">{{ request.requestedServices }}</span>
+    </div>
+
+</div> 
+
+<!-- On-map usage -->
+<div class="client-request-bottom-container" ng-if="mode === 'on-map'">
+
+    <!-- Accept / Reject buttons -->
+    <div class="client-request-waiting-btns text-center text-medium color-white" ng-if="request.status === 'waiting'">
+        <!-- Accept -->
+        <div class="client-request-btn background-green">
+            {{ 'APP_COMPONENT_CLIENT_REQUEST_ACCEPT_BTN' | translate }}
+        </div>
+
+        <!-- Reject -->
+        <div class="client-request-btn background-red">
+            {{ 'APP_COMPONENT_CLIENT_REQUEST_REJECT_BTN' | translate }}
+        </div>
+
+    </div>
+
+    <!-- Begin Service -->
+    <div class="text-center text-medium color-white" ng-if="request.status === 'accepted'">
+        <!-- Begin service -->
+        <div class="client-request-btn background-green">
+            {{ 'APP_COMPONENT_CLIENT_REQUEST_BEGIN_BTN' | translate }}
+        </div>
+    </div>
+   
+
+</div>
