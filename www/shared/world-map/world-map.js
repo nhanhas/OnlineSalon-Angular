@@ -3,7 +3,7 @@ app
         return {
             restrict: 'EA',
             scope: {
-                services : '=', //contains all info about single service
+                services : '=?', //contains all info about single service
                 onBookNow : '&?', //function when clicked to Book now
                 onSchedule : '&?', //function when clicked to Schedule now
             },

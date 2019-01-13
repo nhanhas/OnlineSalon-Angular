@@ -148,6 +148,7 @@
     position: absolute;
     top: 15px;
     right: 20px;
+    z-index: 1;
 }
 .home-pro-panel-data-tile{
     margin-bottom: 15px;
