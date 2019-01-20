@@ -70,7 +70,8 @@ app
 				services: 2,
 				total : 15,								
 			},
-			rating : 0
+			rating : 0,
+			coords : { latitude : 38.7445443, longitude : -9.1508589 }
 		},
 		{
 			id : 2,
@@ -84,7 +85,8 @@ app
 				services: 5,
 				total : 125,								
 			},
-			rating : 0
+			rating : 0,
+			coords : { latitude : 38.7526079, longitude : -9.168954 }
 		}
 	]
 

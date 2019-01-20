@@ -1,7 +1,7 @@
 <div class="world-map">
 
     <!-- World -->
-    <ui-gmap-google-map center='map.center' zoom='map.zoom' options="map.options" ng-if="isReady">
+    <ui-gmap-google-map center='map.center' control='map.control' zoom='map.zoom' options="map.options" ng-if="isReady">
         <!-- Markers -->
         <ui-gmap-markers models="markersList" coords="'self'" icon="'icon'" click="markerClicked">
             <!-- Info tile with Service details -->

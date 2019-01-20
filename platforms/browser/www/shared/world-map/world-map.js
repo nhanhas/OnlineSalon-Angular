@@ -1,11 +1,13 @@
 app
-    .directive('worldMap', ['$rootScope', 'uiGmapGoogleMapApi', function($rootScope, uiGmapGoogleMapApi) {
+    .directive('worldMap', ['$rootScope', 'uiGmapGoogleMapApi', 'uiGmapIsReady', function($rootScope, uiGmapGoogleMapApi, uiGmapIsReady) {
         return {
             restrict: 'EA',
             scope: {
                 services : '=?', //contains all info about single service
                 onBookNow : '&?', //function when clicked to Book now
                 onSchedule : '&?', //function when clicked to Schedule now
+                serviceRequest : '=?', //this is usable only in appMode = 'pro'. To make route between client and professional
+                appMode : '@?' // App mode as 'client' or 'pro'
             },
             templateUrl: 'shared/world-map/world-map.html',
 
@@ -13,6 +15,8 @@ app
 
                 //Init attributes
                 scope.services = scope.services || [];
+                scope.appMode = scope.appMode || 'client';
+                scope.serviceRequest = scope.serviceRequest || undefined;
 
                 if (!attrs.onBookNow) {
                     scope.onBookNow = undefined;
@@ -107,6 +111,32 @@ app
                     });
 
                 }
+
+                //#D - [PRO] - Mark on map the track between pro and client
+                scope.MAP_getRouteToClient = function(){
+                    //#1 - instantiate google map objects for directions
+                    let directionsDisplay = new google.maps.DirectionsRenderer();
+                    let directionsService = new google.maps.DirectionsService();
+                    let geocoder = new google.maps.Geocoder();
+                    //#2 - Prepare request
+                    var request = {
+                        origin: { lat : scope.map.center.latitude, lng : scope.map.center.longitude },
+                        destination: { lat : scope.serviceRequest.coords.latitude, lng : scope.serviceRequest.coords.longitude },
+                        travelMode: google.maps.DirectionsTravelMode.DRIVING
+                    };
+                    directionsService.route(request, function (response, status) {
+                    if (status === google.maps.DirectionsStatus.OK) {
+                        directionsDisplay.setDirections(response);
+                        directionsDisplay.setMap(scope.map.control.getGMap());
+                        directionsDisplay.setPanel(document.getElementById('directionsList'));
+                        
+                    } else {
+                        alert('Google route unsuccesfull!');
+                    }
+                    });
+                                        
+                    
+                };
             
 
                 /** END Of Functions Zone */
@@ -116,7 +146,7 @@ app
 
 
                 //#1 - Initialize Google Map configuration
-                scope.map = {center: {latitude: 38.7354823, longitude: -9.1288447 }, zoom: 4 , options: {scrollwheel: true, disableDefaultUI: true}};
+                scope.map = {center: {latitude: 38.7354823, longitude: -9.1288447 }, zoom: 4 , options: {scrollwheel: true, disableDefaultUI: true}, control: {}};
                 
                 //#2 - Prepare to create each marker for each service
                 scope.$watch('services', function(newVal, oldVal){
@@ -128,17 +158,23 @@ app
                     case undefined:                        
                     case true:
                             scope.MAP_getCurrentPosition();
+                            break;
                     case false:
                         //#1 just show map wihtou current position
                         //#Finally show!
                         scope.isReady = true;
-                                          
                         break;
                 }
                
-               
-                
-                
+                //#4 - [appMode = 'pro'] - check if there is any request to track
+                //It must be after get user current position - when 'isReady' = true
+                scope.$watch('isReady', function(newVal, oldVal){
+                    //#1 - only if is ready we get route
+                    if(scope.appMode === 'pro' && scope.serviceRequest && scope.isReady){
+                        scope.MAP_getRouteToClient();
+                    }
+                }, true);
+
 
             }
         };
