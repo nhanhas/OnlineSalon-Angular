@@ -168,6 +168,13 @@
     right: 30px; 
 }
 
+.home-pro-tracking-request-container-expanded{
+    /*this is client-request directive click to expand info*/
+    height: 100%;
+    padding-top: 110px;
+    padding-bottom: 70px;
+}
+
 /* Execution panel CSS */
 .home-pro-execution-time-lapse{
     display: flex;

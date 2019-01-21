@@ -15,6 +15,7 @@ app
 		messages : [],
 		clientsRequests : [],
 		selectedRequest : undefined, //this is the main 'on handle' service
+		isClientRequestExpanded : false, //this variable is changed only on <client-request>
 		isOnline : false,
 		professional : undefined,
 		hintsToBeFive : []
@@ -101,6 +102,10 @@ app
 			//Show screen
 			$timeout(()=>{
 				$scope.view.isLoading = false;
+
+				//#dev mode
+				let clientRequest = $scope.view.clientsRequests[0];
+				$scope.onSelectClientRequest(clientRequest);
 			});
 			
 		});
@@ -159,6 +164,7 @@ app
 	$scope.onSelectClientRequest = function(request){
 		//#1 - Reset the selection
 		$scope.view.selectedRequest = undefined;
+		$scope.view.isClientRequestExpanded = false;
 		$timeout(()=>{
 			//#2 - Select a new client request
 			$scope.view.selectedRequest = request;
@@ -217,8 +223,15 @@ app
 			$scope.view.isLoading = false;
 			$scope.view.selectedRequest.payment.status = 'paid';
 		}, 3000)
-
 	}
+
+	//#E - When a request selected is called to finish
+	$scope.onExpandInfoClient = function(request, isExpanded){
+		$timeout(()=>{
+			$scope.view.isClientRequestExpanded = isExpanded;
+		});
+		
+	};
 
 	//#1 - Load Application Data from Server
 	$scope.initialize();

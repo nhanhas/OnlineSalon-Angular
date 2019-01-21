@@ -13,15 +13,28 @@
 </div>
 
 <!-- Main client request -->
-<div class="client-request background-message-gray" ng-click="onSelectRequestHandler()">
+<div class="client-request background-message-gray" ng-class="{ 'client-request-full-height' : isInfoExpanded }" ng-click="onSelectRequestHandler()">
     
-    <div class="client-request-img-container">
-        <img ng-src="{{ request.picture }}"> 
+    <div class="client-request-heading">
+        <div class="client-request-img-container">
+            <img ng-src="{{ request.picture }}"> 
+        </div>
+        <div class="client-request-id-container">
+            <span class="text-large">{{ request.name }}</span>
+            <span class="text-small text-bold">{{ 'APP_COMPONENT_CLIENT_REQUEST_SERVICES_REQUESTED' | translate }}:</span>
+            <span class="text-small">{{ request.requestedServices }}</span>
+        </div>
+
+        <!-- Info only 'on-map' -->
+        <div class="client-request-info-btn-container" ng-if="mode === 'on-map'" ng-click="onExpandInfoHandler()">
+            <span><i class="fa fa-info-circle fa-lg"></i></span>
+        </div>
+
     </div>
-    <div class="client-request-id-container">
-        <span class="text-large">{{ request.name }}</span>
-        <span class="text-small text-bold">{{ 'APP_COMPONENT_CLIENT_REQUEST_SERVICES_REQUESTED' | translate }}:</span>
-        <span class="text-small">{{ request.requestedServices }}</span>
+
+     <!-- [Extra] info detail only on-map and expanded -->
+     <div class="client-request-info-container" ng-if="isInfoExpanded">
+           TODO
     </div>
 
 </div> 

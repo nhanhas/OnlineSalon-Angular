@@ -9,6 +9,7 @@ app
                 onAccept : '&?', // on accept from tracking panel
                 onReject : '&?', // on reject from tracking panel 
                 onStart : '&?', // on reject from tracking panel 
+                onExpandInfo : '&?', //only 'on-map' mode 
                 onDismiss : '&?'
             },
             templateUrl: 'shared/client-request/client-request.html',
@@ -18,6 +19,8 @@ app
 
                 //Init attributes
                 scope.mode = scope.mode || 'list'
+                scope.isInfoExpanded = false;
+
                 if (!attrs.onSelect) {
                     scope.onSelect = undefined;
                 }   
@@ -29,6 +32,9 @@ app
                 }    
                 if (!attrs.onStart) {
                     scope.onStart = undefined;
+                }  
+                if (!attrs.onExpandInfo) {
+                    scope.onExpandInfo = undefined;
                 }      
 
                 if (!attrs.onDismiss) {
@@ -63,6 +69,15 @@ app
                 //Start clientRequest
                 scope.onStartHandler = function(){
                     scope.onStart({ request: scope.request });
+                } 
+
+                //info clientRequest
+                scope.onExpandInfoHandler = function(){
+                    $timeout(()=>{
+                        scope.isInfoExpanded = !scope.isInfoExpanded;
+                        scope.onExpandInfo({ request: scope.request, isInfoExpanded : scope.isInfoExpanded });
+                    });
+                    
                 } 
 
                 //Dismiss clientRequest
