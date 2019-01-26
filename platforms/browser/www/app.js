@@ -12,7 +12,7 @@ app.config(['$routeProvider', function($routeProvider) {
             controller: 'HomeController'
         }).  
         when('/profile', {
-            templateUrl: 'views/profile/profile.html',
+            templateUrl: 'views/menus/profile/profile.html',
             controller: 'ProfileController'
         }).        
         when('/view2', {
@@ -70,5 +70,5 @@ app.config(
     }]
 );
 
-//App Mode (client or professoial)
-app.constant('APP_CONFIG', { "mode" : 'PRO' });
+//App Mode (client or professoial - PRO or CLIENT)
+app.constant('APP_CONFIG', { "mode" : 'CLIENT' });
