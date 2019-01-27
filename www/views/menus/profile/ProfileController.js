@@ -102,7 +102,8 @@ app
     
     };
 
-    $scope.closeProfile = function(){
+    //# - Close Screen and go Home
+    $scope.closeMenu = function(){
         $location.path('/home');
     }
 

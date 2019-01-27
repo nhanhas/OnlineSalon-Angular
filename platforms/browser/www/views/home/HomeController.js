@@ -748,8 +748,31 @@ app
 	}
 
 	/************************************** Menu ***********************************/
-	$scope.gotoProfile = function(){
-		$location.path('/profile');
+	//#A - Go to a specific menu page
+	$scope.goToMenuOption = function(option){
+		//#1 - Navigate depending on option
+		switch (option) {
+			case 'profile':
+				$location.path('/profile');
+				break;
+			case 'services-menu':
+				$location.path('/services-menu');
+				break;
+			case 'promotions-menu':
+				$location.path('');
+				break;			
+			case 'help-menu':
+				$location.path('');
+				break;
+			case 'contacts-menu':
+				$location.path('');
+				break;	
+			case 'legal-menu':
+				$location.path('');
+				break;		
+			default:
+				break;
+		}		
 	}
 
 	/************************************** Booking panel ***********************************/	

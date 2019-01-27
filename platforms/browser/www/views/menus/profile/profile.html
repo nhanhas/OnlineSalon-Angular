@@ -1,166 +1,166 @@
 <div class="profile background-white">
 
-        <!-- App Logo -->
-        <div class="profile-logo text-center">
-            <img src="assets/main-logo-medium.png">
-        </div>
-    
-        
-        <!-- Sign in -->
-        <div id="profile">
-            
-            <!-- Close popup button -->
-            <div class="profile-close-button-container color-dark-gray" ng-click="closeProfile()">
-                <span><i class="fa fa-times-thin fa-2x"></i></span>
-            </div>
-            
-           
-    
-            <!-- Step 0 - Identification -->
-            <div class="profile-step-0">
-    
-                <!-- photo and pictures -->
-                <div class="profile-step-0-photo-container row text-center color-dark-gray" style="margin: 0 10px;">
-    
-                    <!-- cirlce -->
-                    <div class="col-xs-4">         
-                        <input type='file' accept='image/*' id="input-photo" style="display: none"><br>           
-                        <div class="profile-step-0-circle color-white background-normal-pink text-center" ng-click="browseImages()">
-                            +
-                            <img id='photo-output' src="{{view.profileForm.identification.photo}}">
-                        </div>
-                    </div>
-    
-                    <!-- camera -->
-                    <div class="col-xs-4">
-                        <div class="profile-step-0-camera" ng-click="browseImages()">
-                            <span><i class="fa fa-camera fa-2x"></i></span>
-                            <br>
-                            <span class="text-small">{{ 'APP_SIGNIN_STEP_0_PHOTO_BTN' | translate }}</span>
-                        </div>
-                    </div>
-    
-                    <!-- camera -->
-                    <div class="col-xs-4">                
-                        <div class="profile-step-0-gallery" ng-click="browseImages()">
-                            <span><i class="fa fa-image fa-2x"></i></span>
-                            <br>
-                            <span class="text-small">{{ 'APP_SIGNIN_STEP_0_GALLERY_BTN' | translate }}</span>
-                        </div>
-                    </div>
-    
-                </div>
-    
-                <!-- Form : identification -->
-                <div class="profile-step-form">
-    
-                    <!-- Name -->
-                    <div class="profile-step-form-input-container">
-                        <custom-input label="{{ 'APP_SIGNIN_STEP_0_NAME' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_0_NAME_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.identification.name"></custom-input>
-                    </div>
-    
-                    <!-- Email -->
-                    <div class="profile-step-form-input-container">
-                        <custom-input label="{{ 'APP_SIGNIN_STEP_0_EMAIL' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_0_EMAIL_DESC' | translate }}"  under-label-class="color-red" model="view.profileForm.identification.email"></custom-input>
-                    </div>
-    
-                    <!-- Password -->
-                    <div class="profile-step-form-input-container">
-                        <custom-input label="{{ 'APP_SIGNIN_STEP_0_PASSWORD' | translate }}" input-type="password" under-label="{{ 'APP_SIGNIN_STEP_0_PASSWORD_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.identification.password"></custom-input>
-                    </div>
-    
-                    <!-- Repeat Password-->
-                    <div class="profile-step-form-input-container">
-                        <custom-input label="{{ 'APP_SIGNIN_STEP_0_REPEAT_PW' | translate }}" input-type="password" under-label="{{ 'APP_SIGNIN_STEP_0_REPEAT_PW_DESC' | translate }}"  under-label-class="color-red" model="view.profileForm.identification.repeatPw"></custom-input>
-                    </div>
-    
-                    <!-- Phone -->
-                    <div class="profile-step-form-input-container">
-                        <custom-input label="{{ 'APP_SIGNIN_STEP_0_PHONE' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_0_PHONE_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.identification.phone"></custom-input>
-                    </div>
-                                           
-                </div>
-
-                
-                <!-- Form : address -->
-                <div class="profile-step-form" style="margin-top:30px">
-    
-                    <!-- Main Address -->
-                    <div class="profile-step-form-input-container">
-                        <custom-input label="{{ 'APP_SIGNIN_STEP_1_ADDRESS1' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_1_ADDRESS1_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.address.mainAddress"></custom-input>
-                    </div>
-    
-                    <!-- Seconday Address -->
-                    <div class="profile-step-form-input-container">
-                        <custom-input under-label="{{ 'APP_SIGNIN_STEP_1_ADDRESS2_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.address.secondaryAddress"></custom-input>
-                    </div>
-    
-                    <!-- ZipCode -->
-                    <div class="profile-step-form-input-container">
-                        <custom-input label="{{ 'APP_SIGNIN_STEP_1_ZIPCODE' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_1_ZIPCODE_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.address.zipcode"></custom-input>
-                    </div>
-    
-                    <!-- City -->
-                    <div class="profile-step-form-input-container">
-                        <custom-input label="{{ 'APP_SIGNIN_STEP_1_CITY' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_1_CITY_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.address.city"></custom-input>
-                    </div>
-    
-                </div>
-        
-        
-                <!-- Form : card -->
-                <div class="profile-step-form" style="margin-top:50px">
-                    
-                    <div class="profile-step-2-label-container">
-                        <label class="color-dark-gray">{{ 'APP_SIGNIN_STEP_2_TITLE_01' | translate }}</label>
-                        <br>
-                        <label class="color-dark-gray">{{ 'APP_SIGNIN_STEP_2_TITLE_02' | translate }}</label> 
-                    </div>
-    
-                    <!-- Card Name -->
-                    <div class="profile-step-form-input-container">
-                        <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_NAME' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_NAME_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.payment.cardName"></custom-input>
-                    </div>
-    
-                    <!-- Month / Year -->
-                    <div class="profile-step-form-month-year">
-                        <div class="profile-step-form-input-container profile-step-2-inline">
-                            <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_MONTH' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_MONTH_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.payment.month"></custom-input>                    
-                        </div>
-    
-                        <div class="profile-step-form-input-container profile-step-2-inline">
-                            <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_YEAR' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_YEAR_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.payment.year"></custom-input>                    
-                        </div>
-    
-                        <div class="profile-step-form-input-container">
-                            <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_CCV' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_CCV_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.payment.ccv"></custom-input>                    
-                        </div>
-                    </div>
-                    
-                    <!-- Save Button -->
-                    <div class="profile-step-form-button-container profile-step-2-button">
-                        <custom-button label="{{ 'APP_PROFILE_SAVE_BTN' | translate }}" on-press="saveAll()"></custom-button> 
-                    </div>
-
-                    <!-- Error message -->
-                    <div class="profile-credentials-message-container" >
-                        <span class="text-medium color-primary-green" ng-show="view.messageError !== ''">{{ view.messageError | translate }}</span>
-                    </div>
-                    
-                    <!-- logout -->
-                    <div class="profile-sign-out-button-container text-center">
-                        <span class="text-small color-dark-gray" ng-click="logout()">{{ 'APP_PROFILE_LOGOUT_BTN' | translate }}</span>
-                    </div>
-
-    
-                </div>
-    
-              
-
-            </div>
-    
-            
-    
-        </div>
-     
+    <!-- App Logo -->
+    <div class="profile-logo text-center">
+        <img src="assets/main-logo-medium.png">
     </div>
+
+    
+    <!-- Sign in -->
+    <div id="profile">
+        
+        <!-- Close popup button -->
+        <div class="profile-close-button-container color-dark-gray" ng-click="closeMenu()">
+            <span><i class="fa fa-times-thin fa-2x"></i></span>
+        </div>
+        
+        
+
+        <!-- Step 0 - Identification -->
+        <div class="profile-step-0">
+
+            <!-- photo and pictures -->
+            <div class="profile-step-0-photo-container row text-center color-dark-gray" style="margin: 0 10px;">
+
+                <!-- cirlce -->
+                <div class="col-xs-4">         
+                    <input type='file' accept='image/*' id="input-photo" style="display: none"><br>           
+                    <div class="profile-step-0-circle color-white background-normal-pink text-center" ng-click="browseImages()">
+                        +
+                        <img id='photo-output' src="{{view.profileForm.identification.photo}}">
+                    </div>
+                </div>
+
+                <!-- camera -->
+                <div class="col-xs-4">
+                    <div class="profile-step-0-camera" ng-click="browseImages()">
+                        <span><i class="fa fa-camera fa-2x"></i></span>
+                        <br>
+                        <span class="text-small">{{ 'APP_SIGNIN_STEP_0_PHOTO_BTN' | translate }}</span>
+                    </div>
+                </div>
+
+                <!-- camera -->
+                <div class="col-xs-4">                
+                    <div class="profile-step-0-gallery" ng-click="browseImages()">
+                        <span><i class="fa fa-image fa-2x"></i></span>
+                        <br>
+                        <span class="text-small">{{ 'APP_SIGNIN_STEP_0_GALLERY_BTN' | translate }}</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Form : identification -->
+            <div class="profile-step-form">
+
+                <!-- Name -->
+                <div class="profile-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_0_NAME' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_0_NAME_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.identification.name"></custom-input>
+                </div>
+
+                <!-- Email -->
+                <div class="profile-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_0_EMAIL' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_0_EMAIL_DESC' | translate }}"  under-label-class="color-red" model="view.profileForm.identification.email"></custom-input>
+                </div>
+
+                <!-- Password -->
+                <div class="profile-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_0_PASSWORD' | translate }}" input-type="password" under-label="{{ 'APP_SIGNIN_STEP_0_PASSWORD_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.identification.password"></custom-input>
+                </div>
+
+                <!-- Repeat Password-->
+                <div class="profile-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_0_REPEAT_PW' | translate }}" input-type="password" under-label="{{ 'APP_SIGNIN_STEP_0_REPEAT_PW_DESC' | translate }}"  under-label-class="color-red" model="view.profileForm.identification.repeatPw"></custom-input>
+                </div>
+
+                <!-- Phone -->
+                <div class="profile-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_0_PHONE' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_0_PHONE_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.identification.phone"></custom-input>
+                </div>
+                                        
+            </div>
+
+            
+            <!-- Form : address -->
+            <div class="profile-step-form" style="margin-top:30px">
+
+                <!-- Main Address -->
+                <div class="profile-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_1_ADDRESS1' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_1_ADDRESS1_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.address.mainAddress"></custom-input>
+                </div>
+
+                <!-- Seconday Address -->
+                <div class="profile-step-form-input-container">
+                    <custom-input under-label="{{ 'APP_SIGNIN_STEP_1_ADDRESS2_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.address.secondaryAddress"></custom-input>
+                </div>
+
+                <!-- ZipCode -->
+                <div class="profile-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_1_ZIPCODE' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_1_ZIPCODE_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.address.zipcode"></custom-input>
+                </div>
+
+                <!-- City -->
+                <div class="profile-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_1_CITY' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_1_CITY_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.address.city"></custom-input>
+                </div>
+
+            </div>
+    
+    
+            <!-- Form : card -->
+            <div class="profile-step-form" style="margin-top:50px">
+                
+                <div class="profile-step-2-label-container">
+                    <label class="color-dark-gray">{{ 'APP_SIGNIN_STEP_2_TITLE_01' | translate }}</label>
+                    <br>
+                    <label class="color-dark-gray">{{ 'APP_SIGNIN_STEP_2_TITLE_02' | translate }}</label> 
+                </div>
+
+                <!-- Card Name -->
+                <div class="profile-step-form-input-container">
+                    <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_NAME' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_NAME_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.payment.cardName"></custom-input>
+                </div>
+
+                <!-- Month / Year -->
+                <div class="profile-step-form-month-year">
+                    <div class="profile-step-form-input-container profile-step-2-inline">
+                        <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_MONTH' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_MONTH_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.payment.month"></custom-input>                    
+                    </div>
+
+                    <div class="profile-step-form-input-container profile-step-2-inline">
+                        <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_YEAR' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_YEAR_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.payment.year"></custom-input>                    
+                    </div>
+
+                    <div class="profile-step-form-input-container">
+                        <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_CCV' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_CCV_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.payment.ccv"></custom-input>                    
+                    </div>
+                </div>
+                
+                <!-- Save Button -->
+                <div class="profile-step-form-button-container profile-step-2-button">
+                    <custom-button label="{{ 'APP_PROFILE_SAVE_BTN' | translate }}" on-press="saveAll()"></custom-button> 
+                </div>
+
+                <!-- Error message -->
+                <div class="profile-credentials-message-container" >
+                    <span class="text-medium color-primary-green" ng-show="view.messageError !== ''">{{ view.messageError | translate }}</span>
+                </div>
+                
+                <!-- logout -->
+                <div class="profile-sign-out-button-container text-center">
+                    <span class="text-small color-dark-gray" ng-click="logout()">{{ 'APP_PROFILE_LOGOUT_BTN' | translate }}</span>
+                </div>
+
+
+            </div>
+
+            
+
+        </div>
+
+        
+
+    </div>
+    
+</div>

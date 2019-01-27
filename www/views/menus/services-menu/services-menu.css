@@ -1,0 +1,17 @@
+.services-menu{
+    min-height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+.services-menu-logo img{
+    max-width: 130px;
+}
+
+.services-menu-close-button-container{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}

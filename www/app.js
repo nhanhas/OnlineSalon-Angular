@@ -10,11 +10,15 @@ app.config(['$routeProvider', function($routeProvider) {
         when('/home', {
             templateUrl: 'views/home/home.html',
             controller: 'HomeController'
-        }).  
+        }).  //Menus
         when('/profile', {
             templateUrl: 'views/menus/profile/profile.html',
             controller: 'ProfileController'
-        }).        
+        }).   
+        when('/services-menu', {
+            templateUrl: 'views/menus/services-menu/services-menu.html',
+            controller: 'ServicesMenuController'
+        }).
         when('/view2', {
             templateUrl: 'views/view2/view2.html',
             controller: 'View2Controller'

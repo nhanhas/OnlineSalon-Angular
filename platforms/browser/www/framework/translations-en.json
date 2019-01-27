@@ -141,6 +141,8 @@
     "APP_PROFILE_SAVE_MESSAGE" : "Changes saved with success",
     "APP_PROFILE_LOGOUT_BTN" : "SIGN OUT",
 
+    "APP_SERVICES_MENU_TITLE" : "MY SERVICES",
+
     "APP_LOADING_DEFAULT_MSG" : "We are processing your data",
 
     "APP_VERSION" : "Version 1.11",

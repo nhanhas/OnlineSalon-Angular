@@ -148,6 +148,8 @@
     "APP_PROFILE_SAVE_MESSAGE" : "Alterações gravadas com sucesso",
     "APP_PROFILE_LOGOUT_BTN" : "TERMINAR SESSÃO",
 
+    "APP_SERVICES_MENU_TITLE" : "OS MEUS SERVIÇOS",
+
     "APP_LOADING_DEFAULT_MSG" : "Estamos a processar os seus dados",
 
     "APP_VERSION" : "Versão 1.11",
