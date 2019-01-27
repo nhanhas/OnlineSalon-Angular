@@ -13,7 +13,7 @@
         </div>
 
         <div class="text-center">
-            <span class="text-small text-bold color-xDark-pink ">{{ 'APP_SERVICES_MENU_TITLE' | translate }}</span>
+            <span class="text-bold color-xDark-pink ">{{ 'APP_SERVICES_MENU_TITLE' | translate }}</span>
         </div>
 
 
@@ -22,7 +22,21 @@
             https://nehakadam.github.io/AnyPicker/
         -->
 
+        <div class="services-menu-list-container">
+            <!-- App Mode = Client -->
+            <div class="services-menu-list-item" ng-repeat="service in view.servicesCompleted" ng-if="view.appMode === 'client'">
+                <service-completed service="service" on-re-schedule="onReSchedule(service)" app-mode="{{ view.appMode }}"></service-completed>
+            </div>
+
+            <!-- App Mode = Pro -->
+            <div class="services-menu-list-item" ng-repeat="service in view.servicesCompleted" ng-if="view.appMode === 'pro'">
+                <service-completed service="service" on-report-comment="onReportComment(service, comment)" app-mode="{{ view.appMode }}"></service-completed>
+            </div>
+        </div>
     
     </div>
 
 </div>
+
+ <!-- Loading -->
+ <loading is-loading="view.isLoading" loading-message="view.loadingMessage"></loading>

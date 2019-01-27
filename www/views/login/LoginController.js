@@ -211,7 +211,7 @@ app
             FrameworkUtils.getUserCurrentPosition().then(()=>{
                 //#3 - Use app without Geolocation          
                 $rootScope.allowGeolocation = true;
-                if(APP_CONFIG.mode === 'PRO')
+                if(APP_CONFIG.mode === 'pro')
                     $location.path('/home-pro');
                 else
                     $location.path('/home');
@@ -221,7 +221,7 @@ app
         }else{
             //#3 - Use app without Geolocation          
             $rootScope.allowGeolocation = false;
-            if(APP_CONFIG.mode === 'PRO')
+            if(APP_CONFIG.mode === 'pro')
                 $location.path('/home-pro');
             else
                 $location.path('/home');

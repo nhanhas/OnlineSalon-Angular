@@ -1,0 +1,126 @@
+<div class="service-completed" ng-if="appMode === 'client'">
+
+    <!-- Service resume -->
+    <div class="service-completed-resume-fields">
+
+        <!-- Date -->
+        <div>
+            <span class="text-bold color-xDark-pink ">{{ 'APP_SERVICES_MENU_FIELD_0' | translate }}: </span>    
+            <span class="color-xDark-pink">{{ service.date }}</span>
+        </div>
+
+        <!-- Professional -->
+        <div>
+            <span class="text-bold color-xDark-pink">{{ 'APP_SERVICES_MENU_FIELD_PRO_1' | translate }}: </span>    
+            <span class="color-xDark-pink">{{ service.professional }}</span>
+        </div>
+
+        <!-- Rating -->
+        <div>
+            <span class="text-bold color-xDark-pink ">{{ 'APP_SERVICES_MENU_FIELD_2' | translate }}: </span>    
+            <span><i  ng-repeat="i in [1, 2, 3, 4, 5]" class="fa color-xDark-pink" ng-class="i <= service.rating ? 'fa-star' : 'fa-star-o'"></i></span>
+        </div>
+
+        <!-- Time spent -->
+        <div>
+            <span class="text-bold color-xDark-pink ">{{ 'APP_SERVICES_MENU_FIELD_3' | translate }}: </span>    
+            <span class="color-xDark-pink">{{ service.timeSpent }}</span>
+        </div>
+
+        <!-- Address -->
+        <div>
+            <span class="text-bold color-xDark-pink ">{{ 'APP_SERVICES_MENU_FIELD_4' | translate }}: </span>    
+            <span class="color-xDark-pink">{{ service.address }}</span>
+        </div>
+        
+    </div> 
+
+    <!-- Receipt and contact -->
+    <div class="service-completed-linkable-options text-small text-bold color-normal-pink">
+        <span>{{ 'APP_SERVICES_MENU_LINKABLE_OPT_CLIENT_0' | translate }}</span>
+        <span>{{ 'APP_SERVICES_MENU_LINKABLE_OPT_CLIENT_1' | translate }}</span>
+    </div>
+
+    <!-- Re-schedule -->
+    <div class="service-completed-reschedule-container">
+        <custom-button label="{{ 'APP_SERVICES_MENU_RE_SCHEDULE_BTN' | translate }}" layout="default" on-press="onReScheduleHandler()"></custom-button> 
+    </div>
+
+</div>
+
+<div class="service-completed" ng-if="appMode === 'pro'">
+
+    <!-- Service resume -->
+    <div class="service-completed-resume-fields">
+
+        <!-- Date -->
+        <div>
+            <span class="text-bold color-xDark-pink ">{{ 'APP_SERVICES_MENU_FIELD_0' | translate }}: </span>    
+            <span class="color-xDark-pink">{{ service.date }}</span>
+        </div>
+
+        <!-- Professional -->
+        <div>
+            <span class="text-bold color-xDark-pink">{{ 'APP_SERVICES_MENU_FIELD_CLIENT_1' | translate }}: </span>    
+            <span class="color-xDark-pink">{{ service.client }}</span>
+        </div>
+
+        <!-- Rating -->
+        <div>
+            <span class="text-bold color-xDark-pink ">{{ 'APP_SERVICES_MENU_FIELD_2' | translate }}: </span>    
+            <span><i  ng-repeat="i in [1, 2, 3, 4, 5]" class="fa color-xDark-pink" ng-class="i <= service.rating ? 'fa-star' : 'fa-star-o'"></i></span>
+        </div>
+
+        <!-- Time spent -->
+        <div>
+            <span class="text-bold color-xDark-pink ">{{ 'APP_SERVICES_MENU_FIELD_3' | translate }}: </span>    
+            <span class="color-xDark-pink">{{ service.timeSpent }}</span>
+        </div>
+
+        <!-- Address -->
+        <div>
+            <span class="text-bold color-xDark-pink ">{{ 'APP_SERVICES_MENU_FIELD_4' | translate }}: </span>    
+            <span class="color-xDark-pink">{{ service.address }}</span>
+        </div>
+
+        <!-- Services list -->
+        <div>
+            <span class="text-bold color-xDark-pink ">{{ 'APP_SERVICES_MENU_FIELD_5' | translate }}: </span>    
+            <span class="color-xDark-pink">{{ service.servicesRequested }}</span>
+        </div>
+        
+        <!-- Total -->
+        <div>
+            <span class="text-bold color-xDark-pink ">{{ 'APP_SERVICES_MENU_FIELD_6' | translate }}: </span>    
+            <span class="color-xDark-pink">{{ service.totalReceived }}‎€</span>
+        </div>
+
+        <!-- Reported comment (not always) -->
+        <div ng-if="service.comment && service.comment !== ''">
+            <span class="text-bold color-xDark-pink ">{{ 'APP_SERVICES_MENU_FIELD_7' | translate }}: </span>    
+            <span class="color-xDark-pink">{{ service.comment }}‎</span>
+        </div>
+
+    </div> 
+
+    <!-- Receipt and contact -->
+    <div class="service-completed-linkable-options text-small text-bold color-normal-pink">
+        <span>{{ 'APP_SERVICES_MENU_LINKABLE_OPT_PRO_0' | translate }}</span>
+        <span ng-click="showReportComment = !showReportComment">{{ 'APP_SERVICES_MENU_LINKABLE_OPT_PRO_1' | translate }}</span>
+    </div>
+
+    <!-- Write a comment -->
+    <div class="service-completed-report-container" ng-show="showReportComment">
+        
+        <span class="color-gray">{{ 'APP_SERVICES_MENU_REPORT_COMMENT_PRO' | translate }}</span>
+        <textarea class="service-completed-textarea" ng-model="service.newComment"></textarea>
+
+        <!-- Submit commet -->
+        <div class="service-completed-submit-btn-container">
+            <custom-button label="{{ 'APP_SERVICES_MENU_REPORT_COMMENT_SEND_BTN_PRO' | translate }}" layout="default" on-press="onReportCommentHandler()"></custom-button> 
+        </div>
+
+
+    </div>
+
+</div>

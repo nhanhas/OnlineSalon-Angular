@@ -1,0 +1,28 @@
+.service-completed-resume-fields > div{
+    margin-bottom: 5px;
+}
+.service-completed-linkable-options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.service-completed-reschedule-container{
+    margin: 10px 0;
+}
+
+/* PRO */
+.service-completed-report-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #80808059;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.service-completed-textarea{
+    border: none;
+    margin: 10px 0;
+    outline: none;
+}

@@ -74,5 +74,6 @@ app.config(
     }]
 );
 
-//App Mode (client or professoial - PRO or CLIENT)
-app.constant('APP_CONFIG', { "mode" : 'CLIENT' });
+//App Mode (client or professoial - 'pro' or 'client')
+//NOTE: Lower case!
+app.constant('APP_CONFIG', { "mode" : 'pro' });
