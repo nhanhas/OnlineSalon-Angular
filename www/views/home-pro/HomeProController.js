@@ -122,8 +122,12 @@ app
     /**
 	 * Behaviour functions Panels
 	 */
-	
-	//#A - Allow to show/hide panels (param <panel> = undefined, will close all)
+	window.onpopstate = function () {
+		$timeout(()=>{
+			$scope.showPanel(undefined, true);
+		});		
+    };
+	//#A - Allow to show/hide panels (param <panel> = undefined, will close all)	
 	$scope.showPanel = function(panel){
 		//#1 - First we reset all 'Opened' flags
 		$scope.view.messagesOpened = false;
@@ -136,6 +140,8 @@ app
 		$scope.view.bookingOpened = false;
 		$scope.view.scheduleOpened = false;
 
+		if(panel !== undefined)
+			history.pushState(null, null, location.href);
 		//#2 - Set visible the requested panel
 		switch (panel) {
 			//#i - nav sections	
@@ -153,6 +159,10 @@ app
 				break;
 			case 'menu':
 				$scope.view.menuOpened = true;
+				break;
+			default:
+				if(!isBrowserPopState)
+					history.back();
 				break;
 		}
 

@@ -428,9 +428,13 @@ app
 	/**
 	 * Behaviour functions Panels
 	 */
-	
+	window.onpopstate = function () {
+		$timeout(()=>{
+			$scope.showPanel(undefined, true);
+		});		
+    };
 	//#A - Allow to show/hide panels (param <panel> = undefined, will close all)
-	$scope.showPanel = function(panel){
+	$scope.showPanel = function(panel, isBrowserPopState = false){
 		//#1 - First we reset all 'Opened' flags
 		$scope.view.favoritesOpened = false;
 		$scope.view.messagesOpened = false;
@@ -443,6 +447,8 @@ app
 		$scope.view.scheduleOpened = false;
 
 		//#2 - Set visible the requested panel
+		if(panel !== undefined)
+			history.pushState(null, null, location.href);	
 		switch (panel) {
 			//#i - nav sections	
 			case 'messages':
@@ -466,6 +472,10 @@ app
 				break;
 			case 'schedule':
 				$scope.view.scheduleOpened = true;
+				break;
+			default:
+				if(!isBrowserPopState)
+					history.back();
 				break;
 		}
 
