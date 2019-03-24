@@ -9,13 +9,13 @@
         </div>
  
         <!-- identification -->
-        <div class="favorite-tile-id">
-            <span ng-class="{   'color-heart-green' : favorite.location === 'in',
-                                'color-heart-orange' : favorite.location === 'out',
-                                'color-heart-red' : favorite.location === 'in/out',
-                                'color-heart-gray' : favorite.location === 'busy' }">
-                <i class="fa fa-heart fa-lg"></i>
-            </span>
+        <div class="favorite-tile-id"> 
+            <div ng-switch="favorite.location">
+                <div ng-switch-when="in" class="heart-icon"><img ng-src="assets/marker-heart-green.png"></div>
+                <div ng-switch-when="out" class="heart-icon"><img ng-src="assets/marker-heart-orange.png"></div>
+                <div ng-switch-when="in/out" class="heart-icon"><img ng-src="assets/marker-heart-red.png"></div>
+                <div ng-switch-when="busy" class="heart-icon"><img ng-src="assets/marker-heart-gray.png"></div>
+            </div>
 
             <div class="favorite-tile-id-name text-large"><span>{{ favorite.name }}</span></div>
 

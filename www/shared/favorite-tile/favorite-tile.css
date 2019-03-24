@@ -89,3 +89,8 @@
 .favorite-tile-buttons-container-inline .custom-button-default {
     min-width: 145px; 
 }
+
+/* Heart Icon */
+.heart-icon img{
+    width: 30px;
+}

@@ -7,7 +7,7 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
     //App Service URL  
     //this.serviceWS = 'http://192.168.1.80:8000/server';
     //this.serviceWS = 'http://salaoonline.tk';
-    this.serviceWS = 'https://salaonline.makeitdigital.pt';
+    this.serviceWS = 'http://salaonline.makeitdigital.pt';
    
     /********************************************************************************
      * Login 

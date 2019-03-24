@@ -230,3 +230,8 @@
 .carousel-indicators .active, .carousel-indicators li{
     background-color: rgb(246, 197, 224);
 }
+
+/* Heart Icon */
+.heart-icon img{
+    width: 30px;
+}

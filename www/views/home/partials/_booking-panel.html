@@ -13,12 +13,12 @@
         <div class="booking-panel-pictures">
             
             <!-- location -->
-            <span ng-class="{   'color-heart-green' : view.serviceSelected.location === 'in',
-                                'color-heart-orange' : view.serviceSelected.location === 'out',
-                                'color-heart-red' : view.serviceSelected.location === 'in/out',
-                                'color-heart-gray' : view.serviceSelected.location === 'busy' }">
-                <i class="fa fa-heart fa-2x"></i>
-            </span> 
+            <div ng-switch="view.serviceSelected.location">
+                <div ng-switch-when="in" class="heart-icon"><img ng-src="assets/marker-heart-green.png"></div>
+                <div ng-switch-when="out" class="heart-icon"><img ng-src="assets/marker-heart-orange.png"></div>
+                <div ng-switch-when="in/out" class="heart-icon"><img ng-src="assets/marker-heart-red.png"></div>
+                <div ng-switch-when="busy" class="heart-icon"><img ng-src="assets/marker-heart-gray.png"></div>
+            </div>
 
             <!-- Picture -->
             <div class="booking-panel-img-container">

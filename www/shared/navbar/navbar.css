@@ -35,3 +35,8 @@
     width: 110px;
     justify-content: space-evenly;
 }
+
+/* Heart Icon */
+.heart-icon img{
+    width: 30px;
+}
