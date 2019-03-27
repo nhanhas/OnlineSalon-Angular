@@ -149,6 +149,24 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
     }
 
     /********************************************************************************
+     * Menus - Profile
+     ********************************************************************************/
+    /**
+     * #A - Update profile user
+     * parameter to server:
+     * {"id_user": "","lat": "", "long": ""}  
+     */
+    this.PROFILE_updateUserInfo  = function(userInfoParameter){
+        
+        let serviceURL = this.serviceWS + '/updateUserInfo';
+        let parameter = userInfoParameter;
+
+        return FrameworkUtils.Http_POST(serviceURL, parameter).then(function(result){     
+            return result.data;
+        });
+    }
+
+    /********************************************************************************
      * Generic
      ********************************************************************************/
     /**

@@ -10,6 +10,7 @@ app
             isAddressFormValid : false,  
             isPaymentFormValid : false,  
             identification : {
+                id_user: -1,
                 name : '',
                 email : '',
                 password : '',
@@ -46,6 +47,7 @@ app
         
         //#1.2 - Fulfill identification form
         $scope.view.profileForm.identification = {
+            id_user : profileData.id_user,
             name: profileData.name,
             email: profileData.email,
             password: profileData.password,
@@ -92,13 +94,43 @@ app
 
     //#H - Save Form sign in
     $scope.saveAll = function(){
+        
+        //#1 - Prepare User parameter
+        let userParameter = {            
+            id_user: $scope.view.profileForm.identification.id_user,
+            name: $scope.view.profileForm.identification.name,
+            phone: $scope.view.profileForm.identification.phone,                   
+            email: $scope.view.profileForm.identification.email,     
+            photo: $scope.view.profileForm.identification.photo,
+
+            address1: $scope.view.profileForm.address.mainAddress,
+            address2: $scope.view.profileForm.address.secondaryAddress,
+            city: $scope.view.profileForm.address.city,
+            postalCode: $scope.view.profileForm.identification.zipcode,
+            
+        }
+        
+        //#1 - Get All Services by calling server
+		return AppService.PROFILE_updateUserInfo(userParameter).then((result)=>{
+            console.log(result);
+            if(result){
+                //#2 - Store userInfo in cache
+                localStorage.setItem('userInfo', JSON.stringify(result.data.user));
+                
+                //#2.2 - Show message
+                $scope.view.messageError = 'APP_PROFILE_SAVE_MESSAGE';
+            }else{
+                //TODO REMOVE
+                localStorage.setItem('userInfo', JSON.stringify(userParameter));
+            }
+
+		});
 
         //#TODO - Call Service
         //#1 - Store it into cache (for demo)
         //localStorage.setItem('clientData', JSON.stringify($scope.view.profileForm));
 
-        //#2 - Show message
-        $scope.view.messageError = 'APP_PROFILE_SAVE_MESSAGE';
+        
     
     };
 
