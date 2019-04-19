@@ -183,4 +183,19 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
             return result.data;
         });
     }
+
+    /**
+     * #B - Get Service general settings
+     * parameter to server: none. 
+     * It is a GET 
+     */
+    this.GENERIC_getGeneralSettings  = function(){
+        
+        let serviceURL = this.serviceWS + '/getGeneralSettings';
+
+        return FrameworkUtils.Http_GET(serviceURL).then(function(result){     
+            return result.data;
+        });
+    }
+
 }]);

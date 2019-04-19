@@ -1,12 +1,28 @@
 app
-.controller('LoginController', ['$rootScope', '$scope', '$timeout', '$location', '$http','$q', '$translate', 'FrameworkUtils', 'AppService', 'APP_CONFIG',   function($rootScope, $scope, $timeout, $location, $http, $q, $translate,FrameworkUtils, AppService, APP_CONFIG) {
-
+.controller('LoginController', ['$rootScope', '$scope', '$timeout', '$location', '$http','$q', '$translate', 'FrameworkUtils', 'AppService', 'APP_CONFIG', 'appInfo',  function($rootScope, $scope, $timeout, $location, $http, $q, $translate,FrameworkUtils, AppService, APP_CONFIG, appInfo) {
     /**
      * Controller variables
      */
     $scope.view = {
         isLoading : false,
         loadingMessage : undefined,
+        appInfoImages : (()=>{
+            
+            //#Get random image , if exists 
+            if (appInfo.images_back && appInfo.images_back.length > 0){
+                let imageRand = Math.floor(Math.random() * appInfo.images_back.length );
+                //#return css class do .login
+                return {    'background' :  'url(' + appInfo.images_back[imageRand] + ')',
+                            'background-repeat': 'no-repeat',
+                            'background-size': 'cover', 
+                            'background-position': 'right'};
+            }else{
+                //otherwise return an empty CSS class
+                return {};
+            }
+            
+           
+        })(),
         stepSelected : 'language',        
         credentials : {
             username : '',

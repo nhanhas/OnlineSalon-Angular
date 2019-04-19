@@ -1,6 +1,17 @@
 .login{
+    /* this was before image
     height: fit-content;
+    min-height: 570px;*/
+
+    /*background: url(https://salaonline.makeitdigital.pt/wp-content/uploads/2018/09/home_cor_clientes_1920_1.jpg);*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+
+    height: fill-available;
+    height: -webkit-fill-available;
     min-height: 570px;
+
 }
 
 .login-logo img{

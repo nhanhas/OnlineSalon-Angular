@@ -1,6 +1,21 @@
 body{
   background-color: #fce8f2;
 }
+.body-loading{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.body-loading img{
+  width: 150px;
+}
+
 .container{
   padding: 0;
 }

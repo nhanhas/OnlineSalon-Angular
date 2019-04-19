@@ -40,9 +40,12 @@
 
   </head>
   <body>
-
+    
+    <!-- this is used when getAllServices is pending -->
+    <div class="body-loading" ng-show='stateIsLoading'>
+        <img src="assets/main-logo-large.png">
+    </div>
     <!-- App Body -->
-
     <div class="container" ng-view></div>
 
     <!-- AngularJS -->

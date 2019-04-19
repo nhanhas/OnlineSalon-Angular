@@ -5,7 +5,17 @@ app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
         when('/login', {
             templateUrl: 'views/login/login.html',
-            controller: 'LoginController'
+            controller: 'LoginController',
+            resolve: {
+                appInfo :  function(AppService){
+                                return AppService.GENERIC_getGeneralSettings().then((result)=>{
+                                    if(result && result.code === 0){
+                                        return JSON.parse(result.data);
+                                    }
+                                    return undefined;
+                                });
+                            },
+            }
         }).
         when('/home', {
             templateUrl: 'views/home/home.html',
@@ -73,6 +83,21 @@ app.config(
         });
     }]
 );
+
+//this is used to show .body-loading, when route resolve is not ready
+app.run(['$rootScope', function($rootScope){
+
+    $rootScope.$on('$routeChangeStart',function(){
+        $rootScope.stateIsLoading = true;
+   });
+  
+  
+    $rootScope.$on('$routeChangeSuccess',function(){
+        $rootScope.stateIsLoading = false;
+   });
+  
+}]);
+
 
 //App Mode (client or professoial - 'pro' or 'client')
 //NOTE: Lower case!
