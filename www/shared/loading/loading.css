@@ -4,7 +4,7 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: #ffffffdb;
+    background-color: rgba(255, 255, 255, 0.86);
     text-align: center;
     display: flex;
     flex-direction: column;

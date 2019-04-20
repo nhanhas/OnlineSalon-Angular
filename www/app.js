@@ -85,9 +85,30 @@ app.config(
 );
 
 //this is used to show .body-loading, when route resolve is not ready
-app.run(['$rootScope', function($rootScope){
+app.run(['$rootScope', 'FrameworkUtils', 'AppService', function($rootScope, FrameworkUtils, AppService){
 
-    $rootScope.$on('$routeChangeStart',function(){
+    $rootScope.$on('$routeChangeStart',function(event, next){
+        //# - This is to show at login the logo spalsh 
+        $rootScope.stateIsLoading = true;
+        return true;
+        //#Uncomment to validate login
+        //#1 - We are going to validate user authentication
+        if(next.originalPath !== '/login'){
+
+            let loggedUser = FrameworkUtils.getLoggedUser();
+            let isAuthenticated = false;
+            //#1.1 - if we have cached userInfo, validate it
+            if(loggedUser){
+                //#TODO - Validate user
+
+            }else{
+                //#otherwise - get back to login!
+                $location.path = '/login';
+            }
+                
+        }
+
+        //# - This is to show at login the logo spalsh 
         $rootScope.stateIsLoading = true;
    });
   
