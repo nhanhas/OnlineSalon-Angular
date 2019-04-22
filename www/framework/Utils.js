@@ -59,6 +59,12 @@ app.service('FrameworkUtils', ['$http', function($http) {
         let navigatorPosition = (()=>{
             return new Promise(function (resolve, reject) {
                 try {
+                    let options = {
+                        maximumAge: 30000,
+                        timeout: 15000,
+                        enableHighAccuracy: false
+                    };
+
                     navigator.geolocation.getCurrentPosition(function (position) {
                         let coordinates = position.coords;
                         resolve({ lat: coordinates.latitude, long: coordinates.longitude });
@@ -67,7 +73,7 @@ app.service('FrameworkUtils', ['$http', function($http) {
                         if (error.code == error.PERMISSION_DENIED)
                             console.log("User declined geolocation");
                         resolve({ lat: 0, long: 0 });
-                    });
+                    }, options);
                 } catch (error) {
                     resolve({ lat: 0, long: 0 });
                 }               

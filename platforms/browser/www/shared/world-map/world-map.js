@@ -36,6 +36,12 @@ app
 
                 //#B - Get client current position
                 scope.MAP_getCurrentPosition = function(){
+                    
+                    let options = {
+                        maximumAge: 30000,
+                        timeout: 15000,
+                        enableHighAccuracy: false
+                    };
 
                     navigator.geolocation.getCurrentPosition(function(position) {
                         //console.log(position.coords.latitude, position.coords.longitude);
@@ -58,7 +64,7 @@ app
                         scope.isReady = true;
                         scope.$apply();
 
-                    })
+                    }, options)
 
                     
                 };
