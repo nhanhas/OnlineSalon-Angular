@@ -17,11 +17,11 @@ app.service('FrameworkUtils', ['$http', function($http) {
                      return 'error';
                  });
      }
- 
+
      //POST Type
      this.Http_POST  = function(serviceURL, data){
          return $http({
-                     method: 'POST',                     
+                     method: 'POST',
                      data: data,
                      url: serviceURL
                  }).then(function successCallback(response) {
@@ -30,13 +30,13 @@ app.service('FrameworkUtils', ['$http', function($http) {
                      return 'error';
                  });
      }
- 
- 
+
+
      /**
       * Basic Utils
-      */   
- 
-    //Parameters from QueryString 
+      */
+
+    //Parameters from QueryString
     this.getParameterByName = function (name, url) {
         if (!url) {
             url = window.location.href;
@@ -48,7 +48,7 @@ app.service('FrameworkUtils', ['$http', function($http) {
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
- 
+
     //Get a Logged User
     this.getLoggedUser = function(){
         return JSON.parse(localStorage.getItem('userInfo'));
@@ -79,12 +79,7 @@ app.service('FrameworkUtils', ['$http', function($http) {
             }               
         });
 
-		
 	}
 
 
  }]);
- 
- 
- 
- 
