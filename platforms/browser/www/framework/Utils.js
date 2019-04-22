@@ -17,11 +17,11 @@ app.service('FrameworkUtils', ['$http', function($http) {
                      return 'error';
                  });
      }
- 
+
      //POST Type
      this.Http_POST  = function(serviceURL, data){
          return $http({
-                     method: 'POST',                     
+                     method: 'POST',
                      data: data,
                      url: serviceURL
                  }).then(function successCallback(response) {
@@ -30,13 +30,13 @@ app.service('FrameworkUtils', ['$http', function($http) {
                      return 'error';
                  });
      }
- 
- 
+
+
      /**
       * Basic Utils
-      */   
- 
-    //Parameters from QueryString 
+      */
+
+    //Parameters from QueryString
     this.getParameterByName = function (name, url) {
         if (!url) {
             url = window.location.href;
@@ -48,14 +48,17 @@ app.service('FrameworkUtils', ['$http', function($http) {
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
- 
+
     //Get a Logged User
     this.getLoggedUser = function(){
         return JSON.parse(localStorage.getItem('userInfo'));
     }
 
     //Get user current position
-    this.getUserCurrentPosition = function(){	
+    this.getUserCurrentPosition = function(){
+
+          if (navigator.geolocation) {
+              alert("aqui");
         let navigatorPosition = (()=>{
             return new Promise(function (resolve, reject) {
                 try {
@@ -66,6 +69,7 @@ app.service('FrameworkUtils', ['$http', function($http) {
                     };
 
                     navigator.geolocation.getCurrentPosition(function (position) {
+                        alert("aqui1");
                         let coordinates = position.coords;
                         resolve({ lat: coordinates.latitude, long: coordinates.longitude });
                     },
@@ -75,34 +79,33 @@ app.service('FrameworkUtils', ['$http', function($http) {
                         resolve({ lat: 0, long: 0 });
                     }, options);
                 } catch (error) {
+                  alert("ola");
                     resolve({ lat: 0, long: 0 });
-                }               
+                }
             });
         });
-
+      }else{
+         alert('W3C Geolocation API is not available');
+      }
         let iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)
         if(!iOS){
              //#1 - check again from geolocation param
-             return navigator.permissions.query({name:'geolocation'}).then(function(permissionStatus) {  
+             return navigator.permissions.query({name:'geolocation'}).then(function(permissionStatus) {
                 if(permissionStatus.state == 'granted'){
-                    //#2 - get actual position				
+                    //#2 - get actual position
                     return navigatorPosition();
                 }else{
                     return new Promise(function (resolve, reject) {
                         resolve({ lat: 0, long: 0 });
                     });
-                }		
+                }
             });
         }else{
             return navigatorPosition();
         }
-        
-		
+
+
 	}
 
 
  }]);
- 
- 
- 
- 

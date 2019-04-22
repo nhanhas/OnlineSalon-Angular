@@ -35,8 +35,8 @@ app
         forgotPwMessageError: '',
         signInOpened : false,
         signInStep : 0,
-        signInForm : {        
-            isIdFormValid : false,    
+        signInForm : {
+            isIdFormValid : false,
             isCodeFormValid : false,
             user_id: '', //fulfilled when sign in requested!
             identification : {
@@ -50,7 +50,7 @@ app
             code : {
                 confirmationCode : ''
             }
-            
+
         },
         forgotPwOpened : false,
         forgotPwStep : 0,
@@ -59,8 +59,27 @@ app
             isEmailValid : false
         }
     };
-    
 
+    var options = {
+      maximumAge: 30000,
+    timeout: 15000,
+    enableHighAccuracy: true
+    };
+
+    function success(pos) {
+      var crd = pos.coords;
+
+      console.log('Sua posição atual é:');
+      alert('Latitude : ' + crd.latitude);
+      alert('Longitude: ' + crd.longitude);
+      console.log('Mais ou menos ' + crd.accuracy + ' metros.');
+    };
+
+    function error(err) {
+     alert('ERROR(' + err.code + '): ' + err.message);
+    };
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
     /**
      * Controller behaviours
      */
@@ -72,7 +91,7 @@ app
      }
 
     //[Watcher] - validate identification form on step 0 of sign in
-    $scope.$watch('view.signInForm.identification', function(newVal, oldVal){ 
+    $scope.$watch('view.signInForm.identification', function(newVal, oldVal){
         //TODO
         if($scope.view.signInForm.identification.name !== '')
             $scope.view.signInForm.isIdFormValid = true;
@@ -81,7 +100,7 @@ app
     }, true);
 
     //[Watcher] - validate code form on step 1 of sign in
-    $scope.$watch('view.signInForm.code', function(newVal, oldVal){ 
+    $scope.$watch('view.signInForm.code', function(newVal, oldVal){
         //TODO
         if($scope.view.signInForm.code.confirmationCode !== '')
             $scope.view.signInForm.isCodeFormValid = true;
@@ -90,7 +109,7 @@ app
     }, true);
 
     //[Watcher] - validate email form forgot pw is fulfilled
-    $scope.$watch('view.forgotPwForm.email', function(newVal, oldVal){ 
+    $scope.$watch('view.forgotPwForm.email', function(newVal, oldVal){
         //TODO
         if($scope.view.forgotPwForm.email !== '')
             $scope.view.forgotPwForm.isEmailValid = true;
@@ -100,12 +119,12 @@ app
 
     //AUX - Reset signInForm
     $scope.resetSignIn = function(){
-        
+
         //#FIX - ng-class wrong usage
         jQuery('body').css('background-color', '#fce8f2');
 
         $scope.view = {
-            stepSelected : 'credentials',        
+            stepSelected : 'credentials',
             credentials : {
                 username : '',
                 password : '',
@@ -115,8 +134,8 @@ app
             pinCodeMessageError : '',
             signInOpened : false,
             signInStep : 0,
-            signInForm : {        
-                isIdFormValid : false,    
+            signInForm : {
+                isIdFormValid : false,
                 isCodeFormValid : false,
                 user_id: '', //fulfilled when sign in requested!
                 identification : {
@@ -130,7 +149,7 @@ app
                 code : {
                     confirmationCode : ''
                 }
-                
+
             }
         };
     }
@@ -151,11 +170,11 @@ app
 
     //#C - Login Handler
     $scope.userLogin = function(){
-        //#0 - Clean message error 
+        //#0 - Clean message error
         $scope.view.credentialsMessageError = '';
 
         //#1 - Validate credentials
-        //TODO     
+        //TODO
         if($scope.view.credentials.username !== '' && $scope.view.credentials.password !== '' ){
             //#1 - if "remind me"
             if($scope.view.credentials.remindCredentials){
@@ -164,9 +183,9 @@ app
                 localStorage.setItem('credentials', '{}');
             }
 
-            //#2.1 - prepare data to login 
+            //#2.1 - prepare data to login
             let credentials = { username : $scope.view.credentials.username, password : $scope.view.credentials.password};
-            
+
             //#2.2 - Call loading Screen
             $scope.view.isLoading = true;
             $scope.view.loadingMessage = 'APP_LOADING_DEFAULT_MSG';
@@ -179,7 +198,7 @@ app
 
                 //#2.4 - Remove loading
                 $scope.view.isLoading = false;
-                
+
                 //#2.5 - Process response
                 if(result.code === 0){
                     //#2.5.1 - Store userInfo in cache
@@ -191,14 +210,14 @@ app
                     //#3 - Show message error
                     $scope.view.credentialsMessageError = $scope.getTranslationByCode(result.code);
                 }
-                
+
             });
-                
+
         }else{
             //#3 - Show message error
             $scope.view.credentialsMessageError = 'APP_LOGIN_CREDENTIALS_ERROR_MESSAGE';
         }
-    
+
     }
 
     //#D - Sign In Handler (open)
@@ -207,7 +226,7 @@ app
         jQuery('body').css('background-color', '#FFFFFF');
         //#1 - show sign in popup
         $scope.view.signInOpened = true;
-        
+
     }
 
     //#D.1 - Sign In Handler (close)
@@ -216,16 +235,19 @@ app
         jQuery('body').css('background-color', '#fce8f2');
         //#1 - show sign in popup
         $scope.view.signInOpened = false;
-        
+
     }
 
     //#E - Confirm [or deny] authorization
     $scope.confirmAuthorization = function(isAllowed){
+
         //#1 - depending on user confirmation
         if(isAllowed && navigator.geolocation){
-            
+
             FrameworkUtils.getUserCurrentPosition().then(()=>{
-                //#3 - Use app without Geolocation          
+                  alert(isAllowed);
+
+                //#3 - Use app without Geolocation
                 $rootScope.allowGeolocation = true;
                 if(APP_CONFIG.mode === 'pro')
                     $location.path('/home-pro');
@@ -233,15 +255,15 @@ app
                     $location.path('/home');
                 $rootScope.$apply();
             })
-            
+
         }else{
-            //#3 - Use app without Geolocation          
+            //#3 - Use app without Geolocation
             $rootScope.allowGeolocation = false;
             if(APP_CONFIG.mode === 'pro')
                 $location.path('/home-pro');
             else
                 $location.path('/home');
-            
+
         }
     }
 
@@ -262,7 +284,7 @@ app
     //#G.1 - Read File to Interface (TODO.save image in server)
     $scope.openFile = function(file) {
         var input = file.target;
-    
+
         var reader = new FileReader();
         reader.onload = function(){
           var dataURL = reader.result;
@@ -294,7 +316,7 @@ app
             $scope.view.loadingMessage = undefined;
 
             console.log(result);
-            
+
             //#1.2 - Process result
             if(result && result.code === 0){
                 //#2 - Store it into cache (for demo)
@@ -306,10 +328,10 @@ app
                 //#4 - Show message error
                 $scope.view.pinCodeMessageError = 'APP_SIGNIN_PINCODE_ERROR_MESSAGE';
             }
-            
+
         })
 
-        
+
     };
 
     //#I - Submit Form Sign in
@@ -342,21 +364,21 @@ app
                 $scope.view.signInForm.user_id = result.data.user_id;
 
                 //#2.3.2 - Show confirmation code step
-                $scope.continueSignSteps(1);    
+                $scope.continueSignSteps(1);
             }else{
                 //#2.4 - Show message error
                 $scope.view.signMessageError = $scope.getTranslationByCode(result.code);
             }
-            
+
         });
 
-        
-        
+
+
     }
 
-    //#J - Get Locales translations according to error 'code' 
+    //#J - Get Locales translations according to error 'code'
     $scope.getTranslationByCode = function(code){
-        return 'APP_LOGIN_ERROR_' + code.toString();        
+        return 'APP_LOGIN_ERROR_' + code.toString();
     }
 
     //#K - Forgot Password Handler (open)
@@ -365,7 +387,7 @@ app
         jQuery('body').css('background-color', '#FFFFFF');
         //#1 - show sign in popup
         $scope.view.forgotPwOpened = true;
-        
+
     }
 
     //#L - Forgot Password Handler (close)
@@ -374,7 +396,7 @@ app
         jQuery('body').css('background-color', '#fce8f2');
         //#1 - show forgot password popup
         $scope.view.forgotPwOpened = false;
-        
+
     }
 
     //#M - Call service to forgot pw
@@ -390,7 +412,7 @@ app
         //#1.1 - Call loading Screen
         $scope.view.isLoading = true;
         $scope.view.loadingMessage = 'APP_LOADING_FORGOT_PW_MSG';
-        
+
         //#1 - Make the server Call
         AppService.LOGIN_forgotPW(forgotPwParamenter).then((result)=>{
             //#1.1 - Remove loading
@@ -402,7 +424,7 @@ app
             if(result && result.code === 0){
                 //#2 - Navigate to Success Page
                 $scope.view.forgotPwStep = 1;
-        
+
             }else{
                  //#3 - Show message error
                  $scope.view.forgotPwMessageError = 'APP_FORGOT_PW_ERROR_MESSAGE';
