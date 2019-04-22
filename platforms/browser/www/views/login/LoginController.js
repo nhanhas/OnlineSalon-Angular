@@ -343,7 +343,8 @@ app
             name : $scope.view.signInForm.identification.name,
             email_address : $scope.view.signInForm.identification.email,
             password : $scope.view.signInForm.identification.password,
-            telemovel : $scope.view.signInForm.identification.phone
+            telemovel : $scope.view.signInForm.identification.phone,
+            photo: $scope.view.signInForm.identification.photo 
         };
 
         //#1.1 - Call loading Screen
