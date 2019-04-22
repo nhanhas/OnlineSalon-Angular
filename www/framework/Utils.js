@@ -56,47 +56,29 @@ app.service('FrameworkUtils', ['$http', function($http) {
 
     //Get user current position
     this.getUserCurrentPosition = function(){	
-        let navigatorPosition = (()=>{
-            return new Promise(function (resolve, reject) {
-                try {
-                    let options = {
-                        maximumAge: 30000,
-                        timeout: 15000,
-                        enableHighAccuracy: false
-                    };
 
-                    navigator.geolocation.getCurrentPosition(function (position) {
-                        let coordinates = position.coords;
-                        resolve({ lat: coordinates.latitude, long: coordinates.longitude });
-                    },
-                    function (error) { 
-                        if (error.code == error.PERMISSION_DENIED)
-                            console.log("User declined geolocation");
-                        resolve({ lat: 0, long: 0 });
-                    }, options);
-                } catch (error) {
+        return new Promise(function (resolve, reject) {
+            try {
+                let options = {
+                    maximumAge: 30000,
+                    timeout: 15000,
+                    enableHighAccuracy: false
+                };
+
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    let coordinates = position.coords;
+                    resolve({ lat: coordinates.latitude, long: coordinates.longitude });
+                },
+                function (error) { 
+                    if (error.code == error.PERMISSION_DENIED)
+                        console.log("User declined geolocation");
                     resolve({ lat: 0, long: 0 });
-                }               
-            });
+                }, options);
+            } catch (error) {
+                resolve({ lat: 0, long: 0 });
+            }               
         });
 
-        let iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)
-        if(!iOS){
-             //#1 - check again from geolocation param
-             return navigator.permissions.query({name:'geolocation'}).then(function(permissionStatus) {  
-                if(permissionStatus.state == 'granted'){
-                    //#2 - get actual position				
-                    return navigatorPosition();
-                }else{
-                    return new Promise(function (resolve, reject) {
-                        resolve({ lat: 0, long: 0 });
-                    });
-                }		
-            });
-        }else{
-            return navigatorPosition();
-        }
-        
 		
 	}
 
