@@ -103,6 +103,8 @@ app
 
     //#H - Save Form sign in
     $scope.saveAll = function(){
+        $scope.view.messageSuccess = '';
+        $scope.view.messageError = '';
         
         //#1 - Prepare User parameter
         let userParameter = {            
@@ -133,7 +135,7 @@ app
                 $scope.view.messageSuccess = 'APP_PROFILE_SAVE_MESSAGE_SUCCESS';
             }else{
                 //#3 - Case of error
-                $scope.view.messageSuccess = 'APP_PROFILE_SAVE_MESSAGE_ERROR';
+                $scope.view.messageError = 'APP_PROFILE_SAVE_MESSAGE_ERROR';
             }
 
 		});

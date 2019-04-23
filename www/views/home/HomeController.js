@@ -494,8 +494,6 @@ app
 			}
 		});
 		
-		return false;
-
 		//#2 - set up parameter to server
 		let setPromotionParam = {
 			id_user : FrameworkUtils.getLoggedUser().id_user,

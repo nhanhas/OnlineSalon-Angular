@@ -138,12 +138,12 @@
                 </div>
     
                 <!-- Success message -->
-                <div class="profile-credentials-message-container" ng-if="view.messageSuccess !== ''">
+                <div class="profile-credentials-message-container" ng-show="view.messageSuccess !== ''">
                     <span class="text-medium color-primary-green" >{{ view.messageSuccess | translate }}</span>
                 </div>
 
                 <!-- Error message -->
-                <div class="profile-credentials-message-container" ng-if="view.messageError !== ''">
+                <div class="profile-credentials-message-container" ng-show="view.messageError !== ''">
                     <span class="text-medium color-red" >{{ view.messageError | translate }}</span>
                 </div>
 
