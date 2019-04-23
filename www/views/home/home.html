@@ -1,18 +1,18 @@
 <nav-footer open-menu="showPanel('menu')" expand-filter="showPanel('search')" messages="view.messages.length" services="view.services.length" open-messages="showPanel('messages')" open-services="showPanel('services')" open-favorites="showPanel('favorites')"></nav-footer>
 
 <div class="home" ng-class="{ 'home-full-height' : (
-                                                view.bookingOpened || 
-                                                view.scheduleOpened || 
+                                                view.bookingOpened ||
+                                                view.scheduleOpened ||
                                                 view.messagesOpened ||
                                                 view.servicesOpened ||
                                                 view.favoritesOpened) }">
 
-    
+
     <div class="saloon-map">
 
         <!-- we will load favorites as services -->
         <world-map services="view.favorites" on-book-now="onBookHandler(favorite)" on-schedule="onScheduleHandler(favorite)"></world-map>
-        
+
     </div>
 
 
@@ -33,18 +33,18 @@
 
 </div>
 
-<navbar ng-if=" !(  view.bookingOpened || 
-                    view.scheduleOpened || 
+<navbar ng-if=" !(  view.bookingOpened ||
+                    view.scheduleOpened ||
                     view.messagesOpened ||
                     view.servicesOpened ||
                     view.favoritesOpened )"></navbar>
 
 
  <!-- Menu Panel -->
- <div ng-include="'/views/home/partials/_menu-panel.html'" ng-if="view.menuOpened"></div>
+ <div ng-include="views/home/partials/_menu-panel.html" ng-if="view.menuOpened"></div>
 
 <!-- Search Panel -->
-<div ng-include="'/views/home/partials/_search-panel.html'" ng-if="view.searchOpened"></div>
+<div ng-include="views/home/partials/_search-panel.html" ng-if="view.searchOpened"></div>
 
  <!-- Loading -->
  <loading is-loading="view.isLoading" loading-message="view.loadingMessage"></loading>
