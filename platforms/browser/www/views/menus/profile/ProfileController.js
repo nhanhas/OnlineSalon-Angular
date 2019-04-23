@@ -32,7 +32,8 @@ app
             }
             
         },
-        messageError: ''
+        messageError: '',
+        messageSuccess : ''
     };
     
 
@@ -40,10 +41,17 @@ app
      * Controller behaviours
      */
     //#1 - get stored data
-    (()=>{
+    $scope.populateUserView = function(serverResponse = undefined){
         //#1.1 - Get profile from cache
-        let profileData = localStorage.getItem('userInfo');
-        profileData = JSON.parse(profileData);
+        let profileData = undefined;
+        if(serverResponse === undefined){
+            profileData = localStorage.getItem('userInfo');
+            profileData = JSON.parse(profileData);
+        }else{
+            profileData = serverResponse;
+        }
+        
+        
         
         //#1.2 - Fulfill identification form
         $scope.view.profileForm.identification = {
@@ -63,7 +71,8 @@ app
             zipcode: profileData.postalCode,
             city: profileData.city
         }
-    })();
+    };
+    $scope.populateUserView();
     
 
     
@@ -113,15 +122,18 @@ app
         //#1 - Get All Services by calling server
 		return AppService.PROFILE_updateUserInfo(userParameter).then((result)=>{
             console.log(result);
-            if(result){
-                //#2 - Store userInfo in cache
+            if(result && result.code === 0){
+                //#2.1 - update view
+                $scope.populateUserView(result.data.user);
+
+                //#2.2 - Store userInfo in cache
                 localStorage.setItem('userInfo', JSON.stringify(result.data.user));
                 
-                //#2.2 - Show message
-                $scope.view.messageError = 'APP_PROFILE_SAVE_MESSAGE';
+                //#2.3 - Show message
+                $scope.view.messageSuccess = 'APP_PROFILE_SAVE_MESSAGE_SUCCESS';
             }else{
-                //TODO REMOVE
-                localStorage.setItem('userInfo', JSON.stringify(userParameter));
+                //#3 - Case of error
+                $scope.view.messageSuccess = 'APP_PROFILE_SAVE_MESSAGE_ERROR';
             }
 
 		});

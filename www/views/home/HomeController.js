@@ -484,7 +484,26 @@ app
 	/************************************** Messages ************************************/
 	//#A - Dismiss message
 	$scope.dismissMessage = function(message){
-		alert(JSON.stringify(message));
+		//#1 - Remove it from list of messages		
+		$scope.view.messages.splice($scope.view.messages.findIndex(messageItem => messageItem.promoIdentifier === message.promoIdentifier), 1);		
+		//#1.1 - We have to add class of active in 1st one again		
+		$timeout(()=>{
+			jQuery('.item').removeClass('active')
+			if($scope.view.messages.length > 0){
+				jQuery('.item:nth-of-type(1)').addClass('active');
+			}
+		});
+		
+		return false;
+
+		//#2 - set up parameter to server
+		let setPromotionParam = {
+			id_user : FrameworkUtils.getLoggedUser().id_user,
+			id_news : message.id
+		}
+
+		//#3 - Call server to dismiss message
+		return AppService.HOME_setPromotions(setPromotionParam);
 	}
 
 	/************************************** Favorites ***********************************/

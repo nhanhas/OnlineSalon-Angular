@@ -138,7 +138,8 @@
     "APP_HOME_SEARCH_PANEL_BTN": "FILTER",
     
     "APP_PROFILE_SAVE_BTN" : "SAVE PROFILE",
-    "APP_PROFILE_SAVE_MESSAGE" : "Changes saved with success",
+    "APP_PROFILE_SAVE_MESSAGE_SUCCESS" : "Changes saved with success",
+    "APP_PROFILE_SAVE_MESSAGE_ERROR" : "An error has occured updating profile",
     "APP_PROFILE_LOGOUT_BTN" : "SIGN OUT",
 
     "APP_SERVICES_MENU_TITLE" : "MY SERVICES",

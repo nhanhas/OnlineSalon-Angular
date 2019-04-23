@@ -136,15 +136,20 @@
                         <custom-input label="{{ 'APP_SIGNIN_STEP_2_CARD_CCV' | translate }}"  under-label="{{ 'APP_SIGNIN_STEP_2_CARD_CCV_DESC' | translate }}" under-label-class="color-dark-gray" model="view.profileForm.payment.ccv"></custom-input>                    
                     </div>
                 </div>
-                
-                <!-- Save Button -->
-                <div class="profile-step-form-button-container profile-step-2-button">
-                    <custom-button label="{{ 'APP_PROFILE_SAVE_BTN' | translate }}" on-press="saveAll()"></custom-button> 
+    
+                <!-- Success message -->
+                <div class="profile-credentials-message-container" ng-if="view.messageSuccess !== ''">
+                    <span class="text-medium color-primary-green" >{{ view.messageSuccess | translate }}</span>
                 </div>
 
                 <!-- Error message -->
-                <div class="profile-credentials-message-container" >
-                    <span class="text-medium color-primary-green" ng-show="view.messageError !== ''">{{ view.messageError | translate }}</span>
+                <div class="profile-credentials-message-container" ng-if="view.messageError !== ''">
+                    <span class="text-medium color-red" >{{ view.messageError | translate }}</span>
+                </div>
+
+                <!-- Save Button -->
+                <div class="profile-step-form-button-container profile-step-2-button">
+                    <custom-button label="{{ 'APP_PROFILE_SAVE_BTN' | translate }}" on-press="saveAll()"></custom-button> 
                 </div>
                 
                 <!-- logout -->

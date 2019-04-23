@@ -148,6 +148,20 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
         });
     }
 
+    /**
+     * #F - Request server to mark news as READ
+     * parameter to server:
+     * {"id_user":0, "id_news" : 0}
+     */
+    this.HOME_setPromotions = function(promotionParame){
+        let serviceURL = this.serviceWS + '/setPromotions';
+        let parameter = promotionParame;
+
+        return FrameworkUtils.Http_POST(serviceURL, parameter).then(function(result){     
+            return result.data;
+        });
+    }
+
     /********************************************************************************
      * Menus - Profile
      ********************************************************************************/

@@ -145,7 +145,8 @@
     "APP_HOME_SEARCH_PANEL_BTN": "FILTRAR",
 
     "APP_PROFILE_SAVE_BTN" : "GRAVAR ALTERAÇÕES",
-    "APP_PROFILE_SAVE_MESSAGE" : "Alterações gravadas com sucesso",
+    "APP_PROFILE_SAVE_MESSAGE_SUCCESS" : "Alterações gravadas com sucesso",
+    "APP_PROFILE_SAVE_MESSAGE_ERROR" : "Ocorreu um erro a alterar o perfil",
     "APP_PROFILE_LOGOUT_BTN" : "TERMINAR SESSÃO",
 
     "APP_SERVICES_MENU_TITLE" : "OS MEUS SERVIÇOS",
