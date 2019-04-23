@@ -106,7 +106,7 @@ app
             address1: $scope.view.profileForm.address.mainAddress,
             address2: $scope.view.profileForm.address.secondaryAddress,
             city: $scope.view.profileForm.address.city,
-            postalCode: $scope.view.profileForm.identification.zipcode,
+            postalCode: $scope.view.profileForm.address.zipcode,
             
         }
         
