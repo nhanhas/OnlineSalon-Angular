@@ -60,26 +60,7 @@ app
         }
     };
 
-    var options = {
-      maximumAge: 30000,
-    timeout: 15000,
-    enableHighAccuracy: true
-    };
 
-    function success(pos) {
-      var crd = pos.coords;
-
-      console.log('Sua posição atual é:');
-      alert('Latitude : ' + crd.latitude);
-      alert('Longitude: ' + crd.longitude);
-      console.log('Mais ou menos ' + crd.accuracy + ' metros.');
-    };
-
-    function error(err) {
-     alert('ERROR(' + err.code + '): ' + err.message);
-    };
-
-    navigator.geolocation.getCurrentPosition(success, error, options);
     /**
      * Controller behaviours
      */
@@ -245,7 +226,6 @@ app
         if(isAllowed && navigator.geolocation){
 
             FrameworkUtils.getUserCurrentPosition().then(()=>{
-                  alert(isAllowed);
 
                 //#3 - Use app without Geolocation
                 $rootScope.allowGeolocation = true;
