@@ -363,7 +363,7 @@ app
 			//#2.1 - Fulfill services props and push it 
 			services.forEach((serviceItem) => {
 				let newService = new ServiceVO();
-				newService.id = serviceItem.id_prof;
+				newService.id = serviceItem.id_reserve;
 
 				newService.name = serviceItem.name;    
 				newService.email = serviceItem.email;    
@@ -873,6 +873,28 @@ app
 		
 	};
 
+	/************************************** Services panel ***********************************/	
+	$scope.cancelService = function(service){
+		//#1 - Remove it from list of messages		
+		$scope.view.services.splice($scope.view.services.findIndex(serviceItem => serviceItem.id === service.id), 1);		
+
+		//#2 - set up parameter to server
+		let cancelServiceParam = {
+			id_service : service.id,
+			status : 4
+		}
+
+		$scope.view.isLoading = true;
+        $scope.view.loadingMessage = 'APP_HOME_SERVICES_PANEL_CANCEL_SERVICE_LOADING';
+		//#3 - Call server to dismiss message
+		return AppService.HOME_updateService(cancelServiceParam).then((result)=>{
+			//#4 - Reload again booked services
+			return AppService.HOME_getBookedServices().then((resultBooked)=>{
+				$scope.view.isLoading = false;
+        		$scope.view.loadingMessage = '';
+			})
+		});
+	};
 
 	/************************************** Search panel ***********************************/	
 	//#A  - This function will initialize and reset panel options

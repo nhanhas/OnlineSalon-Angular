@@ -153,9 +153,23 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
      * parameter to server:
      * {"id_user":0, "id_news" : 0}
      */
-    this.HOME_setPromotions = function(promotionParame){
+    this.HOME_setPromotions = function(promotionParam){
         let serviceURL = this.serviceWS + '/setPromotions';
-        let parameter = promotionParame;
+        let parameter = promotionParam;
+
+        return FrameworkUtils.Http_POST(serviceURL, parameter).then(function(result){     
+            return result.data;
+        });
+    }
+
+    /**
+     * #G - Request server to update service status
+     * parameter to server: status can be [4 - canceled]
+     * {"id_service":0, "status" : 0}
+     */
+    this.HOME_updateService = function(updateServiceParam){
+        let serviceURL = this.serviceWS + '/updateService';
+        let parameter = updateServiceParam;
 
         return FrameworkUtils.Http_POST(serviceURL, parameter).then(function(result){     
             return result.data;
