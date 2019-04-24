@@ -150,6 +150,14 @@
     right: 20px;
     z-index: 1;
 }
+
+.home-pro-panel-close-btn-left-container{
+    position: absolute;
+    top: 22px;
+    left: 20px;
+    z-index: 1;
+}
+
 .home-pro-panel-data-tile{
     margin-bottom: 15px;
 }

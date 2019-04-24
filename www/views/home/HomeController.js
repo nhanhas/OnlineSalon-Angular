@@ -886,7 +886,7 @@ app
 
 		$scope.view.isLoading = true;
         $scope.view.loadingMessage = 'APP_HOME_SERVICES_PANEL_CANCEL_SERVICE_LOADING';
-		//#3 - Call server to dismiss message
+		//#3 - Call server to cancel service
 		return AppService.HOME_updateService(cancelServiceParam).then((result)=>{
 			//#4 - Reload again booked services
 			return AppService.HOME_getBookedServices().then((resultBooked)=>{

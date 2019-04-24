@@ -45,6 +45,12 @@
     top: 15px;
     right: 20px;
 }
+.home-panel-close-btn-left-container{
+    position: absolute;
+    top: 22px;
+    left: 20px;
+}
+
 .home-panel-data-tile{
     margin-bottom: 15px;
 }
