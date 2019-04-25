@@ -195,6 +195,25 @@ app.service('AppService', ['$http', 'FrameworkUtils', function($http, FrameworkU
     }
 
     /********************************************************************************
+     * Home - Professional
+     ********************************************************************************/
+    /**
+     * #A - Update professional online/offline
+     * parameter to server: with status [1 - online, 2 - offline]
+     * {"id_professional": 0,"status": 0}  
+     */
+    this.HOME_changeProfessionalStatus  = function(userInfoParameter){
+        
+        let serviceURL = this.serviceWS + '/changeProfessionalStatus';
+        let parameter = userInfoParameter;
+
+        return FrameworkUtils.Http_POST(serviceURL, parameter).then(function(result){     
+            return result.data;
+        });
+    }
+
+
+    /********************************************************************************
      * Generic
      ********************************************************************************/
     /**

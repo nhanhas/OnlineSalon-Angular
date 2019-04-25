@@ -116,7 +116,25 @@ app
 	 * Functions to retrieve 
 	 * server data
 	 */
-    //TODO
+	//TODO
+	//#A - Set up Online/Offline mode
+	$scope.setOnlineMode = function(newStatus){
+		$scope.view.isOnline = newStatus;
+
+		//#0 - Get Logged User
+		let userInfo = FrameworkUtils.getLoggedUser();
+		let updateStatusParam = {
+			id_professional : 188, //TODO 
+			status : newStatus === true ? 1 : 2 // 1 - Online; 2 - Offline
+		}
+
+		//#1 - Get current position/dummy position (depending on permissions)
+		return AppService.HOME_changeProfessionalStatus(updateStatusParam).then((result)=>{
+			console.log(result);
+		});
+
+
+	}
 
 
     /**
@@ -128,7 +146,7 @@ app
 		});		
     };
 	//#A - Allow to show/hide panels (param <panel> = undefined, will close all)	
-	$scope.showPanel = function(panel){
+	$scope.showPanel = function(panel, isBrowserPopState = false){
 		//#1 - First we reset all 'Opened' flags
 		$scope.view.messagesOpened = false;
 		$scope.view.requestsOpened = false;

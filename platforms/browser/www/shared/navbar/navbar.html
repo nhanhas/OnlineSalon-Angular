@@ -33,10 +33,10 @@
 
 <!-- Professional Mode -->
 <div class="navbar navbar-pro background-menu-pink color-white" ng-if="appMode === 'professional'">
-	<!-- Menu 'in' -->
+	<!-- Online / Offline -->
 	<div class="navbar-menu-item-pro">		
 		<span class="text-extra-small">OFFLINE</span>
-		<span><i class="fa fa-2x" ng-class="{ 'fa-toggle-on color-heart-green' : isOnline, 'fa-toggle-off' :!isOnline }" ng-click="isOnline = !isOnline"></i></span>
+		<span ng-click="onSetOnlineStatus()"><i class="fa fa-2x" ng-class="{ 'fa-toggle-on color-heart-green' : isOnline, 'fa-toggle-off' :!isOnline }"></i></span>
 		<span class="text-extra-small">ONLINE</span>
 	</div>
 </div>

@@ -135,7 +135,7 @@
 
 
 
-<navbar is-online="view.isOnline" app-mode="professional" 
+<navbar set-online-status="setOnlineMode(newStatus)" is-online="view.isOnline" app-mode="professional" 
         ng-if=" !(  view.messagesOpened ||
                     view.requestsOpened)"></navbar>
 
