@@ -5,3 +5,11 @@
     left: 0;
     right: 0;
 }
+
+.gm-style-iw {
+    max-width:300px !important;
+}
+
+.gm-style-iw > div{
+    max-width:300px !important;
+}

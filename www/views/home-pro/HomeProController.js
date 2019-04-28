@@ -187,6 +187,21 @@ app
 	}
 
 
+	/************************************** Menu ***********************************/
+	//#A - Go to a specific menu page
+	$scope.goToMenuOption = function(option){
+		//#1 - Navigate depending on option
+		switch (option) {
+			case 'profile':
+				$location.path('/pro-profile');
+				break;
+			case 'services-menu':
+				//#Notice: It is the same as 'client' view
+				$location.path('/services-menu');
+				break;
+		}		
+	}
+
 	/************************************** Request panel ***********************************/	
 	//#A - When a request is selected from the list
 	$scope.onSelectClientRequest = function(request){
@@ -225,7 +240,7 @@ app
 		//#2 - remove service selected from focus
 		$scope.selectedRequest = undefined;
 		//#3 - go to list services		
-		$scope.showPanel('requests');
+		$scope.showPanel();
 	}
 
 	//#C - When a request selected is started from tracking panel

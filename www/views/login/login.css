@@ -31,8 +31,8 @@
 
 /* Step Credentials */
 .login-credentials-form{
-    margin: 70px;
-    margin-top: 50px;
+    margin: 40px;
+    margin-top: 10px;
 }
 
 .login-credentials-input-container{
@@ -46,12 +46,12 @@
 }
 
 .login-credentials-sign-container{
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 /*.login-credentials-disclaimer{
-   position: absolute;
-    bottom: 10px;
+    position: absolute;
+    bottom: 5px;
     left: 0;
     right: 0;
 }*/

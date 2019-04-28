@@ -129,7 +129,12 @@ app
 
     //# - Close Screen and go Home
     $scope.closeMenu = function(){
-        $location.path('/home');
+        if(APP_CONFIG.mode === 'client'){
+            $location.path('/home');
+        }else{
+            $location.path('/home-pro');
+        }
+        
     }
 
     //#1 - Load Application Data from Server
