@@ -1,7 +1,7 @@
 //Framework Utils
 
 //#Remote
-app.service('FrameworkUtils', ['$http', function($http) {
+app.service('FrameworkUtils', ['$http', '$location', function($http, $location) {
 
     /**
      * Remote Services Utils
@@ -12,7 +12,7 @@ app.service('FrameworkUtils', ['$http', function($http) {
                      method: 'GET',
                      url: serviceURL
                  }).then(function successCallback(response) {
-                     return response;
+                    return response;
                  }, function errorCallback(response) {
                      return 'error';
                  });
@@ -20,12 +20,27 @@ app.service('FrameworkUtils', ['$http', function($http) {
 
      //POST Type
      this.Http_POST  = function(serviceURL, data){
+        //#1 - Get Token Id
+        let sessionIDToken = localStorage.getItem('sessionID');
+        sessionIDToken = sessionIDToken ? JSON.parse(sessionIDToken) : undefined;
+        //#1.1 - if there is none, just initialize it, server will return error
+        if(!sessionIDToken){
+            sessionIDToken = ''; 
+        }
+         //#2 - Proceed with request   
          return $http({
                      method: 'POST',
                      data: data,
+                     headers: {'Accesstoken': sessionIDToken},
                      url: serviceURL
                  }).then(function successCallback(response) {
-                     return response;
+                     //#1 - Verify if there is any session error
+                     if(response && response.data && (response.data.code === 800 || response.data.code === 900) ){
+                        $location.path('/login');
+                        return undefined;
+                     }else{
+                        return response;
+                     }                     
                  }, function errorCallback(response) {
                      return 'error';
                  });

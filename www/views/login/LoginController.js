@@ -175,6 +175,7 @@ app
             AppService.LOGIN_userLogin(credentials).then((result)=>{
                 //#2.3.1 - Reset cache user info
                 localStorage.setItem('userInfo', '{}');
+                localStorage.setItem('sessionID', '');
                 console.log(result);
 
                 //#2.4 - Remove loading
@@ -182,6 +183,9 @@ app
 
                 //#2.5 - Process response
                 if(result.code === 0){
+                    //#2.5.0 - Store userInfo in cache
+                    localStorage.setItem('sessionID', JSON.stringify(result.data.code));
+
                     //#2.5.1 - Store userInfo in cache
                     localStorage.setItem('userInfo', JSON.stringify(result.data.user));
 
